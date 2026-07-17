@@ -1,5 +1,3 @@
-#!/bin/bash
-
 set -e
 
 mkdir -p "$PCB_OUT_DIR/data"
