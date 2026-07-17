@@ -1,9 +1,3 @@
-sudo apt -y update
-sudo apt -y upgrade
-# CMake, zlib, csh
-sudo apt -y install cmake
-sudo apt -y install zlib1g-dev pkg-config
-sudo apt -y install csh
 
 #ZLib
 cd $DIR
