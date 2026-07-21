@@ -2,15 +2,17 @@ export PCB_REPO_DIR="$(pwd)"
 export PCB_SCRIPTS_DIR="$PCB_REPO_DIR/scripts"
 export PCB_OVERRIDE_DIR="$PCB_REPO_DIR/override"
 export PCB_PROFILES_DIR="$PCB_REPO_DIR/profiles"
-
+echo ""
 export PCB_OUT_DIR="$PCB_REPO_DIR/out"
 export PCB_LOGS_DIR="$PCB_OUT_DIR/logs"
 export PCB_PRE_DIR="$PCB_OUT_DIR/preprocessing"
-
+export PCB_DATA_DIR="$PCB_OUT_DIR/data"
+echo ""
 mkdir -p $PCB_OUT_DIR
 mkdir -p $PCB_LOGS_DIR
 mkdir -p $PCB_PRE_DIR
-
+mkdir -p $PCB_DATA_DIR
+echo "" 
 export DIR="$PCB_OUT_DIR/.libraries"
 export CC=gcc
 export CXX=g++

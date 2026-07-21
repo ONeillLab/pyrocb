@@ -1,0 +1,15 @@
+{
+    "name": "yukon-2024",
+    "center": [-136.5, 63.2],
+    "crosswalk_radius": 350,
+    "bounds": [
+    ],
+    "tiles": [],
+    "time": {
+        "year": [],
+        "month": [],
+        "day": [
+            
+        ]
+    }
+}

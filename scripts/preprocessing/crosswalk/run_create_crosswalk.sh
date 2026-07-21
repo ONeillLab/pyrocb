@@ -1,0 +1,1 @@
+python3 "$PCB_SCRIPTS_DIR/preprocessing/crosswalk/create_crosswalk.py" $PCB_OUT_DIR

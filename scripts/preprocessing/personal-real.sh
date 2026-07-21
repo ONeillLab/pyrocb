@@ -1,27 +1,16 @@
-set -e
+# The select command uses the PS3 variable for its prompt text
+PS3="Enter the number of the config file you want to use: "
 
-mkdir -p "$PCB_OUT_DIR/data"
-mkdir -p "$PCB_OUT_DIR/data/geog"
-mkdir -p "$PCB_OUT_DIR/data/grib"
-mkdir -p "$PCB_OUT_DIR/data/raw"
-RAW_DATA="$PCB_OUT_DIR/data/raw/elevation"
-GEOG_DATA="$PCB_OUT_DIR/data/geog/elevation"
-WRXPY="$PCB_OUT_DIR/wrfxpy"
-
-# Added new elevationd directory for cleaner paths
-
-# ====== LOAD MODULES ======
-module load StdEnv/2023 gcc/12.3
-module load gdal/3.9.1
-module load python/3.11
-echo "Modules Loaded!"
-
-echo "Environment loaded!"
-
-
-
-
-cd $SCRATCH/wrfxpy
-./convert_geotiff.sh $RAW_DATA/cdem_final.tif $GEOG_DATA ZSF
-
-echo "ALL DONE!"
+# Using an array of files (*.conf) ensures filenames with spaces don't break the menu
+select profile in "$PCB_PROFILES_DIR"/*/; do
+    # Check if the user entered a valid number
+    if [[ -n "$profile" ]]; then
+        echo "Loading: $profile"
+        
+        rsync -a $profile $PCB_PRE_DIR/profile
+        
+        break # Exits the menu loop after a valid selection
+    else
+        echo "Invalid selection. Please try again."
+    fi
+done
