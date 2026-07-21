@@ -24,7 +24,7 @@ for tile in tiles:
     response = requests.get(url, stream=True)
     
     f_name = f"cdem_dem_{tile}_tif.zip"
-    tiff_name = f"cdem_dem_{tile}*.tif"
+    tiff_name = f"cdem_dem_{tile}.tif"
     os.makedirs(os.path.dirname(f"{path}raw/elevation/{f_name}"), exist_ok=True)
     with open(f"{path}raw/elevation/{f_name}", mode="wb") as f:
         for chunk in response.iter_content(chunk_size=10 * 1024):
