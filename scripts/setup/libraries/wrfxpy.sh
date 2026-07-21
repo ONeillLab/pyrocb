@@ -1,7 +1,7 @@
 cd $DIR
-git clone https://github.com/openwfm/wrfxpy
-cd wrfxpy
-git checkout convert_geotiff
+wget https://github.com/openwfm/wrfxpy/archive/refs/heads/convert_geotiff.zip
+unzip -d convert_geotiff.zip
+rm -rf convert_geotiff.zip
 
 virtualenv $DIR/py4wrf
 source $DIR/py4wrf/bin/activate
