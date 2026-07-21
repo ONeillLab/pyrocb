@@ -30,21 +30,27 @@ for tile in tiles:
         for chunk in response.iter_content(chunk_size=10 * 1024):
             f.write(chunk)
     paths.append(f"{path}raw/elevation/{tiff_name}")
-    os.remove(paths[-1])
+    if os.path.exists(paths[-1]):
+        os.remove(paths[-1])
     os.system(f"unzip -n -d {path}raw/elevation/ {path}raw/elevation/{f_name}")
     os.system(f"rm -rf {path}raw/elevation/{f_name}")
 
+merged_tiff = f"{path}raw/elevation/cdem_merged.tif"
+if os.path.exists(merged_tiff):
+    os.remove(merged_tiff)
 gdal.Warp(
-    f"{path}raw/elevation/cdem_merged.tif",
+    merged_tiff,
     paths,
     srcNodata = -32767,
     dstNodata = -32767
 )
 
-os.remove(f"{path}raw/elevation/cdem_final.tif")
+final_tiff = f"{path}raw/elevation/cdem_final.tif"
+if os.path.exists(final_tiff):
+    os.remove(final_tiff)
 gdal.Warp(
     f"{path}raw/elevation/cdem_d03.tif",
-    f"{path}raw/elevation/cdem_final.tif",
+    final_tiff,
     srcSRS = "EPSG:4617",
     dstSRS = "EPSG:4236",
     srcNodata = -32767,
