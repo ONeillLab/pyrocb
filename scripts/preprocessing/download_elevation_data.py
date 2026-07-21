@@ -2,7 +2,7 @@ import json
 import sys
 import requests
 import subprocess
-import gdal
+from osgeo import gdal
 import numpy as np
 
 bounds = ()
