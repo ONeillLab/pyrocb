@@ -5,7 +5,6 @@ import subprocess
 import gdal
 import numpy as np
 
-sys.argv[0]
 bounds = ()
 tiles = []
 time = {}
