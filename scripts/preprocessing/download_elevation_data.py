@@ -25,19 +25,21 @@ for tile in tiles:
     
     f_name = f"cdem_dem_{tile}_tif.zip"
     tiff_name = f"cdem_dem_{tile}*.tif"
-    os.makedirs(os.path.dirname(f"{path}raw/elevation"), exist_ok=True)
+    os.makedirs(os.path.dirname(f"{path}raw/elevation/{f_name}"), exist_ok=True)
     with open(f"{path}raw/elevation/{f_name}", mode="wb") as f:
         for chunk in response.iter_content(chunk_size=10 * 1024):
             f.write(chunk)
     files.append(tiff_name)
-    subprocess.run(f"unzip -n {f_name}")
+    os.system(f"unzip -n -d {path}raw/elevation/ {path}raw/elevation/{f_name}")
+    os.system(f"rm -rf {path}raw/elevation/{f_name}")
 
 cmd = "-overwrite \\\n-srcnodata -32767 \\\n-dstnodata -32767 \\\n"
+
 for f in files:
     cmd += f"{path}raw/elevation/{f} \\\n"
 cmd += f"{path}raw/elevation/cdem_merged.tif"
-subprocess.run(cmd)
-subprocess.run(f"""gdalwarp -overwrite \\
+os.system(cmd)
+os.system(f"""gdalwarp -overwrite \\
     -s_srs EPSG:4617 \\
     -t_srs EPSG:4326 \\
     -srcnodata -32767 \\
@@ -61,5 +63,5 @@ if bad_pct > 1.0:
 else:
     print(f'  OK: coverage looks clean')
 
-    os.makedirs(os.path.dirname(f"{path}geog/elevation"), exist_ok=True)
-subprocess.run(f"""{sys.argv[1]}/wrfxpy/convert_geotiff.sh ${sys.argv[1]}/cdem_final.tif {path}geog/elevation ZSF""")
+    os.makedirs(os.path.dirname(f"{path}geog/elevation/ZSF"), exist_ok=True)
+os.system(f"""{sys.argv[1]}/wrfxpy/convert_geotiff.sh ${sys.argv[1]}/cdem_final.tif {path}geog/elevation ZSF""")

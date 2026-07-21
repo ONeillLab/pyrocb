@@ -14,4 +14,3 @@ echo 'export PYTHONPATH=/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86
 
 sed -i 's|export PYTHONPATH=src|export PYTHONPATH=src:$PYTHONPATH|' $DIR/wrfxpy/convert_geotiff.sh
 sed -i 's/import gdal, osr, pyproj, rasterio/from osgeo import gdal, osr\nimport pyproj, rasterio/' $DIR/wrfxpy/src/geo/geodriver.py
-
