@@ -1,8 +1,9 @@
 import json
+import os
 import sys
 import requests
 import subprocess
-import gdal
+from osgeo import gdal
 import numpy as np
 
 bounds = ()
@@ -24,6 +25,7 @@ for tile in tiles:
     
     f_name = f"cdem_dem_{tile}_tif.zip"
     tiff_name = f"cdem_dem_{tile}*.tif"
+    os.makedirs(os.path.dirname(f"{path}raw/elevation"), exist_ok=True)
     with open(f"{path}raw/elevation/{f_name}", mode="wb") as f:
         for chunk in response.iter_content(chunk_size=10 * 1024):
             f.write(chunk)
@@ -59,4 +61,5 @@ if bad_pct > 1.0:
 else:
     print(f'  OK: coverage looks clean')
 
-subprocess.run(f"""{sys.argv[1]}/wrfxpy/convert_geotiff.sh ${sys.argv[1]}/cdem_final.tif {path}data/geog/elevation ZSF""")
+    os.makedirs(os.path.dirname(f"{path}geog/elevation"), exist_ok=True)
+subprocess.run(f"""{sys.argv[1]}/wrfxpy/convert_geotiff.sh ${sys.argv[1]}/cdem_final.tif {path}geog/elevation ZSF""")
