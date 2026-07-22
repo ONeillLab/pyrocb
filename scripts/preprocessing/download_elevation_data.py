@@ -2,7 +2,6 @@ import json
 import os
 import sys
 import requests
-import subprocess
 from osgeo import gdal
 import numpy as np
 
