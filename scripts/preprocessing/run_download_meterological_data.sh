@@ -1,1 +1,0 @@
-python3 "$PCB_SCRIPTS_DIR/preprocessing/download_meterological_data.py" $PCB_OUT_DIR

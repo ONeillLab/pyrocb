@@ -22,10 +22,11 @@ fi
 
 
 cd $PCB_OUT_DIR/WPS
-export WRF_DIR=$PCB_OUT_DIR/WRF-SFIRE    # <-- points at WRF-SFIRE, not WRF-Fire
+export WRF_DIR=$PCB_OUT_DIR/WRF-SFIRE
 
 ./compile 2>&1 | tee compile_wps.log
 echo "[LOG] WPS Compiled"
+
 
 # ====== CHECK WPS ======
 if [ -f geogrid.exe ] && [ -f metgrid.exe ] && [ -f ungrib.exe ]; then
