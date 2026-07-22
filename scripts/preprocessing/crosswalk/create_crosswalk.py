@@ -14,7 +14,7 @@ def save_crosswalk(crosswalk: dict, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     s = "Candian ID, Candian Name, US ID\n" 
     for en, val in crosswalk.items():
-        s += f"{en}, {val["name"]}, {val["USIndex"]}\n"
+        s += f"{en}, {val['name']}, {val['USIndex']}\n"
     
     with open(path, 'w') as f:
         f.write(s)
@@ -22,7 +22,7 @@ def save_crosswalk(crosswalk: dict, path):
 
 fbp_table_text = ""
 
-with open(f'{sys.argv[1]}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m/FBP30_ColorTable.txt', 'r') as f:
+with open(f'{sys.argv[1]}/data/FBP_fueltypes_Canada_30m/FBP30_ColorTable.txt', 'r') as f:
     fbp_table_text = f.read()
 base_crosswalk = {}
 
@@ -36,7 +36,6 @@ for line in fbp_table_text.strip().split('\n'):
         base_crosswalk[fuel_id]["name"] = description
         base_crosswalk[fuel_id]["USIndex"] = -9999
 
-print(base_crosswalk)
 
 crosstab_dir = f"{sys.argv[1]}/output/crosstab"
 
@@ -46,7 +45,6 @@ for profile in profiles:
         continue
     
     label = profile.name
-    print(profile.path)
     csvs = os.scandir(profile.path)
     for csv in csvs:
         if not csv.is_file() or not csv.name.endswith('.csv'):
@@ -83,8 +81,8 @@ for profile in profiles:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
             elif  abs(percents[max_percent_idx] - percents[second_max_percent_idx]) > .005 and np.sum(counts) >= 1000 and counts[max_percent_idx] >= 500:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
-                print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]["name"]} ({i}) was assigned to US fuel type {headers[max_percent_idx]} but it may also be {headers[second_max_percent_idx]} ({headers[max_percent_idx]}: {percents[max_percent_idx]*100:.1f}% and {headers[second_max_percent_idx]}: {percents[second_max_percent_idx]*100:.1f}%). ")
+                print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]['name']} ({i}) was assigned to US fuel type {headers[max_percent_idx]} but it may also be {headers[second_max_percent_idx]} ({headers[max_percent_idx]}: {percents[max_percent_idx]*100:.1f}% and {headers[second_max_percent_idx]}: {percents[second_max_percent_idx]*100:.1f}%). ")
             else: 
-                print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]["name"]} ({i}) was not assigned due to uncertain results") 
+                print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]['name']} ({i}) was not assigned due to uncertain results") 
 
         save_crosswalk(crosswalk, f"{sys.argv[1]}/output/crosswalk/{label}/{name}")
