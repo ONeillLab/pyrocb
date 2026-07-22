@@ -15,8 +15,8 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
 
 actual_bounds = [
     int(bounds[0][1] - 10), 
-    int(bounds[0][0] - 10)
-    int(bounds[1][1] + 10)
+    int(bounds[0][0] - 10),
+    int(bounds[1][1] + 10),
     int(bounds[1][0] + 10), 
 ]
 
