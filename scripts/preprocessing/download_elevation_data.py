@@ -88,4 +88,4 @@ if bad_pct > 1.0:
 else:
     print(f'[LOG] Coverage looks clean')
     os.makedirs(os.path.dirname(f"{path}geog/elevation/ZSF"), exist_ok=True)
-os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {final_tiff} {path}geog/elevation ZSF""")
+os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {final_tiff} {path}geog/ ZSF""")

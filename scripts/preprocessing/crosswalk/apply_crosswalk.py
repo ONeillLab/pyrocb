@@ -91,3 +91,6 @@ out_ds.GetRasterBand(1).WriteArray(output)
 out_ds.GetRasterBand(1).SetNoDataValue(14)
 out_ds = None
 ds = None
+
+os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}geog/ NFUEL_CAT""")
+
