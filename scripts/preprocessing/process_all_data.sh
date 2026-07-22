@@ -1,0 +1,1 @@
+bash ./process/geogrid.sh
