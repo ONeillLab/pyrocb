@@ -132,7 +132,7 @@ NODATA = -9999
 US_NODATA = 32767
 TILE_SIZE = 2 ** 13
 
-canada_file = sys.argv[1] + '/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif'
+canada_file = sys.argv[1] + '/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif'
 us_an_13_file = sys.argv[1] + '/data/LF2024_FBFM13_CONUS/LF2024_FBFM13_CONUS/Tif/LF2024_FBFM13_CONUS.tif'
 ak_an_13_file = sys.argv[1] + '/data/LF2024_FBFM13_AK/LF2024_FBFM13_AK/Tif/LF2024_FBFM13_AK.tif'
 us_sb_40_file = sys.argv[1] + '/data/LF2024_FBFM40_CONUS/LF2024_FBFM40_CONUS/Tif/LF2024_FBFM40_CONUS.tif'
