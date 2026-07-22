@@ -14,7 +14,6 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
     data = json.load(f)
     tiles = data["tiles"]
     bounds = tuple(data["bounds"])
-    # bounds = **data["bounds"]
 
 path = f"{sys.argv[1]}/data/"
 

@@ -25,12 +25,6 @@ def overlap_window(can, other):
 
 
 def radius_window(canada, other, center_lon, center_lat, radius_km, radius_crs='EPSG:4326'):
-    """
-    Restrict the Canada/other overlap to a square bounding box of the given
-    radius (km) around a center point. center_lon/center_lat are assumed to be
-    in radius_crs (default WGS84 lon/lat) and are reprojected into the Canada
-    raster's CRS, where the buffer distance is applied in meters.
-    """
     x, y = warp_transform(radius_crs, canada.crs, [center_lon], [center_lat])
     center_x, center_y = x[0], y[0]
 
