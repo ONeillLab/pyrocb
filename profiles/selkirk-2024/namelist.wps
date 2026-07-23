@@ -1,13 +1,13 @@
 &share
- wrf_core             = 'ARW'
- max_dom              = 3
- start_date           = '2024-06-27_15:00:00', '2024-06-27_15:00:00', '2024-06-27_15:00:00'
- end_date             = '2024-06-28_23:00:00', '2024-06-28_23:00:00', '2024-06-28_23:00:00'
- interval_seconds     = 3600
- io_form_geogrid      = 2
- debug_level          = 0
- subgrid_ratio_x      = 0, 0, 7,
- subgrid_ratio_y      = 0, 0, 7,
+ wrf_core             = 'ARW'
+ max_dom              = 3
+ start_date           = '2024-06-27_15:00:00', '2024-06-27_15:00:00', '2024-06-27_15:00:00'
+ end_date             = '2024-06-28_23:00:00', '2024-06-28_23:00:00', '2024-06-28_23:00:00'
+ interval_seconds     = 3600
+ io_form_geogrid      = 2
+ debug_level          = 0
+ subgrid_ratio_x      = 0, 0, 7,
+ subgrid_ratio_y      = 0, 0, 7,
 /
 
 &geogrid
@@ -27,17 +27,17 @@
  pole_lat             = 90
  pole_lon             = 0
  stand_lon            = -137.700
- geog_data_path       = '/home/su386/scratch/pyrocb/out/output/data/geog'
- opt_geogrid_tbl_path = '/home/su386/scratch/pyrocb/out/output/WPS/geogrid/'
+ geog_data_path       = '/home/su386/scratch/pyrocb/out/data/geog'
+ opt_geogrid_tbl_path = '/home/su386/scratch/pyrocb/out/WPS/geogrid/'
 /
 
 &ungrib
  out_format           = 'WPS'
- prefix               = '//home/su386/scratch/pyrocb/out/output/selkirk-2024/output/met_em/FILE'
+ prefix               = '/home/su386/scratch/pyrocb/out/output/selkirk-2024/output/met_em/FILE'
 /
 
 &metgrid
- fg_name              = '//home/su386/scratch/pyrocb/out/output/selkirk-2024/output/met_em/FILE'
+ fg_name              = '/home/su386/scratch/pyrocb/out/output/selkirk-2024/output/met_em/FILE'
  io_form_metgrid      = 2
- opt_metgrid_tbl_path = '/home/su386/scratch/pyrocb/out/output/WPS/metgrid/'
+ opt_metgrid_tbl_path = '/home/su386/scratch/pyrocb/out/WPS/metgrid/'
 /

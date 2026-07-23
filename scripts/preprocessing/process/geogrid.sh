@@ -25,10 +25,13 @@ cd $PCB_OUTPUT_DIR/$PROFILE/output/geo_em
 ln -sf $PCB_OUT_DIR/profile/namelist.wps $PCB_OUTPUT_DIR/$PROFILE/input/namelist.wps
 ln -sf $PCB_OUT_DIR/profile/namelist.input $PCB_OUTPUT_DIR/$PROFILE/input/namelist.input
 
-GEOG="$PCB_OUTPUT_DIR/data/geog"
-GEOGRID_TBL="$PCB_OUTPUT_DIR/WPS/geogrid/"
-METEM="/$PCB_OUTPUT_DIR/$PROFILE/output/met_em/FILE"
-METGRID_TBL="$PCB_OUTPUT_DIR/WPS/metgrid/"
+GEOG="$PCB_OUT_DIR/data/geog"
+
+cp -rs $DIR/geog/ $PCB_OUT_DIR/data/
+
+GEOGRID_TBL="$PCB_OUT_DIR/WPS/geogrid/"
+METEM="$PCB_OUTPUT_DIR/$PROFILE/output/met_em/FILE"
+METGRID_TBL="$PCB_OUT_DIR/WPS/metgrid/"
 HISTORY_PATH="$PCB_OUTPUT_DIR/$PROFILE/output/history/wrfout_d<domain>_<date>"
 
 sed -i \
@@ -46,6 +49,6 @@ sed -i \
   -e "s|^[[:space:]]*history_outname[[:space:]]*=.*| history_outname = '$HISTORY_PATH'|" \
   "$PCB_OUT_DIR/profile/namelist.input"
 
-
+cd $PCB_OUTPUT_DIR/$PROFILE/input
 export FI_PROVIDER=tcp
 mpirun -np 1 $PCB_OUTPUT_DIR/$PROFILE/input/geogrid.exe 2>&1 | tee $PCB_OUTPUT_DIR/$PROFILE/logs/geogrid.log
