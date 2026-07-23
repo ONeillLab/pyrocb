@@ -1,1 +1,1 @@
-bash ./process/geogrid.sh
+bash $PCB_SCRIPTS_DIR/preprocessing/process/geogrid.sh

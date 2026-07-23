@@ -1,7 +1,7 @@
 
 echo [LOG] Downloading Canada Fire Behavior Prediction Fuel Types
 wget "https://cwfis.cfs.nrcan.gc.ca/downloads/fuels/current/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip" -O "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip"
-mkdir -d "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m" 
+mkdir "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m" 
 unzip -d "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m" "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip"
 rm -rf "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip"
 
