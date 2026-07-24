@@ -1,11 +1,11 @@
 # Load Modules
 ml StdEnv/2023 gcc/12.3 openmpi/4.1.5
-module load netcdf-fortran-mpi/4.6.1
 module load wrf/4.7.1
 echo "[LOG] Modules Loaded"
 
 # Adapted from ./personal-ideal.sh 
 cd $PCB_OUT_DIR/WRF-SFIRE
+export NETCDF=$DIR/netcdf
 
 echo "[LOG] Compiling WRF-SFIRE"
 mkdir -p $PCB_LOGS_DIR/compile
@@ -25,6 +25,13 @@ fi
 
 cd $PCB_OUT_DIR/WPS
 export WRF_DIR=$PCB_OUT_DIR/WRF-SFIRE
+
+./configure <<< "3"
+CPP_PATH="$(command -v cpp)"
+sed -i "s|/usr/bin/cpp|${CPP_PATH}|g" configure.wps
+sed -i 's/-lnetcdff -lnetcdf/-lnetcdff -lnetcdf -lhdf5_hl -lhdf5/g' configure.wps
+
+echo "[LOG] WPS Configured"
 
 ./compile 2>&1 | tee $PCB_LOGS_DIR/compile/compile_wps.log
 echo "[LOG] WPS Compiled"
