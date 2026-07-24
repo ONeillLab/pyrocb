@@ -9,7 +9,7 @@ cd $PCB_OUT_DIR/WRF-SFIRE
 
 echo "[LOG] Compiling WRF-SFIRE"
 mkdir -p $PCB_LOGS_DIR/compile
-./compile em_real >& $PCB_LOGS_DIR/compile/compile_wrf.log
+./compile em_real 2>&1 | tee $PCB_LOGS_DIR/compile/compile_wrf.log
 
 echo "[LOG] Finished Compiling WRF-SFIRE. View log in logs/compile/compile_wrf.log"
 

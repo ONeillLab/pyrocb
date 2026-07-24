@@ -4,6 +4,8 @@ cd WRF-SFIRE
 ./configure
 
 sed -i 's/^DM_CC[[:space:]]*=.*$/DM_CC           =       mpicc/' configure.wrf
+grep -n "^CPP" configure.wrf
+sed -i "s|/lib/cpp|$(which cpp)|" configure.wrf
 
 echo "[LOG] WRF-SFire Configured"
 
