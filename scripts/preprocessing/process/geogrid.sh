@@ -17,7 +17,7 @@ mkdir -p $PCB_OUTPUT_DIR/$PROFILE/output/history
 cd $PCB_OUTPUT_DIR/$PROFILE/input
 ln -sf $PCB_OUT_DIR/WPS/geogrid/geogrid.exe
 ln -sf $PCB_OUT_DIR/WPS/ungrib/ungrib.exe
-ln -sf $PCB_OUT_DIR/WPS/metgrib/metgrid.exe
+ln -sf $PCB_OUT_DIR/WPS/metgrid/metgrid.exe
 ln -sf $PCB_OUT_DIR/WPS/link_grib.csh
 ln -sf $PCB_OUT_DIR/WPS/ungrib/Variable_Tables
 

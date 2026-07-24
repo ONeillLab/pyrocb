@@ -6,8 +6,8 @@
  interval_seconds     = 3600
  io_form_geogrid      = 2
  debug_level          = 0
- subgrid_ratio_x      = 0, 0, 7,
- subgrid_ratio_y      = 0, 0, 7,
+ subgrid_ratio_x      = 0, 0, 7
+ subgrid_ratio_y      = 0, 0, 7
 /
 
 &geogrid
