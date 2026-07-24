@@ -7,9 +7,6 @@ echo "[LOG] Modules Loaded"
 # Adapted from ./personal-ideal.sh 
 cd $PCB_OUT_DIR/WRF-SFIRE
 
-# after ./configure (or on the existing configure.wrf if you're not reconfiguring)
-sed -i 's/^DM_CC[[:space:]]*=.*$/DM_CC           =       mpicc/' configure.wrf
-
 echo "[LOG] Compiling WRF-SFIRE"
 mkdir -p $PCB_LOGS_DIR/compile
 ./compile em_real >& $PCB_LOGS_DIR/compile/compile_wrf.log

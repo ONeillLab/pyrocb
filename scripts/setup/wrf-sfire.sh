@@ -2,6 +2,9 @@ cd $PCB_OUT_DIR
 git clone https://github.com/openwfm/WRF-SFIRE.git
 cd WRF-SFIRE
 ./configure
+
+sed -i 's/^DM_CC[[:space:]]*=.*$/DM_CC           =       mpicc/' configure.wrf
+
 echo "[LOG] WRF-SFire Configured"
 
 cd $PCB_OUT_DIR
