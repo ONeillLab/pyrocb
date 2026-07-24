@@ -32,7 +32,7 @@ for tile in tiles:
     paths.append(f"{path}raw/elevation/{tiff_name}")
     if os.path.exists(paths[-1]):
         os.remove(paths[-1])
-    os.system(f"unzip -n -d {path}raw/elevation/ {path}raw/elevation/{f_name}")
+    os.system(f"unzip -no -d {path}raw/elevation/ {path}raw/elevation/{f_name}")
     os.system(f"rm -rf {path}raw/elevation/{f_name}")
 
 merged_tiff = f"{path}raw/elevation/cdem_merged.tif"
