@@ -5,11 +5,11 @@
  run_minutes                         = 0,
  run_seconds                         = 0,
  start_year                          = 2024, 2024, 2024,
- start_month                         = 07,   06,   06,
- start_day                           = 22,   22,   27,
+ start_month                         = 06,   06,   06,
+ start_day                           = 27,   27,   27,
  start_hour                          = 15,   15,   15,
  end_year                            = 2024, 2024, 2024,
- end_month                           = 07,   07,   06,
+ end_month                           = 06,   06,   06,
  end_day                             = 28,   28,   28,
  end_hour                            = 23,   23,   23,
  interval_seconds                    = 3600,
@@ -181,6 +181,6 @@
  &namelist_quilt
  nio_tasks_per_group                 = 0,		
  ! How many dedicated CPU cores handle reading/writing output files. 0 means the compute cores handle I/O
- nio_groups                          = 1,		
+ nio_groups                          = 1
  ! num I/O groups
  /

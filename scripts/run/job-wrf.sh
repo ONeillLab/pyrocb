@@ -1,0 +1,1 @@
+sbatch $PCB_OUT_DIR/profile/run-wrf.sh
