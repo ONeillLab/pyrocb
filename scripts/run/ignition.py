@@ -65,7 +65,7 @@ for j in range(ny):
         if i != nx - 1:
             dlon = xlon[j, i + 1] - xlon[j, i]
             dylon = xlat[j, i + 1] - xlat[j, i] # The change in latitude moving one cell to the right
-        if j != nx - 1:
+        if j != ny - 1:
             dlat = xlat[j + 1, i] - xlat[j, i]
             dxlat = xlon[j + 1, i] - xlon[j, i] #The change in longitude moving one cell down
 
