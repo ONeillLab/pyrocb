@@ -7,7 +7,8 @@ select profile in "$PCB_PROFILES_DIR"/*/; do
     if [[ -n "$profile" ]]; then
         echo "Loading: $profile"
         
-        rsync -a $profile $PCB_PRE_DIR/profile
+        rm -rf $PCB_OUT_DIR/profile
+        ln -s $profile $PCB_OUT_DIR/profile
         
         break # Exits the menu loop after a valid selection
     else

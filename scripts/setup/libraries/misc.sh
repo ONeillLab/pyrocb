@@ -25,13 +25,13 @@ rm -rf ./libpng-1.6.43
 
 # Jasper (jasper-build directory must be outside source)
 cd $DIR
-wget https://github.com/jasper-software/jasper/releases/download/version-4.2.4/jasper-4.2.4.tar.gz
-tar xzvf jasper-4.2.4.tar.gz
-rm -rf ./jasper-4.2.4.tar.gz
+wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.1.zip
+unzip jasper-1.900.1.zip
+rm -rf ./jasper-1.900.1.zip
 mkdir -p jasper-build
 cd jasper-build
-cmake -DCMAKE_INSTALL_PREFIX=$DIR/grib2 ../jasper-4.2.4
+../jasper-1.900.1/configure --prefix=$DIR/grib2
 make -j$(nproc)
 make install
 cd ../
-rm -rf ./jasper-4.2.4
+rm -rf ./jasper-1.900.1
