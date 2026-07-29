@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
 #SBATCH --job-name=wrf_selkirk_wrf_t1
-#SBATCH --time=16:00:00
+#SBATCH --time=12:00:00
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=96
 #SBATCH --mem=0
