@@ -258,7 +258,7 @@ gradual_growth_tign = t_end - (t_end - t_start) * normalized_depth
 
 # Map values into TIGN_G layout and save
 
-tign_new = np.full(tign.shape, 9.99e9)
+tign_new = np.full(tign.shape, 9.99e6)
 
 # Ignore the last srx 
 valid = tign_new[:fire_ny, :fire_nx]

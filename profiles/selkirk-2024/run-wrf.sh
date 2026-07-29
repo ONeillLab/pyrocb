@@ -25,8 +25,9 @@ rm -f rsl.error.* rsl.out.*
 
 cd $PCB_OUTPUT_DIR/$PROFILE/real_em
 rm -f rsl.error.* rsl.out.*
+ulimit -s unlimited
 echo "Starting wrf.exe at $(date)"
-srun ./wrf.exe 2>&1 | tee $PCB_LOGS_DIR/$PROFILE/wrf.log
+srun bash -c "ulimit -s unlimited && ./wrf.exe" 2>&1 | tee $PCB_LOGS_DIR/$PROFILE/wrf.log
 echo "wrf.exe exit code: $?"
 echo "Job finished at $(date)"
 
