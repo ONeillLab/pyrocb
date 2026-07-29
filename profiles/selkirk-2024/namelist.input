@@ -133,7 +133,7 @@
  ifire                               = 0, 0, 1,
  fire_num_ignitions                  = 0, 0, 0,
  fire_is_real_perim                  = .false., .false., .true.,
- fire_perimeter_time                 = 0.0, 0.0, 32340, !9*3600 = 32400
+ fire_perimeter_time                 = 0.0, 0.0, 32400, !9*3600 = 32400
 
  ! Fuel configurations (Set -1 to ensure fuel reads from your real WPS input data)
  fire_fuel_read                      = 0, 0, -1,
@@ -153,17 +153,6 @@
  fmoist_dt                           = 0, 0, 600,
  fmoist_freq                         = 0, 0, 0,
  sfc_full_init                       = .true., .true., .true.,
-
- ! Strike 2, near Leach Lake
- ! July 22 19:06 MDT = July 23 01:06 UTC
- !fire_ignition_start_lon1 = 0, 0, -117.9066,
- !fire_ignition_start_lat1 = 0, 0, 52.6991,
- !fire_ignition_end_lon1   = 0, 0, -117.9066,
- !fire_ignition_end_lat1   = 0, 0, 52.6991,
- !fire_ignition_radius1    = 0, 0, 200,
- !fire_ignition_start_time1 = 0, 0, 3540,
- !fire_ignition_end_time1  = 0, 0, 3600,
-
  /
 
  &bdy_control

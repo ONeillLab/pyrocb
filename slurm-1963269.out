@@ -1,0 +1,37 @@
+
+scontrol show job 1963269
+JobId=1963269 JobName=debugjob-1-su386
+   UserId=su386(3162598) GroupId=su386(3162598) MCS_label=N/A
+   Priority=10686463 Nice=0 Account=def-oneill QOS=normal
+   JobState=COMPLETING Reason=NonZeroExitCode Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=130:0
+   RunTime=00:06:44 TimeLimit=01:00:00 TimeMin=N/A
+   SubmitTime=2026-07-28T20:21:28 EligibleTime=2026-07-28T20:21:28
+   AccrueTime=Unknown
+   StartTime=2026-07-28T20:21:28 EndTime=2026-07-28T20:28:12 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-07-28T20:21:28 Scheduler=Main
+   Partition=debug AllocNode:Sid=tri-login05:1766718
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=tri1006
+   BatchHost=tri1006
+   NumNodes=1 NumCPUs=192 NumTasks=192 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=192,mem=767000M,node=1,billing=192
+   AllocTRES=cpu=192,mem=767000M,node=1,billing=192
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=767000M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/bin/sh
+   SubmitLine=SALLOC --comment /opt/slurm/bin/salloc --time=1:0:0 --job-name=debugjob-1-su386 --nodes=1 --ntasks=192 -p debug --exclusive --time=1:0:0 --job-name=debugjob-1-su386 --nodes=1 --ntasks=192 -p debug --exclusive
+   WorkDir=/scratch/su386/pyrocb
+   Comment=/opt/slurm/bin/salloc --time=1:0:0 --job-name=debugjob-1-su386 --nodes=1 --ntasks=192 -p debug --exclusive
+
+sacct -j 1963269
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+1963269      debugjob-+ def-oneill   00:06:45                        31:31.432   05:19:11      0:0 
+1963269.int+ interacti+ def-oneill   00:06:45                         00:00:00   00:00:00      0:0 
+1963269.ext+     extern def-oneill   00:06:45                         00:00:00   00:00:00      0:0 
+1963269.0       wrf.exe def-oneill   00:01:05          0   2258576K  16:36.147   02:54:53      0:9 
+1963269.1       wrf.exe def-oneill   00:00:55          0   1500372K  14:55.285   02:24:18      0:9 
+

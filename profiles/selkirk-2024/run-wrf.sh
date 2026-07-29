@@ -3,7 +3,7 @@
 #SBATCH --job-name=wrf_selkirk_wrf_t1
 #SBATCH --time=16:00:00
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=192
+#SBATCH --ntasks-per-node=96
 #SBATCH --mem=0
 #SBATCH --output=/scratch/su386/pyrocb/out/logs/selkirk-2024/%x_%j.out
 #SBATCH --error=/scratch/su386/pyrocb/out/logs/selkirk-2024/%x_%j.err
