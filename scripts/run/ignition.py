@@ -122,7 +122,7 @@ def to_utc_dt(row):
     return dt.replace(tzinfo=datetime.timezone.utc)
 
 gdfs = []
-for profile in os.scandir(f"{sys.argv[1]}/profile/satelite_detection_shapes"):
+for profile in os.scandir(f"{sys.argv[1]}/profile/satellite_detection_shapes"):
     if not profile.is_file or not profile.name.endswith(".shp"):
         continue
     data = os.path.join(profile.path)
@@ -139,13 +139,13 @@ os.makedirs(ignition_output_path, exist_ok=True)
 fig, ax = plt.subplots(figsize=(8, 8))
 gdf.plot(ax=ax, color='lightblue', edgecolor='blue', alpha=0.5, zorder=1)
 gdf.plot(ax=ax, color='red', markersize=20, zorder=2)
-ax.set_title(f"Satelite Detections from all {name} files")
+ax.set_title(f"satellite Detections from all {name} files")
 ax.set_xlabel('Longitude')
 ax.set_ylabel('Latitude')
 
-if os.path.exists(f"{ignition_output_path}/all_satelite_detections.png"):
-    os.remove(f"{ignition_output_path}/all_satelite_detections.png")
-plt.savefig(f"{ignition_output_path}/all_satelite_detections.png")
+if os.path.exists(f"{ignition_output_path}/all_satellite_detections.png"):
+    os.remove(f"{ignition_output_path}/all_satellite_detections.png")
+plt.savefig(f"{ignition_output_path}/all_satellite_detections.png")
 
 def filter_bounds(gdf, bounds):
     gdf2 = gdf[gdf.LONGITUDE >= bounds[0][0]]
@@ -166,13 +166,13 @@ gdf = filter_bounds(gdf, bounds)
 fig, ax = plt.subplots(figsize=(8, 8))
 gdf.plot(ax=ax, color='lightblue', edgecolor='blue', alpha=0.5, zorder=1)
 gdf.plot(ax=ax, color='red', markersize=20, zorder=2)
-ax.set_title(f"Cropped Satelite Detections from {name}")
+ax.set_title(f"Cropped satellite Detections from {name}")
 ax.set_xlabel('Longitude')
 ax.set_ylabel('Latitude')
 
-if os.path.exists(f"{ignition_output_path}/satelite_detections_in_bounds.png"):
-    os.remove(f"{ignition_output_path}/satelite_detections_in_bounds.png")
-plt.savefig(f"{ignition_output_path}/satelite_detections_in_bounds.png")
+if os.path.exists(f"{ignition_output_path}/satellite_detections_in_bounds.png"):
+    os.remove(f"{ignition_output_path}/satellite_detections_in_bounds.png")
+plt.savefig(f"{ignition_output_path}/satellite_detections_in_bounds.png")
 
 ignition_time = gdf.ACQ_DATETIME.min()
 print(f"Detected Ignition at {ignition_time}")
