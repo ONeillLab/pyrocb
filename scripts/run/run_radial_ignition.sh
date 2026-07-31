@@ -1,0 +1,1 @@
+python3 "$PCB_SCRIPTS_DIR/run/radial_ignition.py" $PCB_OUT_DIR
