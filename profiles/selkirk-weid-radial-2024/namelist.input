@@ -16,7 +16,7 @@
  input_from_file                     = .true., .true., .true.,
  history_interval                    = 60,   60,   20,
  ! how often wrf writes output to the wrfout files in mins
- history_outname = '/scratch/su386/pyrocb3/out/output/selkirk-letang-2024/history/wrfout_d<domain>_<date>'
+ history_outname = '/scratch/su386/pyrocb/out/output/selkirk-2024/history/wrfout_d<domain>_<date>'
  ! Set output locations
  frames_per_outfile                  = 1,    1,    1,	
  ! how many output timesteps go into each wrfout file
