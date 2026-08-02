@@ -12,6 +12,7 @@
 
 source $SCRATCH/pyrocb/alliance_can_shell_setup.sh 
 module load StdEnv/2023 gcc/12 openmpi/4.1.5
+echo $PCB_OUT_DIR
 
 PROFILE=`cat $PCB_OUT_DIR/profile/profile`
 echo $PROFILE
