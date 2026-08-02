@@ -5,8 +5,8 @@
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
-#SBATCH --output=/scratch/su386/pyrocb4/out/logs/selkirk-weid-2024/%x_%j.out
-#SBATCH --error=/scratch/su386/pyrocb4/out/logs/selkirk-weid-2024/%x_%j.err
+#SBATCH --output=/scratch/su386/pyrocb4/out/logs/selkirk-weid-smaller-2024/%x_%j.out
+#SBATCH --error=/scratch/su386/pyrocb4/out/logs/selkirk-weid-smaller-2024/%x_%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=s.dosreis@mail.utoronto.ca
 
