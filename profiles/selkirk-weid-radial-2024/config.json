@@ -1,7 +1,7 @@
 {
     "name": "selkirk-weid-radial-2024",
     "center": [ -137.7, 62.8 ],
-    "crosswalk_radius": 350,
+    "crosswalk_radius": 500,
     "bounds": [
         [ -138.400, 63.175 ],
         [ -137.000, 62.400 ]
