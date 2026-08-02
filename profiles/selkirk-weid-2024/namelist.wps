@@ -33,11 +33,11 @@
 
 &ungrib
  out_format           = 'WPS'
- prefix               = '/scratch/su386/pyrocb/out/output/selkirk-2024/met_em/FILE'
+ prefix               = '/scratch/su386/pyrocb/out/output/selkirk-weid-2024/met_em/FILE'
 /
 
 &metgrid
- fg_name              = '/scratch/su386/pyrocb/out/output/selkirk-2024/met_em/FILE'
+ fg_name              = '/scratch/su386/pyrocb/out/output/selkirk-weid-2024/met_em/FILE'
  io_form_metgrid      = 2
  opt_metgrid_tbl_path = '/scratch/su386/pyrocb/out/WPS/metgrid/'
 /
