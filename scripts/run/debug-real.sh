@@ -1,3 +1,4 @@
+echo $PCB_OUT_DIR
 PROFILE=`cat $PCB_OUT_DIR/profile/profile`
 echo $PROFILE
 
