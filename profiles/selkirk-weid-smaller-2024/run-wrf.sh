@@ -10,8 +10,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=s.dosreis@mail.utoronto.ca
 
-source $SCRATCH/pyrocb/alliance_can_shell_setup.sh 
+source $SCRATCH/pyrocb4/alliance_can_shell_setup.sh 
 module load StdEnv/2023 gcc/12 openmpi/4.1.5
+echo $PCB_OUT_DIR
 
 PROFILE=`cat $PCB_OUT_DIR/profile/profile`
 echo $PROFILE
