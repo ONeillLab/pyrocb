@@ -31,7 +31,7 @@ wrfout_ref = "/path/to/wrfout_d03_ref"
 wrfin = f"{sys.argv[1]}/output/{name}/real_em/wrfinput_d03"
 namelist_file = f"{sys.argv[1]}/profile/namelist.input"
 
-BUFFER_RADIUS_M = 200
+BUFFER_RADIUS_M = 265.165042945
 
 def read_wrffile(var, fname):
     with Dataset(fname, 'r') as fnc:
