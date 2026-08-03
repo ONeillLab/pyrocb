@@ -27,17 +27,17 @@
  pole_lat             = 90
  pole_lon             = 0
  stand_lon            = -137.700
- geog_data_path       = '/scratch/su386/pyrocb/out/data/geog'
- opt_geogrid_tbl_path = '/scratch/su386/pyrocb/out/WPS/geogrid/'
+ geog_data_path       = '/scratch/su386/pyrocb3/out/data/geog'
+ opt_geogrid_tbl_path = '/scratch/su386/pyrocb3/out/WPS/geogrid/'
 /
 
 &ungrib
  out_format           = 'WPS'
- prefix               = '/scratch/su386/pyrocb/out/output/selkirk-weid-smaller-radial-2024/met_em/FILE'
+ prefix               = '/scratch/su386/pyrocb3/out/output/selkirk-weid-smaller-radial-more-wind-2024/met_em/FILE'
 /
 
 &metgrid
- fg_name              = '/scratch/su386/pyrocb/out/output/selkirk-weid-smaller-radial-2024/met_em/FILE'
+ fg_name              = '/scratch/su386/pyrocb3/out/output/selkirk-weid-smaller-radial-more-wind-2024/met_em/FILE'
  io_form_metgrid      = 2
- opt_metgrid_tbl_path = '/scratch/su386/pyrocb/out/WPS/metgrid/'
+ opt_metgrid_tbl_path = '/scratch/su386/pyrocb3/out/WPS/metgrid/'
 /

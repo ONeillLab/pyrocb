@@ -31,7 +31,7 @@ wrfout_ref = "/path/to/wrfout_d03_ref"
 wrfin = f"{sys.argv[1]}/output/{name}/real_em/wrfinput_d03"
 namelist_file = f"{sys.argv[1]}/profile/namelist.input"
 
-BUFFER_RADIUS_M = 265.165042945
+BUFFER_RADIUS_M = 375
 
 def read_wrffile(var, fname):
     with Dataset(fname, 'r') as fnc:
@@ -116,7 +116,10 @@ print(f"Detected Ignition at {ignition_time}")
 gdf, start_time, end_time = filter_time(gdf, ignition_time, window=3)
 print(f"Selecting points between {start_time} and {end_time}")
 
-points = np.array([(geom.x, geom.y) for geom in gdf.geometry])  # (lon, lat)
+points = [(geom.x, geom.y) for geom in gdf.geometry]
+points.append((-137.691, 62.791))
+print(points)
+points = np.array(points)
 
 center_lon, center_lat = points[:, 0].mean(), points[:, 1].mean()
 local_crs = CRS.from_proj4(

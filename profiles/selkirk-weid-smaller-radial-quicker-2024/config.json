@@ -1,0 +1,17 @@
+{
+    "name": "selkirk-weid-smaller-radial-quicker-2024",
+    "center": [ -137.7, 62.8 ],
+    "crosswalk_radius": 350,
+    "bounds": [
+        [ -138.400, 63.175 ],
+        [ -137.000, 62.400 ]
+    ],
+    "tiles": [ "115O", "115P", "115J", "115I" ],
+    "run_start_time": "2024-06-27_15:00:00",
+    "ignition_start_time": "2024-06-27_20:03:00",
+    "time": {
+        "year": [ 2024 ],
+        "month": [ 6 ],
+        "day": [ 27, 28, 29 ]
+    }
+}
