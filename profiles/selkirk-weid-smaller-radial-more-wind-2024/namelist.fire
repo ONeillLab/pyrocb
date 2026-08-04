@@ -27,8 +27,8 @@ fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave,
 '13: Heavy logging slash',
 '14: no fuel'
 ! Wind reduction factor
- windrf= 0.36, 0.36, 0.44,  0.55,  0.42,  0.44,  0.44,
-         0.36, 0.36, 0.36,  0.36,  0.43,  0.46, 1e-7,
+ windrf= 0.24, 0.24, 0.29,  0.37,  0.28,  0.29,  0.29,
+         0.24, 0.24, 0.24,  0.24,  0.29,  0.31, 1e-7,
 
 ! Default fgi:
 ! fgi = 0.166, 0.896, 0.674, 3.591, 0.74, 1.344, 1.091, 1.120, 0.780, 2.692, 2.582, 7.749, 13.024, 0.00
@@ -82,8 +82,8 @@ fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave,
           1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
 
 ! adjustment multiplier on the wind-driven rate of spread component. 1.0 = no adjustment. Increase if fire isn't responding enough to wind.
-  adjrw = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
-          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+  adjrw = 1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
+          1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
 
 ! adjustment multiplier on the slope-driven rate of spread component. 1.0 = no adjustment. The Jasper area has significant terrain so this could matter.
   adjrs = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
