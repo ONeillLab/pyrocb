@@ -2,7 +2,7 @@
 #SBATCH --account=def-oneill
 #SBATCH --job-name=wrf_selkirk_wrf_t1
 #SBATCH --time=24:00:00
-#SBATCH --nodes=6
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
 #SBATCH --output=/scratch/su386/pyrocb4/out/logs/selkirk-weid-smaller-radial-2024/%x_%j.out
