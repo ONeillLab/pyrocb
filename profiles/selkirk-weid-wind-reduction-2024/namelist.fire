@@ -82,8 +82,8 @@ fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave,
           1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
 
 ! adjustment multiplier on the wind-driven rate of spread component. 1.0 = no adjustment. Increase if fire isn't responding enough to wind.
-  adjrw = 1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
-          1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
+  adjrw = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
 
 ! adjustment multiplier on the slope-driven rate of spread component. 1.0 = no adjustment. The Jasper area has significant terrain so this could matter.
   adjrs = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,

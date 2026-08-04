@@ -16,7 +16,7 @@
  input_from_file                     = .true., .true., .true.,
  history_interval                    = 60,   60,   20,
  ! how often wrf writes output to the wrfout files in mins
- history_outname = '/scratch/su386/pyrocb5/out/output/selkirk-weid-smaller-radial-quicker-2024/history/wrfout_d<domain>_<date>'
+ history_outname = '/scratch/su386/pyrocb/out/output/selkirk-weid-2024/history/wrfout_d<domain>_<date>'
  ! Set output locations
  frames_per_outfile                  = 1,    1,    1,	
  ! how many output timesteps go into each wrfout file
@@ -44,8 +44,8 @@
  p_top_requested                     = 5000,		
  num_metgrid_levels                  = 38,		
  num_metgrid_soil_levels             = 4,		
- dx                                  = 1080, 360,  120,
- dy                                  = 1080, 360,  120,
+ dx                                  = 1800, 600,  200,
+ dy                                  = 1800, 600,  200,
  grid_id                             = 1,    2,    3,
  parent_id                           = 1,    1,    2,
  i_parent_start                      = 1,    100,  100,
