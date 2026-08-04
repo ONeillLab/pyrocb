@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
 #SBATCH --job-name=wrf_selkirk_wrf_t1
-#SBATCH --time=18:00:00
-#SBATCH --nodes=4
+#SBATCH --time=24:00:00
+#SBATCH --nodes=5
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
 #SBATCH --output=/scratch/su386/pyrocb/out/logs/selkirk-weid-2024/%x_%j.out
