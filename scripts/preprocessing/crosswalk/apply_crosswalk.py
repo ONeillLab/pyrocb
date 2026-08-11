@@ -24,7 +24,8 @@ for profile in os.scandir(f"{path}/output/crosswalk"):
             continue
 
         crosswalks.append((label, csv.name, csv.path))
-
+        
+crosswalks.sort()
 for i in range(len(crosswalks)):
     print(f"{i + 1}: {crosswalks[i][0]}, {crosswalks[i][1]}")
 in_str = input(f"Enter a crosswalk selection (1 - {len(crosswalks)}):").strip()
