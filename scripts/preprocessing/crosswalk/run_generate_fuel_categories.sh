@@ -1,0 +1,1 @@
+python3 "$PCB_SCRIPTS_DIR/preprocessing/crosswalk/generate_fuel_categories.py" $PCB_OUT_DIR

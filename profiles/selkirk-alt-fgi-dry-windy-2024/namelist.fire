@@ -2,9 +2,9 @@
 &fuel_scalars                      ! scalar fuel constants
 cmbcnst  = 17.433e+06,             ! J/kg combustion heat dry fuel
 hfgl     = 17.e4 ,                 ! W/m^2 heat flux to ignite canopy
-fuelmc_g = 0.10,                   ! ground fuel moisture, set = 0 for dry
+fuelmc_g = 0.06,                   ! ground fuel moisture, set = 0 for dry
 !jc fuelmc_g = 0.09,                   ! ground fuel moisture, set = 0 for dry
-fuelmc_c = 0.10,                   ! canopy fuel moisture, set = 0 for dry
+fuelmc_c = 0.06,                   ! canopy fuel moisture, set = 0 for dry
 nfuelcats = 13,                    ! number of fuel categories used
 no_fuel_cat = 14,                   ! extra category for no fuel
 fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave, 0 to use fwh
@@ -34,7 +34,7 @@ fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave,
 ! fgi = 0.166, 0.896, 0.674, 3.591, 0.74, 1.344, 1.091, 1.120, 0.780, 2.692, 2.582, 7.749, 13.024, 0.00
 
 ! initial mass loading of surface fuel tuned to Letang Values. Scaled using NCAR FINN vals (Wiedinmyer)
- fgi = 0.28, 1.511, 1.137, 4.761, 0.981, 1.782, 1.446, 12.37, 8.614, 25.0, 3.423, 10.274, 17.267, 0.0
+ fgi = 0.28, 1.511, 1.137, 4.761, 0.7400, 1.782, 1.446, 9.5597, 5.3750, 9.7219, 3.423, 10.274, 7.9000, 0.0
 
 !jc fgi=  0.166, 0.897, 1.076, 2.468, 0.785, 1.345, 1.092,
 !        1.121, 0.780, 2.694, 2.582, 7.749, 13.024, 1.e-7,
@@ -82,8 +82,7 @@ fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave,
           1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
 
 ! adjustment multiplier on the wind-driven rate of spread component. 1.0 = no adjustment. Increase if fire isn't responding enough to wind.
-  adjrw = 1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
-          1.67, 1.67, 1.67, 1.67, 1.67, 1.67, 1.67,
+  adjrw = 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
 
 ! adjustment multiplier on the slope-driven rate of spread component. 1.0 = no adjustment. The Jasper area has significant terrain so this could matter.
   adjrs = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
