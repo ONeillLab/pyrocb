@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 import datetime
 import numpy as np
 import geopandas as gpd
@@ -9,8 +10,10 @@ from netCDF4 import Dataset
 import imageio.v2 as imageio
 from alpha_shapes.alpha_shapes import Alpha_Shaper
 
-directory = "/scratch/su386/pyrocb2/out/output/complete/selkirk-2024-16"
-analysis_dir = "/scratch/su386/pyrocb2/out/analysis/selkirk-2024-16"
+directory = sys.argv[1]
+print(directory)
+analysis_dir = f"{sys.argv[2]}{os.path.basename(directory)}"
+print(analysis_dir)
 gif_timestep = 1/6
 gif_fps = 3
 
