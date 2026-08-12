@@ -118,7 +118,9 @@ bounds = ()
 with open(f"{directory}/profile/config.json", 'r') as f:
     data = json.load(f)
     bounds = tuple(data["bounds"])
-    name = data["name"]
+with open(f"{directory}/profile/profile", 'r') as p:
+    name = p.read().strip()
+print(name)
 
 wrfouts = {}
 gdfs = []

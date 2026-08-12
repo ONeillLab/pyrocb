@@ -20,7 +20,10 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
     run_start_time_str = data["run_start_time"]
     ignition_start_time_str = data["ignition_start_time"]
     bounds = tuple(data["bounds"])
-    name = data["name"]
+
+with open(f"{directory}/profile/profile", 'r') as p:
+    name = p.read().strip()
+print(name)
 
 format_string = '%Y-%m-%d_%H:%M:%S'
 # Convert to datetime object

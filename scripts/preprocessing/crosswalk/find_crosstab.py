@@ -143,7 +143,9 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as file:
     if data["crosswalk_radius"] is not None and data["crosswalk_radius"] != -1:
         RADIUS_KM = data["crosswalk_radius"]
         LONG, LAT = data["center"]
-    NAME = data["name"]
+with open(f"{directory}/profile/profile", 'r') as p:
+    NAME = p.read().strip()
+print(NAME)
 
 print(f"{NAME} 13 Anderson Canada to Continental US Mapping")
 us_an_13_crosstab = crosswalk(canada_file, us_an_13_file, f"{NAME}USAnderson13", center_lon=LONG, center_lat=LAT, radius_km=RADIUS_KM)
