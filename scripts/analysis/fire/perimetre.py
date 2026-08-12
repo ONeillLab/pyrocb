@@ -9,8 +9,8 @@ from netCDF4 import Dataset
 import imageio.v2 as imageio
 from alpha_shapes.alpha_shapes import Alpha_Shaper
 
-directory = "/scratch/su386/pyrocb2/out/output/complete/jasper-2024-19"
-analysis_dir = "/scratch/su386/pyrocb2/out/analysis/jasper-2024-19"
+directory = "/scratch/su386/pyrocb2/out/output/complete/selkirk-2024-16"
+analysis_dir = "/scratch/su386/pyrocb2/out/analysis/selkirk-2024-16"
 gif_timestep = 1/6
 gif_fps = 3
 
@@ -188,7 +188,7 @@ earliest_file = min(wrfouts, key=wrfouts.get)
 with Dataset(os.path.join(directory, earliest_file)) as ds0:
     ignition = read_var(ds0, 'TIGN_G')
 ignition = relax_zone_remover(ignition, SR)
-ignition_masked = np.ma.masked_where(ignition >= 1e9, ignition)
+ignition_masked = np.ma.masked_where(ignition >= 1e6, ignition)
 
 # --- Main loop: one frame per gif_timestep ------------------------------------
 current_time = start_time
