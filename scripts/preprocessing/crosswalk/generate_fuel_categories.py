@@ -37,42 +37,48 @@ def compute_species_name(species_arr, key, region=None):
 # Generate namelist.fire
 # Generate "walked" tiff (cropped)
 
-regions = set()
+regions = {}
 fbp = {}
 with open(fbp_json_path, "r") as f:
     data = json.load(f)
-    for id_str, obj in data.items():
-        i = int(id_str)
-        fbp[i] = {}
-        
-        for specie in obj["species"]:
-            for key, val in specie.items():
-                if key == "name" or key == "weight" or type(val) is not dict:
-                    continue
-                regions.update(val.keys())
-    regions = list(regions)
-    regions.sort()
-    for i in range(len(regions)):
-        print(f"{i + 1}: {regions[i]}")
-    in_str = input(f"Enter a region selection (1 - {len(regions)}):").strip()
-    region_i = int(in_str) - 1
-    region = regions[region_i] 
-    print(f"Using region: {region}")
 
-    for id_str, obj in data.items():
-        i = int(id_str)
-
-        for key, val in obj.items():
-            if key == "name":
+for id_str, obj in data.items():
+    i = int(id_str)
+    fbp[i] = {}
+    if "species" not in obj:
+        continue
+    for specie in obj["species"]:
+        for key, val in specie.items():
+            if key == "name" or key == "weight" or type(val) is not dict:
                 continue
-            if key == "species":
-                for k, v in val[0].items():
-                    if k == "name" or k == "weight":
-                        continue
-                    fbp[i][k] = compute_species_name(val, k, region)
-            else:
-                fbp[i][key] = val
-        
+            if key not in regions:
+                regions[key] = set()
+            regions[key].update(val.keys())
+
+param_region_map = {}
+for key, r in regions.items():
+    r = list(r)
+    r.sort()
+    for i in range(len(r)):
+        print(f"{i + 1}: {r[i]}")
+    in_str = input(f"Enter a region selection for {key} (1 - {len(r)}):").strip()
+    region_i = int(in_str) - 1
+    param_region_map[key] = r[region_i] 
+    print(f"Using region: {param_region_map[key]} for {key}")
+
+for id_str, obj in data.items():
+    i = int(id_str)
+    for key, val in obj.items():
+        if key == "name":
+            continue
+        if key == "species":
+            for k, v in val[0].items():
+                if k == "name" or k == "weight":
+                    continue
+                fbp[i][k] = compute_species_name(val, k, param_region_map[k])
+        else:
+            fbp[i][key] = val
+    
 print(fbp)
 
 crosswalks = []
