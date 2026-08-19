@@ -2,6 +2,7 @@
 import json
 import os
 import sys
+import shutil
 import numpy as np
 from osgeo import gdal
 path = f"{sys.argv[1]}"
@@ -70,7 +71,7 @@ for id_str, obj in data.items():
     i = int(id_str)
     for key, val in obj.items():
         if key == "name":
-            continue
+            fbp[i]["fuel_name"] = val
         if key == "species":
             for k, v in val[0].items():
                 if k == "name" or k == "weight":
@@ -116,7 +117,7 @@ with open(crosswalk_path, "r") as f:
         if canadian_id in fbp:
             fbp[canadian_id]["us_id"] = us_id
 
-
+property_desc = {}
 with open(us_params_path, "r") as f:
     for line in f.read().strip().split("\n")[1::]:
         line = line.strip()
@@ -133,6 +134,7 @@ with open(us_params_path, "r") as f:
                 fbp[key][param_name] = float(line[i].strip())
             else:
                 print(f"Using Canadian values for {param_name}")
+            property_desc[param_name] = line[-1].strip()
 
 print(fbp)
 
@@ -141,8 +143,7 @@ ids = list(fbp.keys())
 ids.sort()
 for i, can_id in enumerate(ids):
     crosswalk[can_id] = i + 1
-
-
+print(crosswalk)
 input_file = f"{path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
 output_file = f"{path}/data/FBP_fueltypes_Canada_30m/walked_FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
 west, south, = bounds[0]
@@ -172,8 +173,8 @@ print(f'Unique FBP values   : {np.unique(data)}')
 
 
 output = np.full(data.shape, 14, dtype=np.int16) # Default type as no fuel, data types are 16 bit
-for fbp, anderson in crosswalk.items():
-    output[data == fbp] = anderson
+for f, anderson in crosswalk.items():
+    output[data == f] = anderson
 
 unique_out = np.unique(output)
 print(f'Unique output Anderson values: {unique_out}')
@@ -189,4 +190,50 @@ out_ds.GetRasterBand(1).SetNoDataValue(14)
 out_ds = None
 ds = None
 
-os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}/data/geog NFUEL_CAT""")
+try:
+    print("Saving old var_wisdom.py")
+    os.makedirs(f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/', exist_ok=True)
+    print("Overwritting var_wisdom.py")
+    os.replace(f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py')
+    with open(f'{sys.argv[1]}/../override/wrfxpy/src/geo/var_wisdom.py') as f:
+        varwisdom = f.read()
+        print(f"{str(len(crosswalk))} FBP types found")
+        varwisdom = varwisdom.replace("![NO_DATA]", str(len(crosswalk)))
+    with open(f"{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py", "w+") as f:
+        f.write(varwisdom)
+
+    print("Running convert_geotiff.sh")
+    os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}/data/geog NFUEL_CAT""")
+    print("Removing overwritten var_wisdom.py")
+    os.remove(f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py')
+except Exception as e:
+    print("Error with custom fuel types")
+    print(e)
+finally:
+    print("Returning original var_wisdom.py")
+    shutil.copy(f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py')
+
+print("namelist.fire")
+properties = set()
+for i in ids:
+    properties.update(list(fbp[i].keys()))
+properties = list(properties)
+properties.sort()
+s = ""
+for p in properties:
+    l = ""
+    if p in property_desc:
+        l += f"!{property_desc[p]}\n"
+    l += f"{p} = "
+    for i in ids:
+        if p in fbp[i]:
+            if type(fbp[i][p]) is str:
+                l += f"\"{fbp[i][p]}\", "
+            else:
+                l += f"{fbp[i][p]}, "
+        else:
+            l += "0, "
+    l = l.strip()
+    l = l.strip(",")
+    s += f"{l}\n\n"
+print(s)
