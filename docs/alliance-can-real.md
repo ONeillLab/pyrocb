@@ -29,6 +29,20 @@ bash script/compile/nibi-real.sh
 ```
 
 ## Downloading and processing data
+### Profiles
+To easily change configurationes between runs, we use a profile system. in ``profiles/``, you can create a profile by creating a folder with the profile name and provide the following files:
+- ``satellite_detection_shapes/`` - a folder with the necessary shape files of the fire perimeter over the period of the fire (source: [FIRMS Data Archieve](https://firms.modaps.eosdis.nasa.gov/download/)).
+- ``profile`` - a text file with only the profile name written (should match folder name).
+- ``config.json`` - JSON file containing information about the fire.
+- ``namelist.fire`` - the ``namelist.fire`` file to be used when running this profile.
+- ``namelist.input`` - the ``namelist.input`` file to be used when running this profile.
+- ``namelist.wps`` - the ``namelist.wps`` file to be used when running this profile.
+- ``run-wrf.sh`` - a bash script which runs wrf.
+- ``fbp.json`` - (optional) allows for custom parameters for each of the FBP fuel types.
+- ``us_params.csv`` - (optional) allows for crosswalking the custom parameters 
+
+See [``out/profiles/selkirk-2024/``](out/profiles/selkirk-2024/) for an example.
+
 ### Download
 Downloading fuel data, weather data, and elevation data is done by
 ```sh
