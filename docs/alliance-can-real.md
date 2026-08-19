@@ -41,7 +41,7 @@ To easily change configurationes between runs, we use a profile system. in ``pro
 - ``fbp.json`` - (optional) allows for custom parameters for each of the FBP fuel types.
 - ``us_params.csv`` - (optional) allows for crosswalking the custom parameters 
 
-See [``out/profiles/selkirk-2024/``](out/profiles/selkirk-2024/) for an example.
+See [``profiles/selkirk-2024/``](../profiles/selkirk-2024/) for an example.
 
 ### Download
 Downloading fuel data, weather data, and elevation data is done by
