@@ -143,7 +143,7 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as file:
     if data["crosswalk_radius"] is not None and data["crosswalk_radius"] != -1:
         RADIUS_KM = data["crosswalk_radius"]
         LONG, LAT = data["center"]
-with open(f"{directory}/profile/profile", 'r') as p:
+with open(f"{sys.argv[1]}/profile/profile", 'r') as p:
     NAME = p.read().strip()
 print(NAME)
 
