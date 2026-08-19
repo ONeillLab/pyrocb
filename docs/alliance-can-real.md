@@ -18,7 +18,7 @@ bash scripts/setup/wrf-sfire.sh
 ```
 
 Now that the libraries have been dowloaded, we can load our python virtual enviornment by running ``alliance_can_shell_setup.sh`` environment setup script again.
-```
+```sh
 source alliance_can_shell_setup.sh
 ```
 
