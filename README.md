@@ -27,3 +27,4 @@ To see all documentation, go to [/docs/](/docs/).
  - [/docs/compile.md](/docs/compile.md): compiling the WRF-SFIRE model for various cases
  - [/docs/run.md](/docs/run.md): running the WRF-SFIRE model for various cases
  - [/docs/personal-ideal.md](/docs/personal-ideal.md): end to end instructions for running the WRF-SFIRE model for the ideal case.
+ - [/docs/alliance-can-real.md](docs/alliance-can-real.md): end to end instructions for running the WRF-SFIRE model for a real case.
