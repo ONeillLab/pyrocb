@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Compiles WRF-SFIRE to be run on your personal machine
+
 cd $PCB_OUT_DIR/WRF-SFIRE
 
 echo "[LOG] Compiling WRF-SFIRE"
