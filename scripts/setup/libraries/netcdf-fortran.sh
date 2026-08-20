@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads and compiles the netcdf for fortran library
+
 cd $DIR
 wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.2.tar.gz -O netcdf-fortran-4.6.2.tar.gz
 tar xzvf netcdf-fortran-4.6.2.tar.gz

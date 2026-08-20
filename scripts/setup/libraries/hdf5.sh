@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads and compiles thw hdf5 library
+ 
 cd $DIR
 wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.14.6.tar.gz
 tar xzvf hdf5-1.14.6.tar.gz

@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads and compiles the mpich library.
+
 cd $DIR
 wget https://www.mpich.org/static/downloads/5.0.1/mpich-5.0.1.tar.gz
 tar xzvf mpich-5.0.1.tar.gz
