@@ -1,3 +1,5 @@
+# Sylvio Dos Reis 2026
+# Cleans all files to reset to the "download all data" stage of the wrf run
 
 read -p "Are you sure you would like to clean the project directory? Make sure you have saved your files first. (y/n) " choice
 case "$choice" in 

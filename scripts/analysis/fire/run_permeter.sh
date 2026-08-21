@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Runs python script for plotting the observed satellite fire perimeter and simulated fire perimeter by frame, passing in the specific run path, as well as the path of the analysis top level folder.
+
 # The select command uses the PS3 variable for its prompt text
 PS3="Enter the fire to analyse: "
 

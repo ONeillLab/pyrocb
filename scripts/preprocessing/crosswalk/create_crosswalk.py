@@ -1,3 +1,4 @@
+# Sylvio Dos Reis, 2026
 # Creates a crosswalk using the crosstab csv created from find_crosstab.py
 # If the Canadian FBP Fuel Type has at least 40% pluralirty with one US FBFM category, and no other FBFM category is within 15% of the leading category, the crosswalk is considered safe.
 # If the Canadian FBP Fuel Type has less than 40% pluralirty with one US FBFM category, or an FBFM category is within 15% of the leading category, the crosswalk will be created but a warning will be printed.

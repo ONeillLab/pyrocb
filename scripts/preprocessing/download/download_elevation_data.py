@@ -1,5 +1,6 @@
 # Sylvio Dos Reis, 2026
 # Downloads the high resolution elevation data
+
 import json
 import os
 import sys

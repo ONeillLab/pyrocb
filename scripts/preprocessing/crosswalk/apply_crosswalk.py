@@ -1,4 +1,6 @@
-
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Prompts for and applies the crosswalk generated and saved in out/output/crosswalk. It also runs the convert_geotiff.sh script from wrfxpy
+# If you have previously run the generate_fuel_categories script, the overwritten var_wisdom.py may still exist in its location and may cause issues. See header comment of generate_fuel_categories.py for more details.
 
 import json
 import os

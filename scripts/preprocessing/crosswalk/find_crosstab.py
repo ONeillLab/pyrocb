@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Counts the overlap of each fuel category into a crosstabulation matrix in a radius window around the centre of the fire. Saves to out/output/crosstab
+
 import sys
 import numpy as np
 import pandas as pd

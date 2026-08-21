@@ -1,3 +1,8 @@
+# Sylvio Dos Reis, Micah Yoon, Noah Vaillant, 2026
+# Links all necessary files to the right location and runs Geogrid. 
+# Common errors includes not having an empty line at the end of your namelist.wps file, which will lead to geogrid not finding the end of the file, and not having run the apply_crosswalk or download_elevation_data script, which does convert and move the geotiff with the nfuel_cat data to the right location
+# Best approach to solving these errors is restarting the process from the "Download all data" step
+
 cd $PCB_OUT_DIR/WPS/geogrid/
 ln -sf $PCB_OVERRIDE_DIR/WPS/geogrid/GEOGRID.TBL.FIRE GEOGRID.TBL
 

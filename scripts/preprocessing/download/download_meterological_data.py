@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Downloads the meterological data from era5
+
 import cdsapi
 import os
 import sys

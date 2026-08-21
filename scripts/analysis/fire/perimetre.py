@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Plots the observed satellite fire perimeter and simulated fire perimeter by frame. Then combines each frame into a gif
+
 import os
 import json
 import sys

@@ -1,3 +1,11 @@
+# Sylvio Dos Reis, 2026
+# Attempts to create custom canadian fuel categories based on the fbp.json file
+# It starts by filling in data from the fbp.json file. What cannot be determined from the fbp.json file is filled in via the selected crosswalk, and parameters deterimned from the usparams.csv
+# It then crosswalks the Canadian categories to be consecutive digits, and prints namelist.fire varaibles sorted alphabetically.
+# In order to run the geotiff, a custom var_wisdom script is used, located at override/wrfxpy/src/geo/var_wisdom.py. This copies the original var_wisdom script to out/temp/wrfxpy/src/geo/var_wisdom.py. In case of fail, it will attempt to copy the file back. It is worth checking to see if the original var_wisdom is properly located in out/wrfxpy/src/geo/var_wisdom.py in case of error, premature exit, or crash, otherwise the original var_wisdom file may be lost.
+# Common errors include not having a "non fuel" category in fbp.json or the crosswalks, or not using consecutive digits for the US data types. See "a not ewhen using S&B 40 types"
+# A note about "non fuel": make sure the "non fuel" category is the largest number in fbp.json. Commonly used is 9999
+# A note when using the S&B 40 types: S&B 40 types need to be converted to consecutive 1-40 types before running this script (by modifying the crosswalk)
 
 import json
 import os

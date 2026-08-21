@@ -1,8 +1,9 @@
+# Sylvio Dos Reis, 2026
+# After wrf run is complete copies the out/profile, wrfout, rsl.out, and rsl.err files to the out/complete/runname/ directory
+
 PROFILE=`cat $PCB_OUT_DIR/profile/profile`
 echo "$PCB_OUTPUT_DIR"
 echo "$PROFILE"
-
-
 
 read -p "Enter a name to save run \"$PROFILE\" as complete: " name
 

@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Uses alpha shaped satellite perimeters to generate an ignition matrix that lerps from the ignition_start_time in the config to the first spotted satellite frame.
+
 import datetime
 import numpy as np
 import pandas as pd
