@@ -1,18 +1,16 @@
 # Sylvio Dos Reis, 2026
-# Prompts for and links the selected profile to out/profile
+# Runs python script for plotting the Hovmoller plot for a given run
 
 # The select command uses the PS3 variable for its prompt text
-PS3="Enter the number of the config file you want to use: "
+PS3="Enter the fire to analyse: "
 
 # Using an array of files (*.conf) ensures filenames with spaces don't break the menu
-select profile in "$PCB_PROFILES_DIR"/*/; do
+select profile in "$PCB_OUTPUT_DIR/complete/"*; do
     # Check if the user entered a valid number
     if [[ -n "$profile" ]]; then
-        echo "Loading: $profile"
+        echo "Analysing: $profile"
         
-        # Links the selected profile to out/profile
-        rm -rf $PCB_OUT_DIR/profile
-        ln -s $profile $PCB_OUT_DIR/profile
+        python "$PCB_SCRIPTS_DIR/analysis/atmosphere/hovmoller.py" "$profile" "$PCB_OUT_DIR/analysis/"
         
         break # Exits the menu loop after a valid selection
     else

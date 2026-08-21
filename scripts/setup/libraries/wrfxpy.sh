@@ -12,7 +12,7 @@ virtualenv $DIR/py4wrf
 source $DIR/py4wrf/bin/activate
 
 # Installs all necessary python packages in the virtual enviornment. If more python packages are needed, add it to this line.
-pip install rasterio pyproj numpy scipy pandas h5py dill requests psutil pytz paramiko f90nml xmltodict cdsapi requests geopandas matplotlib alpha_shapes imageio
+pip install rasterio pyproj numpy scipy pandas h5py dill requests psutil pytz paramiko f90nml xmltodict cdsapi requests geopandas matplotlib alpha_shapes imageio xarray wrf-python
 pip install gdal
 pip install "numpy<2"
 

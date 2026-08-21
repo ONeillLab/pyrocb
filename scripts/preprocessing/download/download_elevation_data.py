@@ -1,3 +1,5 @@
+# Sylvio Dos Reis, 2026
+# Downloads the high resolution elevation data
 import json
 import os
 import sys
@@ -6,9 +8,8 @@ from osgeo import gdal
 import numpy as np
 
 bounds = ()
-tiles = []
+tiles = [] # Tiles needed for 
 time = {}
-
 
 with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
     data = json.load(f)
