@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Uses alpha shaped satellite perimeters to generate an ignition matrix that lerps from the ignition_start_time in the config to the first spotted satellite frame.
+
 import datetime
 import numpy as np
 import pandas as pd
@@ -20,7 +23,10 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
     run_start_time_str = data["run_start_time"]
     ignition_start_time_str = data["ignition_start_time"]
     bounds = tuple(data["bounds"])
-    name = data["name"]
+
+with open(f"{directory}/profile/profile", 'r') as p:
+    name = p.read().strip()
+print(name)
 
 format_string = '%Y-%m-%d_%H:%M:%S'
 # Convert to datetime object

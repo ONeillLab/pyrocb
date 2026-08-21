@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Prompts for and links the selected profile to out/profile
+
 # The select command uses the PS3 variable for its prompt text
 PS3="Enter the number of the config file you want to use: "
 
@@ -7,6 +10,7 @@ select profile in "$PCB_PROFILES_DIR"/*/; do
     if [[ -n "$profile" ]]; then
         echo "Loading: $profile"
         
+        # Links the selected profile to out/profile
         rm -rf $PCB_OUT_DIR/profile
         ln -s $profile $PCB_OUT_DIR/profile
         

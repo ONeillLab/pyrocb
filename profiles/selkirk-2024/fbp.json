@@ -1,0 +1,1158 @@
+{
+    "1": {
+        "name": "C-1 Spruce-Lichen Woodland",
+        "species" :[
+            {
+                "name": "Picea mariana",
+                "weight": 30,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Pinus banksiana Lamb.",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 4.5,
+                    "Taiga Plain": 4.6,
+                    "Taiga Shield West": 1.8,
+                    "Boreal Shield West": 5.0,
+                    "Mixed Wood Plain": 1.2,
+                    "Boreal Plain": 5.8, 
+                    "Boreal Shield East": 3.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.068,
+                    "Taiga Plain": 0.065,
+                    "Taiga Shield West": 0.042,
+                    "Boreal Shield West": 0.066,
+                    "Atlantic Martime": 0.087,
+                    "Mixed Wood Plain": 0.043,
+                    "Boreal Plain": 0.054,
+                    "Prairie": 0.028,
+                    "Boreal Cordillera": 0.030,
+                    "Hudson Plain": 0.060,
+                    "Boreal Shield East": 0.083,
+                    "Taiga Shield East": 0.089
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 9.6,
+                    "Mixed Wood Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.7,
+                    "Boreal Shield East": 9.7 
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            }
+        ]
+    },
+    "2": {
+        "name": "C-2 Boreal Spruce",
+        "species" :[
+            {
+                "name": "Picea mariana [Mill.] B.S.P.",
+                "weight": 65,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            }
+        ]
+    },
+    "3": {
+        "name": "C-3 Mature Jack or Lodepole Pine",
+        "species" :[
+            {
+                "name": "Pinus banksiana Lamb.",
+                "weight": 60,
+                "fgi": {
+                    "Overall": 4.5,
+                    "Taiga Plain": 4.6,
+                    "Taiga Shield West": 1.8,
+                    "Boreal Shield West": 5.0,
+                    "Mixed Wood Plain": 1.2,
+                    "Boreal Plain": 5.8, 
+                    "Boreal Shield East": 3.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.068,
+                    "Taiga Plain": 0.065,
+                    "Taiga Shield West": 0.042,
+                    "Boreal Shield West": 0.066,
+                    "Atlantic Martime": 0.087,
+                    "Mixed Wood Plain": 0.043,
+                    "Boreal Plain": 0.054,
+                    "Prairie": 0.028,
+                    "Boreal Cordillera": 0.030,
+                    "Hudson Plain": 0.060,
+                    "Boreal Shield East": 0.083,
+                    "Taiga Shield East": 0.089
+                }
+            },
+            {
+                "name": "Pinus contorta Dougl. ex Loud",
+                "weight": 20,
+                "fgi": {
+                    "Overall": 6.5,
+                    "Taiga Plain": 3.9,
+                    "Boreal Plain": 11.6, 
+                    "Boreal Cordillera": 4.0,
+                    "Motane Cordillera": 6.3
+                },
+                "fueldepthm": {
+                    "Overall": 0.049,
+                    "Taiga Plain": 0.070,
+                    "Boreal Plain": 0.138,
+                    "Boreal Cordillera": 0.025,
+                    "Pacific Maritime": 0.055,
+                    "Montane Cordillera": 0.048
+                }
+            }
+        ]
+    },
+    "4": {
+        "name": "C-4 Immature Jack or Lodgepole Pine",
+        "species" :[
+            {
+                "name": "Pinus banksiana Lamb.",
+                "weight": 40,
+                "fgi": {
+                    "Overall": 4.5,
+                    "Taiga Plain": 4.6,
+                    "Taiga Shield West": 1.8,
+                    "Boreal Shield West": 5.0,
+                    "Mixed Wood Plain": 1.2,
+                    "Boreal Plain": 5.8, 
+                    "Boreal Shield East": 3.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.068,
+                    "Taiga Plain": 0.065,
+                    "Taiga Shield West": 0.042,
+                    "Boreal Shield West": 0.066,
+                    "Atlantic Martime": 0.087,
+                    "Mixed Wood Plain": 0.043,
+                    "Boreal Plain": 0.054,
+                    "Prairie": 0.028,
+                    "Boreal Cordillera": 0.030,
+                    "Hudson Plain": 0.060,
+                    "Boreal Shield East": 0.083,
+                    "Taiga Shield East": 0.089
+                }
+            },
+            {
+                "name": "Pinus contorta Dougl. ex Loud",
+                "weight": 40,
+                "fgi": {
+                    "Overall": 6.5,
+                    "Taiga Plain": 3.9,
+                    "Boreal Plain": 11.6, 
+                    "Boreal Cordillera": 4.0,
+                    "Motane Cordillera": 6.3
+                },
+                "fueldepthm": {
+                    "Overall": 0.049,
+                    "Taiga Plain": 0.070,
+                    "Boreal Plain": 0.138,
+                    "Boreal Cordillera": 0.025,
+                    "Pacific Maritime": 0.055,
+                    "Montane Cordillera": 0.048
+                }
+            }
+        ]
+    },
+    "5": {
+        "name": "C-5 Red and White Pine",
+        "species" :[
+            {
+                "name": "Pinus strobus L.",
+                "weight": 40,
+                "fgi": {
+                    "Overall": 6.0,
+                    "Atlantic Maritime": 5.6,
+                    "Mixed Wood Plain": 1.4,
+                    "Boreal Shield East": 7.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.068,
+                    "Boreal Shield West": 0.084,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.057,
+                    "Boreal Shield East": 0.066
+                }
+            },
+            {
+                "name": "Picea glauca Vos",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 14.6,
+                    "Taiga Plain": 18.3,
+                    "Boreal Shield West": 14.9,
+                    "Atlantic Maritime": 4.6,
+                    "Boreal Plain": 13.7,
+                    "Boreal Cordillera": 4.7,
+                    "Motane Cordillera": 6.4,
+                    "Boreal Shield East": 14.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.103,
+                    "Southern Arctic": 0.180,
+                    "Taiga Plain": 0.136,
+                    "Taiga Shield West": 0.072,
+                    "Boreal Shield West": 0.088,
+                    "Atlantic Martime": 0.071,
+                    "Mixed Wood Plain": 0.070,
+                    "Boreal Plain": 0.109,
+                    "Prairie": 0.070,
+                    "Taiga Cordillera": 0.043,
+                    "Boreal Cordillera": 0.102,
+                    "Montane Cordillera": 0.098,
+                    "Hudson Plain": 0.200,
+                    "Boreal Shield East": 0.093
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh.",
+                "weight": 5,
+                "fgi": { 
+                    "Overall": 9.6,
+                    "Taiga Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.6,
+                    "Boreal Shield East": 9.7
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            },
+            {
+                "name": "Populus spp.",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            },
+            {
+                "name": "Acer rubrum L.",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 7.6,
+                    "Boreal Shield West": 6.1,
+                    "Atlantic Maritime": 7.6,
+                    "Mixed Wood Plain": 7.3,
+                    "Boreal Shield East": 8.6
+                },
+                "fueldepthm": {
+                    "Overall": 0.077,
+                    "Boreal Shield West": 0.079,
+                    "Atlantic Martime": 0.075,
+                    "Mixed Wood Plain": 0.083,
+                    "Boreal Shield East": 0.074
+                }
+            },
+            {
+                "name": "Abies balsamea [L.] Mill.",
+                "weight": 5,
+                "fgi": {
+                    "Overall": 12.2,
+                    "Boreal Shield West": 16.0,
+                    "Atlantic Maritime": 9.1,
+                    "Mixed Wood Plain": 17.1,
+                    "Boreal Plain": 12.4,
+                    "Boreal Shield East": 12.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.106,
+                    "Boreal Shield West": 0.103,
+                    "Atlantic Martime": 0.086,
+                    "Mixed Wood Plain": 0.136,
+                    "Boreal Plain": 0.097,
+                    "Montane Cordillera": 0.050,
+                    "Hudson Plain": 0.12,
+                    "Boreal Shield East": 0.113,
+                    "Taiga Shield East": 0.118
+                }
+            }
+        ]
+    },
+    "7": {
+        "name": "C-7 Ponderosa Pine / Douglas Fir",
+        "species" :[
+            {
+                "name": "Pinus contorta Dougl. ex Loud.",
+                "weight": 33,
+                "fgi": {
+                    "Overall": 6.5,
+                    "Taiga Plain": 3.9,
+                    "Boreal Plain": 11.6, 
+                    "Boreal Cordillera": 4.0,
+                    "Motane Cordillera": 6.3
+                },
+                "fueldepthm": {
+                    "Overall": 0.049,
+                    "Taiga Plain": 0.070,
+                    "Boreal Plain": 0.138,
+                    "Boreal Cordillera": 0.025,
+                    "Pacific Maritime": 0.055,
+                    "Montane Cordillera": 0.048
+                }
+            }
+        ]
+    },
+    "11": {
+        "name": "D-1 Leafless Aspen",
+        "species" :[
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 33,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            }
+        ]
+    },
+    "13": {
+        "name": "D-1/D-2 Aspen",
+        "species" :[
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 33,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            }
+        ]
+    },
+    "31": {
+        "name": "O-1a Matted Grass",
+        "fgi": 0.674,
+        "fueldepthm": 0.061 
+    },
+    "415": {
+        "name": "M-1 Boreal Mixwood - Leafless (15% Conifer)",
+        "species" :[
+            {
+                "name": "Picea mariana [Mill.] B.S.P",
+                "weight": 3.75,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Picea glauca [Moench] Voss",
+                "weight": 3.75,
+                "fgi": {
+                    "Overall": 14.6,
+                    "Taiga Plain": 18.3,
+                    "Boreal Shield West": 14.9,
+                    "Atlantic Maritime": 4.6,
+                    "Boreal Plain": 13.7,
+                    "Boreal Cordillera": 4.7,
+                    "Motane Cordillera": 6.4,
+                    "Boreal Shield East": 14.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.103,
+                    "Southern Arctic": 0.180,
+                    "Taiga Plain": 0.136,
+                    "Taiga Shield West": 0.072,
+                    "Boreal Shield West": 0.088,
+                    "Atlantic Martime": 0.071,
+                    "Mixed Wood Plain": 0.070,
+                    "Boreal Plain": 0.109,
+                    "Prairie": 0.070,
+                    "Taiga Cordillera": 0.043,
+                    "Boreal Cordillera": 0.102,
+                    "Montane Cordillera": 0.098,
+                    "Hudson Plain": 0.200,
+                    "Boreal Shield East": 0.093
+                }
+            },
+            {
+                "name": "Abies balsamea [L.] Mill.",
+                "weight": 3.75,
+                "fgi": {
+                    "Overall": 12.2,
+                    "Boreal Shield West": 16.0,
+                    "Atlantic Maritime": 9.1,
+                    "Mixed Wood Plain": 17.1,
+                    "Boreal Plain": 12.4,
+                    "Boreal Shield East": 12.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.106,
+                    "Boreal Shield West": 0.103,
+                    "Atlantic Martime": 0.086,
+                    "Mixed Wood Plain": 0.136,
+                    "Boreal Plain": 0.097,
+                    "Montane Cordillera": 0.050,
+                    "Hudson Plain": 0.12,
+                    "Boreal Shield East": 0.113,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Abies lasiocarpa [Hook.] Nutt.",
+                "weight": 3.75,
+                "fgi": {
+                    "Overall": 5.4,
+                    "Boreal Cordillera": 6.5,
+                    "Pacific Maritime": 3.6,
+                    "Motane Cordillera": 5.1
+                },
+                "fueldepthm": {
+                    "Overall": 0.066,
+                    "Taiga Plain": 0.177,
+                    "Boreal Shield West": 0.040,
+                    "Boreal Plain": 0.095,
+                    "Taiga Cordillera": 0.025,
+                    "Boreal Cordillera": 0.092,
+                    "Pacific Maritime": 0.085,
+                    "Montane Cordillera": 0.062
+                }
+            },
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 42.5,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh.",
+                "weight": 42.5,
+                "fgi": { 
+                    "Overall": 9.6,
+                    "Taiga Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.6,
+                    "Boreal Shield East": 9.7
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            }
+        ]
+    },
+    "625": {
+        "name": "M-1/M-2 Boreal Mixwood (25% Conifer)",
+        "species" :[
+            {
+                "name": "Picea mariana [Mill.] B.S.P",
+                "weight": 6.25,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Picea glauca [Moench] Voss",
+                "weight": 6.25,
+                "fgi": {
+                    "Overall": 14.6,
+                    "Taiga Plain": 18.3,
+                    "Boreal Shield West": 14.9,
+                    "Atlantic Maritime": 4.6,
+                    "Boreal Plain": 13.7,
+                    "Boreal Cordillera": 4.7,
+                    "Motane Cordillera": 6.4,
+                    "Boreal Shield East": 14.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.103,
+                    "Southern Arctic": 0.180,
+                    "Taiga Plain": 0.136,
+                    "Taiga Shield West": 0.072,
+                    "Boreal Shield West": 0.088,
+                    "Atlantic Martime": 0.071,
+                    "Mixed Wood Plain": 0.070,
+                    "Boreal Plain": 0.109,
+                    "Prairie": 0.070,
+                    "Taiga Cordillera": 0.043,
+                    "Boreal Cordillera": 0.102,
+                    "Montane Cordillera": 0.098,
+                    "Hudson Plain": 0.200,
+                    "Boreal Shield East": 0.093
+                }
+            },
+            {
+                "name": "Abies balsamea [L.] Mill.",
+                "weight": 6.25,
+                "fgi": {
+                    "Overall": 12.2,
+                    "Boreal Shield West": 16.0,
+                    "Atlantic Maritime": 9.1,
+                    "Mixed Wood Plain": 17.1,
+                    "Boreal Plain": 12.4,
+                    "Boreal Shield East": 12.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.106,
+                    "Boreal Shield West": 0.103,
+                    "Atlantic Martime": 0.086,
+                    "Mixed Wood Plain": 0.136,
+                    "Boreal Plain": 0.097,
+                    "Montane Cordillera": 0.050,
+                    "Hudson Plain": 0.12,
+                    "Boreal Shield East": 0.113,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Abies lasiocarpa [Hook.] Nutt.",
+                "weight": 6.25,
+                "fgi": {
+                    "Overall": 5.4,
+                    "Boreal Cordillera": 6.5,
+                    "Pacific Maritime": 3.6,
+                    "Motane Cordillera": 5.1
+                },
+                "fueldepthm": {
+                    "Overall": 0.066,
+                    "Taiga Plain": 0.177,
+                    "Boreal Shield West": 0.040,
+                    "Boreal Plain": 0.095,
+                    "Taiga Cordillera": 0.025,
+                    "Boreal Cordillera": 0.092,
+                    "Pacific Maritime": 0.085,
+                    "Montane Cordillera": 0.062
+                }
+            },
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 37.5,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh.",
+                "weight": 37.5,
+                "fgi": { 
+                    "Overall": 9.6,
+                    "Taiga Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.6,
+                    "Boreal Shield East": 9.7
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            }
+        ]
+    },
+    "650": {
+        "name": "M-1/M-2 Boreal Mixwood (50% Conifer)",
+        "species" :[
+            {
+                "name": "Picea mariana [Mill.] B.S.P",
+                "weight": 12.5,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Picea glauca [Moench] Voss",
+                "weight": 12.5,
+                "fgi": {
+                    "Overall": 14.6,
+                    "Taiga Plain": 18.3,
+                    "Boreal Shield West": 14.9,
+                    "Atlantic Maritime": 4.6,
+                    "Boreal Plain": 13.7,
+                    "Boreal Cordillera": 4.7,
+                    "Motane Cordillera": 6.4,
+                    "Boreal Shield East": 14.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.103,
+                    "Southern Arctic": 0.180,
+                    "Taiga Plain": 0.136,
+                    "Taiga Shield West": 0.072,
+                    "Boreal Shield West": 0.088,
+                    "Atlantic Martime": 0.071,
+                    "Mixed Wood Plain": 0.070,
+                    "Boreal Plain": 0.109,
+                    "Prairie": 0.070,
+                    "Taiga Cordillera": 0.043,
+                    "Boreal Cordillera": 0.102,
+                    "Montane Cordillera": 0.098,
+                    "Hudson Plain": 0.200,
+                    "Boreal Shield East": 0.093
+                }
+            },
+            {
+                "name": "Abies balsamea [L.] Mill.",
+                "weight": 12.5,
+                "fgi": {
+                    "Overall": 12.2,
+                    "Boreal Shield West": 16.0,
+                    "Atlantic Maritime": 9.1,
+                    "Mixed Wood Plain": 17.1,
+                    "Boreal Plain": 12.4,
+                    "Boreal Shield East": 12.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.106,
+                    "Boreal Shield West": 0.103,
+                    "Atlantic Martime": 0.086,
+                    "Mixed Wood Plain": 0.136,
+                    "Boreal Plain": 0.097,
+                    "Montane Cordillera": 0.050,
+                    "Hudson Plain": 0.12,
+                    "Boreal Shield East": 0.113,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Abies lasiocarpa [Hook.] Nutt.",
+                "weight": 12.5,
+                "fgi": {
+                    "Overall": 5.4,
+                    "Boreal Cordillera": 6.5,
+                    "Pacific Maritime": 3.6,
+                    "Motane Cordillera": 5.1
+                },
+                "fueldepthm": {
+                    "Overall": 0.066,
+                    "Taiga Plain": 0.177,
+                    "Boreal Shield West": 0.040,
+                    "Boreal Plain": 0.095,
+                    "Taiga Cordillera": 0.025,
+                    "Boreal Cordillera": 0.092,
+                    "Pacific Maritime": 0.085,
+                    "Montane Cordillera": 0.062
+                }
+            },
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 25,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh.",
+                "weight": 25,
+                "fgi": { 
+                    "Overall": 9.6,
+                    "Taiga Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.6,
+                    "Boreal Shield East": 9.7
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            }
+        ]
+    },
+    "675": {
+        "name": "M-1/M-2 Boreal Mixwood (75% Conifer)",
+        "species" :[
+            {
+                "name": "Picea mariana [Mill.] B.S.P",
+                "weight": 18.75,
+                "fgi": {
+                    "Overall": 12.3,
+                    "Taiga Plain": 18.0,
+                    "Taiga Shield West": 1.5,
+                    "Boreal Shield West": 9.6,
+                    "Atlantic Maritime": 7.3,
+                    "Boreal Plain": 12.1, 
+                    "Boreal Cordillera": 11,
+                    "Hudson Plain": 7.9,
+                    "Boreal Shield East": 19.3 
+                },
+                "fueldepthm": {
+                    "Overall": 0.142,
+                    "Southern Arctic": 0.290,
+                    "Taiga Plain": 0.158,
+                    "Taiga Shield West": 0.93,
+                    "Boreal Shield West": 0.130,
+                    "Atlantic Martime": 0.206,
+                    "Boreal Plain": 0.155,
+                    "Taiga Cordillera": 0.040,
+                    "Boreal Cordillera": 0.138,
+                    "Pacific Maritime": 0.273,
+                    "Montane Cordillera": 0.214,
+                    "Hudson Plain": 0.146,
+                    "Boreal Shield East": 0.147,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Picea glauca [Moench] Voss",
+                "weight": 18.75,
+                "fgi": {
+                    "Overall": 14.6,
+                    "Taiga Plain": 18.3,
+                    "Boreal Shield West": 14.9,
+                    "Atlantic Maritime": 4.6,
+                    "Boreal Plain": 13.7,
+                    "Boreal Cordillera": 4.7,
+                    "Motane Cordillera": 6.4,
+                    "Boreal Shield East": 14.9
+                },
+                "fueldepthm": {
+                    "Overall": 0.103,
+                    "Southern Arctic": 0.180,
+                    "Taiga Plain": 0.136,
+                    "Taiga Shield West": 0.072,
+                    "Boreal Shield West": 0.088,
+                    "Atlantic Martime": 0.071,
+                    "Mixed Wood Plain": 0.070,
+                    "Boreal Plain": 0.109,
+                    "Prairie": 0.070,
+                    "Taiga Cordillera": 0.043,
+                    "Boreal Cordillera": 0.102,
+                    "Montane Cordillera": 0.098,
+                    "Hudson Plain": 0.200,
+                    "Boreal Shield East": 0.093
+                }
+            },
+            {
+                "name": "Abies balsamea [L.] Mill.",
+                "weight": 18.75,
+                "fgi": {
+                    "Overall": 12.2,
+                    "Boreal Shield West": 16.0,
+                    "Atlantic Maritime": 9.1,
+                    "Mixed Wood Plain": 17.1,
+                    "Boreal Plain": 12.4,
+                    "Boreal Shield East": 12.0
+                },
+                "fueldepthm": {
+                    "Overall": 0.106,
+                    "Boreal Shield West": 0.103,
+                    "Atlantic Martime": 0.086,
+                    "Mixed Wood Plain": 0.136,
+                    "Boreal Plain": 0.097,
+                    "Montane Cordillera": 0.050,
+                    "Hudson Plain": 0.12,
+                    "Boreal Shield East": 0.113,
+                    "Taiga Shield East": 0.118
+                }
+            },
+            {
+                "name": "Abies lasiocarpa [Hook.] Nutt.",
+                "weight": 18.75,
+                "fgi": {
+                    "Overall": 5.4,
+                    "Boreal Cordillera": 6.5,
+                    "Pacific Maritime": 3.6,
+                    "Motane Cordillera": 5.1
+                },
+                "fueldepthm": {
+                    "Overall": 0.066,
+                    "Taiga Plain": 0.177,
+                    "Boreal Shield West": 0.040,
+                    "Boreal Plain": 0.095,
+                    "Taiga Cordillera": 0.025,
+                    "Boreal Cordillera": 0.092,
+                    "Pacific Maritime": 0.085,
+                    "Montane Cordillera": 0.062
+                }
+            },
+            {
+                "name": "Populus tremuloides Michx.",
+                "weight": 12.5,
+                "fgi": {
+                    "Overall": 8.4,
+                    "Taiga Plain": 9.2,
+                    "Boreal Shield West": 7.9,
+                    "Atlantic Maritime": 6.0,
+                    "Boreal Plain": 8.8,
+                    "Boreal Cordillera": 5.3,
+                    "Motane Cordillera": 5.0,
+                    "Boreal Shield East": 9.2
+                },
+                "fueldepthm": {
+                    "Overall": 0.072,
+                    "Northern Arctic": 0.097,
+                    "Southern Arctic": 0.100,
+                    "Taiga Plain": 0.067,
+                    "Taiga Shield West": 0.062,
+                    "Boreal Shield West": 0.077,
+                    "Atlantic Martime": 0.079,
+                    "Mixed Wood Plain": 0.095,
+                    "Boreal Plain": 0.070,
+                    "Prairie": 0.057,
+                    "Taiga Cordillera": 0.050,
+                    "Boreal Cordillera": 0.058,
+                    "Pacific Maritime": 0.077,
+                    "Montane Cordillera": 0.064,
+                    "Hudson Plain": 0.130,
+                    "Boreal Shield East": 0.077,
+                    "Taiga Shield East": 0.065
+                }
+            },
+            {
+                "name": "Betula papyrifera Marsh.",
+                "weight": 12.5,
+                "fgi": { 
+                    "Overall": 9.6,
+                    "Taiga Plain": 13.8,
+                    "Boreal Shield West": 10.7,
+                    "Atlantic Maritime": 7.3,
+                    "Motane Cordillera": 1.6,
+                    "Boreal Shield East": 9.7
+                },
+                "fueldepthm": {
+                    "Overall": 0.078,
+                    "Taiga Plain": 0.105,
+                    "Taiga Shield West": 0.068,
+                    "Boreal Shield West": 0.094,
+                    "Atlantic Martime": 0.070,
+                    "Mixed Wood Plain": 0.047,
+                    "Boreal Plain": 0.104,
+                    "Boreal Cordillera": 0.091,
+                    "Pacific Maritime": 0.081,
+                    "Montane Cordillera": 0.056,
+                    "Boreal Shield East": 0.078,
+                    "Taiga Shield East": 0.135
+                }
+            }
+        ]
+    }
+}

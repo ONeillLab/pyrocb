@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Run wrf.exe for the ideal case on your personal computer.
+
 export PCB_PERSONAL_IDEAL_CASE="hill_simple"
 
 cd $PCB_OUT_DIR/WRF-SFIRE/test/em_fire

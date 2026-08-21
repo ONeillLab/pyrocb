@@ -1,0 +1,156 @@
+! ifire = 1
+&fuel_scalars                      ! scalar fuel constants
+cmbcnst  = 17.433e+06,             ! J/kg combustion heat dry fuel
+hfgl     = 17.e4 ,                 ! W/m^2 heat flux to ignite canopy
+fuelmc_g = 0.10,                   ! ground fuel moisture, set = 0 for dry
+!jc fuelmc_g = 0.10,                   ! ground fuel moisture, set = 0 for dry
+fuelmc_c = 0.10,                   ! canopy fuel moisture, set = 0 for dry
+nfuelcats = 13,                    ! number of fuel categories used
+no_fuel_cat = 14,                   ! extra category for no fuel
+fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave, 0 to use fwh
+/
+
+&fuel_categories
+ fuel_name =
+'1: Short grass (1 ft)',
+'2: Timber (grass and understory)',
+'3: Tall grass (2.5 ft)',
+'4: Chaparral (6 ft)',
+'5: Brush (2 ft) ',
+'6: Dormant brush, hardwood slash',
+'7: Southern rough',
+'8: Closed timber litter',
+'9: Hardwood litter',
+'10: Timber (litter + understory)',
+'11: Light logging slash',
+'12: Medium logging slash',
+'13: Heavy logging slash',
+'14: no fuel'
+! Wind reduction factor
+ windrf= 0.36, 0.36, 0.44,  0.55,  0.42,  0.44,  0.44,
+         0.36, 0.36, 0.36,  0.36,  0.43,  0.46, 1e-7,
+
+! Default fgi:
+! fgi = 0.166, 0.896, 0.674, 3.591, 0.74, 1.344, 1.091, 1.120, 0.780, 2.692, 2.582, 7.749, 13.024, 0.00
+
+! initial mass loading of surface fuel tuned to Letang Values. Scaled 8-10 based on densities of Boreal Cordillera vals. See Letang et al.
+ fgi = 0.166, 0.896, 0.674, 3.591, 0.74, 1.344, 1.091, 6.08, 4.235, 14.615, 2.582, 7.749, 13.024, 0.0
+
+
+!jc fgi=  0.166, 0.897, 1.076, 2.468, 0.785, 1.345, 1.092,
+!        1.121, 0.780, 2.694, 2.582, 7.749, 13.024, 1.e-7,
+
+ ! Fuel depth kept default
+ fueldepthm= 0.3050, 0.3050, 0.7620, 1.8290, 0.6100, 0.7620, 0.7620, 0.0610, 0.0610, 0.3050, 0.3050, 0.7010, 0.9140, 0.3050
+
+ ! Fuel surface-area-to-volume-ratio
+ savr = 3500., 2784., 1500., 1739., 1683., 1564., 1562.,
+        1889., 2484., 1764., 1182., 1145., 1159., 3500.,
+
+! Fuel moisture content of extinction
+ fuelmce = 0.12, 0.15, 0.25, 0.20, 0.20, 0.25, 0.40,
+           0.30, 0.25, 0.25, 0.15, 0.20, 0.25, 0.12,
+
+! Fuel particle density lb ft-3
+ fueldens = 32.,32.,32.,32.,32.,32.,32. ,
+            32.,32.,32.,32.,32.,32.,32. , ! 32 if solid, 19 if rotten
+
+ ! Fuel particle total mineral content.
+ st = 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555,
+      0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555,
+
+ ! Fuel particle effective mineral content.
+ se = 0.010, 0.010, 0.010, 0.010, 0.010, 0.010, 0.010,
+      0.010, 0.010, 0.010, 0.010, 0.010, 0.010, 0.010,
+ ! ----- Notes on weight: (4) - best fit of Latham data;
+ !                 (5)-(7) could be 60-120; (8)-(10) could be 300-1600;
+ !                 (11)-(13) could be 300-1600
+ ! weight parameter determines the slope of the mass loss curve
+ weight = 7.,  7.,  7., 180., 100., 100., 100.,
+         900., 900., 900., 900., 900., 900., 7. ,
+! !----- 1.12083 is 5 tons/acre.  5-50 tons/acre orig., 100-300 after blowdown
+! fci_d = 0., 0., 0., 1.123, 0., 0., 0.,
+!      1.121, 1.121, 1.121, 1.121, 1.121, 1.121, 0.,
+! fct = 60., 60., 60., 60., 60., 60., 60.,
+!      60., 120., 180., 180., 180., 180. , 60.,
+! ichap = 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+! fraction of fuel that is woody vs herbaceous. Controls how much of the fuel participates in spread calculation
+  ffw =   0.1, 0.9, 0.1, 0.9, 0.9, 0.9, 0.9,
+          0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9,
+! adjustment multiplier on the no-wind/no-slope base rate of spread. 1.0 = no adjustment. Increase if fire spreads too slow
+  adjr0 = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+
+! adjustment multiplier on the wind-driven rate of spread component. 1.0 = no adjustment. Increase if fire isn't responding enough to wind.
+  adjrw = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+
+! adjustment multiplier on the slope-driven rate of spread component. 1.0 = no adjustment. The Jasper area has significant terrain so this could matter.
+  adjrs = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+          1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+
+! proportion of the fuel that is in moisture class 1 (between 0.0 and 1.0)
+ fmc_gw01 = 1.00000, 0.15385, 1.00000, 0.31253, 0.28571, 0.25000, 0.23203,
+            0.30000, 0.06625, 0.25042, 0.13021, 0.11600, 0.12065, 0.00000,
+! proportion of the fuel that is in moisture class 2, etc. up to 5. The proportions should add up to 1.
+ fmc_gw02 = 0.00000, 0.07692, 0.00000, 0.25016, 0.14286, 0.41667, 0.38398,
+            0.20000, 0.93034, 0.16639, 0.39149, 0.40584, 0.39656, 0.00000,
+ fmc_gw03 = 0.00000, 0.38462, 0.00000, 0.12477, 0.00000, 0.33333, 0.30801,
+            0.50000, 0.00341, 0.41680, 0.47830, 0.47816, 0.48279, 0.00000,
+ fmc_gw04 = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+            0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+ fmc_gw05 = 0.00000, 0.38462, 0.00000, 0.31254, 0.57143, 0.00000, 0.07598,
+            0.00000, 0.00000, 0.16639, 0.00000, 0.00000, 0.00000, 0.00000,
+! fuel loading 1-h, 10-h, 100-h, 1000-h, live following Albini 1976 as reprinted in Anderson 1982 Table 1
+! for relative proportions between classes only
+!               1      2      3      4      5      6      7      8      9      10     11     12     13
+!  fgi_1h    = 0.74,  2.00,  3.01,  5.01,  1.00,  1.50,  1.13,  1.50,  2.92,  3.01,  1.50,  4.01,  7.01,
+!  fgi_10h   = 0.000, 1.00,  0.00,  4.01,  0.50,  2.50,  1.87,  1.00,  0.41,  2.00,  4.51, 14.03, 23.04,
+!  fgi_100h  = 0.000, 0.50,  0.00,  2.00,  0.00,  2.00,  1.50,  2.50,  0.15,  5.01,  5.51, 16.53, 28.05,
+!  fgi_1000h = 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+!  fgi_live  = 0.000, 0.50,  0.000, 5.01,  2.00,  0.00,  0.37,  0.00,  0.00,  2.00,  0.00,  2.3,   0.00
+/
+
+!&fuel_moisture
+! Fuel moisture model coefficients to experiment with different models.
+! Can be omitted, then the defaults in the code are used.
+!moisture_classes = 5,
+!moisture_class_name=   '1-h','10-h','100-h','1000-h','Live', ! identification to be printed
+!drying_model=             1,     1,     1,    1,     1,  ! number of model - only 1= equilibrium moisture Van Wagne>
+!drying_lag=               1,    10,   100,  1000,   1e9, ! so-called 10hr and 100hr fuel
+!wetting_model=            1,     1,     1,    1,     1, ! number of model - only 1= allowed at this moment
+!wetting_lag=            1.4,  14.0,  140.0, 1400.0, 1e9, ! 10-h lag callibrated to VanWagner&Pickett 1985, Canadian>
+!saturation_moisture=    2.5,   2.5,   2.5,  2.5,   2.5, ! ditto
+!saturation_rain =       8.0,   8.0,   8.0,  8.0,   8.0, ! stronger rain than this (mm/h) does not make much differe>
+!rain_threshold =       0.05,  0.05,  0.05,  0.05,  0.05,! mm/h rain too weak to wet anything.
+!fmc_gc_initialization=    3,     2,     2,     2,     3,! 0: from wrfinput, 1:from fuelmc_g, 2: from equilibrium, 3>
+!fmc_1h =    0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(1) = 3
+!fmc_10h =   0.48, ! as in fuelmc_g, used only if fmc_gc_initialization(2) = 3
+!fmc_100h =  0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(3) = 3
+!fmc_1000h = 0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(4) = 3
+!fmc_live =  0.30, ! Completely cured, used only if fmc_gc_initialization(5) = 3
+!/
+
+&moisture
+moisture_class_name =
+'1 hour fuel',
+'10 hour fuel',
+'100 hour fuel',
+'1000 hour fuel',
+'live fuel'
+moisture_classes=         5,               ! number of classes, max 5 (see comments in module_fr_sfire_phys.F how to increase)
+drying_model=             1,     1,     1,    1,     1, ! number of model - only 1= equilibrium moisture Van Wagner (1972) per Viney (1991)  allowed
+drying_lag=               1,    10,   100,  1000,   1e9, ! so-called 10hr and 100hr fuel
+wetting_model=            1,     1,     1,    1,     1, ! number of model - only 1= allowed at this moment
+
+! Hours of very strong rain it takes to get 64% closer to saturation
+wetting_lag=             14,    14,    14,   14,    14, ! 14 is callibrated to VanWagner&Pickett 1985, Canadian fire danger rating system
+saturation_moisture=    2.5,   2.5,   2.5,  2.5,   2.5, ! ditto
+! Rain intensity (mm/h) such that the rate of soaking is at 64% of wetting_lag
+saturation_rain =       8.0,   8.0,   8.0,  8.0,   8.0, ! stronger rain than this (mm/h) does not make much difference.
+! Rain under this intensity (mm/h) does not count
+rain_threshold =       0.05,  0.05,  0.05,  0.05,  0.05,! mm/h rain too weak to wet anything.
+! Moisture initialization 0 = from WRF input (files wrfinput or wrfrst), 1 = from scalar fuelmc_g in namelist.input 2 = from equilibrium
+fmc_gc_initialization =   1,     1,     1,     1,     1,
+/

@@ -1,3 +1,5 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads, uncompresses and compiles the ZLib, Libpng, and Jasper libraries which are dependancies needed to run WRF
 
 #ZLib
 cd $DIR

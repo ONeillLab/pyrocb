@@ -1,0 +1,123 @@
+! ifire = 1
+&fuel_scalars                      ! scalar fuel constants
+cmbcnst  = 17.433e+06,             ! J/kg combustion heat dry fuel
+hfgl     = 17.e4 ,                 ! W/m^2 heat flux to ignite canopy
+fuelmc_g = 0.10,                   ! ground fuel moisture, set = 0 for dry
+!jc fuelmc_g = 0.09,                   ! ground fuel moisture, set = 0 for dry
+fuelmc_c = 0.10,                   ! canopy fuel moisture, set = 0 for dry
+nfuelcats = 13,                    ! number of fuel categories used
+no_fuel_cat = 14,                   ! extra category for no fuel
+fire_wind_height = 6.096,          ! height to take wind from (m), 6.096 Behave, 0 to use fwh
+/
+
+&fuel_categories
+ !Adjustment multiplier on the slope-driven rate of spread component
+adjrs = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+
+!Adjustment multiplier on the wind-driven rate of spread component
+adjrw = 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+
+!Fraction of fuel that is woody vs herbaceous. Controls how much of the fuel participates in spread calculation
+ffw = 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9
+
+!Wind reduction factor
+fgi = 10.9875, 12.3, 5.0, 5.5, 7.723076923076923, 6.5, 8.4, 8.4, 0.674, 9.25125, 9.41875, 9.8375, 10.25625, 0.0
+
+!Proportion of the fuel that is in moisture class 1 (between 0.0 and 1.0) The proportions in each column should add up to 1.
+fmc_gw01 = 0.28571, 0.25042, 0.06625, 0.28571, 0.06625, 0.06625, 0.28571, 0.15385, 0.0, 0.28571, 0.28571, 0.28571, 0.28571, 0.0
+
+!Proportion of the fuel that is in moisture class 2 (between 0.0 and 1.0)
+fmc_gw02 = 0.14286, 0.16639, 0.93034, 0.14286, 0.93034, 0.93034, 0.14286, 0.07692, 0.0, 0.14286, 0.14286, 0.14286, 0.14286, 0.0
+
+!Proportion of the fuel that is in moisture class 3 (between 0.0 and 1.0)
+fmc_gw03 = 0.0, 0.4168, 0.00341, 0.0, 0.00341, 0.00341, 0.0, 0.38462, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+
+!Proportion of the fuel that is in moisture class 4 (between 0.0 and 1.0)
+fmc_gw04 = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+
+!Proportion of the fuel that is in moisture class 5 (between 0.0 and 1.0)
+fmc_gw05 = 0.57143, 0.16639, 0.0, 0.57143, 0.0, 0.0, 0.57143, 0.38462, 0.0, 0.57143, 0.57143, 0.57143, 0.57143, 0.0
+
+fuel_name = "C-1 Spruce-Lichen Woodland", "C-2 Boreal Spruce", "C-3 Mature Jack or Lodepole Pine", "C-4 Immature Jack or Lodgepole Pine", "C-5 Red and White Pine", "C-7 Ponderosa Pine / Douglas Fir", "D-1 Leafless Aspen", "D-1/D-2 Aspen", "O-1a Matted Grass", "M-1 Boreal Mixwood - Leafless (15% Conifer)", "M-1/M-2 Boreal Mixwood (25% Conifer)", "M-1/M-2 Boreal Mixwood (50% Conifer)", "M-1/M-2 Boreal Mixwood (75% Conifer)", "Non-fuel"
+
+!Fuel particle density lb ft-3
+fueldens = 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0, 32.0
+
+!Fuel depth
+fueldepthm = 0.22337500000000002, 0.273, 0.06475, 0.0615, 0.07600000000000001, 0.055, 0.077, 0.077, 0.061, 0.08841249999999999, 0.0946875, 0.11037500000000001, 0.12606250000000002, 0.305
+
+!Fuel moisture content of extinction
+fuelmce = 0.2, 0.25, 0.25, 0.2, 0.25, 0.25, 0.2, 0.15, 0.12, 0.2, 0.2, 0.2, 0.2, 0.12
+
+name = "C-1 Spruce-Lichen Woodland", "C-2 Boreal Spruce", "C-3 Mature Jack or Lodepole Pine", "C-4 Immature Jack or Lodgepole Pine", "C-5 Red and White Pine", "C-7 Ponderosa Pine / Douglas Fir", "D-1 Leafless Aspen", "D-1/D-2 Aspen", "O-1a Matted Grass", "M-1 Boreal Mixwood - Leafless (15% Conifer)", "M-1/M-2 Boreal Mixwood (25% Conifer)", "M-1/M-2 Boreal Mixwood (50% Conifer)", "M-1/M-2 Boreal Mixwood (75% Conifer)", "Non-fuel"
+
+!Fuel surface-area-to-volume-ratio
+savr = 1683.0, 1764.0, 2484.0, 1683.0, 2484.0, 2484.0, 1683.0, 2784.0, 3500.0, 1683.0, 1683.0, 1683.0, 1683.0, 3500.0
+
+!Fuel particle effective mineral content
+se = 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01
+
+!Fuel particle total mineral content
+st = 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555, 0.0555
+
+us_id = 5, 10, 9, 5, 9, 9, 5, 2, 93, 5, 5, 5, 5, 14
+
+!Weight parameter determines the slope of the mass loss curve
+weight 7. = 100.0, 900.0, 900.0, 100.0, 900.0, 900.0, 100.0, 7.0, 0.0, 100.0, 100.0, 100.0, 100.0, 0.0
+
+!Initial mass loading of surface fuel
+windrf = 0.42, 0.36, 0.36, 0.42, 0.36, 0.36, 0.42, 0.36, 1e-07, 0.42, 0.42, 0.42, 0.42, 1e-07
+! !----- 1.12083 is 5 tons/acre.  5-50 tons/acre orig., 100-300 after blowdown
+! fci_d = 0., 
+! fuel loading 1-h, 10-h, 100-h, 1000-h, live following Albini 1976 as reprinted in Anderson 1982 Table 1
+! for relative proportions between classes only
+!               1      2      3      4      5      6      7      8      9      10     11     12     13
+!  fgi_1h    = 0.74,  2.00,  3.01,  5.01,  1.00,  1.50,  1.13,  1.50,  2.92,  3.01,  1.50,  4.01,  7.01,
+!  fgi_10h   = 0.000, 1.00,  0.00,  4.01,  0.50,  2.50,  1.87,  1.00,  0.41,  2.00,  4.51, 14.03, 23.04,
+!  fgi_100h  = 0.000, 0.50,  0.00,  2.00,  0.00,  2.00,  1.50,  2.50,  0.15,  5.01,  5.51, 16.53, 28.05,
+!  fgi_1000h = 0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,   0.0,
+!  fgi_live  = 0.000, 0.50,  0.000, 5.01,  2.00,  0.00,  0.37,  0.00,  0.00,  2.00,  0.00,  2.3,   0.00
+/
+
+!&fuel_moisture
+! Fuel moisture model coefficients to experiment with different models.
+! Can be omitted, then the defaults in the code are used.
+!moisture_classes = 5,
+!moisture_class_name=   '1-h','10-h','100-h','1000-h','Live', ! identification to be printed
+!drying_model=             1,     1,     1,    1,     1,  ! number of model - only 1= equilibrium moisture Van Wagne>
+!drying_lag=               1,    10,   100,  1000,   1e9, ! so-called 10hr and 100hr fuel
+!wetting_model=            1,     1,     1,    1,     1, ! number of model - only 1= allowed at this moment
+!wetting_lag=            1.4,  14.0,  140.0, 1400.0, 1e9, ! 10-h lag callibrated to VanWagner&Pickett 1985, Canadian>
+!saturation_moisture=    2.5,   2.5,   2.5,  2.5,   2.5, ! ditto
+!saturation_rain =       8.0,   8.0,   8.0,  8.0,   8.0, ! stronger rain than this (mm/h) does not make much differe>
+!rain_threshold =       0.05,  0.05,  0.05,  0.05,  0.05,! mm/h rain too weak to wet anything.
+!fmc_gc_initialization=    3,     2,     2,     2,     3,! 0: from wrfinput, 1:from fuelmc_g, 2: from equilibrium, 3>
+!fmc_1h =    0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(1) = 3
+!fmc_10h =   0.48, ! as in fuelmc_g, used only if fmc_gc_initialization(2) = 3
+!fmc_100h =  0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(3) = 3
+!fmc_1000h = 0.38, ! as in fuelmc_g, used only if fmc_gc_initialization(4) = 3
+!fmc_live =  0.30, ! Completely cured, used only if fmc_gc_initialization(5) = 3
+!/
+
+&moisture
+moisture_class_name =
+'1 hour fuel',
+'10 hour fuel',
+'100 hour fuel',
+'1000 hour fuel',
+'live fuel'
+moisture_classes=         5,               ! number of classes, max 5 (see comments in module_fr_sfire_phys.F how to increase)
+drying_model=             1,     1,     1,    1,     1, ! number of model - only 1= equilibrium moisture Van Wagner (1972) per Viney (1991)  allowed
+drying_lag=               1,    10,   100,  1000,   1e9, ! so-called 10hr and 100hr fuel
+wetting_model=            1,     1,     1,    1,     1, ! number of model - only 1= allowed at this moment
+
+! Hours of very strong rain it takes to get 64% closer to saturation
+wetting_lag=             14,    14,    14,   14,    14, ! 14 is callibrated to VanWagner&Pickett 1985, Canadian fire danger rating system
+saturation_moisture=    2.5,   2.5,   2.5,  2.5,   2.5, ! ditto
+! Rain intensity (mm/h) such that the rate of soaking is at 64% of wetting_lag
+saturation_rain =       8.0,   8.0,   8.0,  8.0,   8.0, ! stronger rain than this (mm/h) does not make much difference.
+! Rain under this intensity (mm/h) does not count
+rain_threshold =       0.05,  0.05,  0.05,  0.05,  0.05,! mm/h rain too weak to wet anything.
+! Moisture initialization 0 = from WRF input (files wrfinput or wrfrst), 1 = from scalar fuelmc_g in namelist.input 2 = from equilibrium
+fmc_gc_initialization =   1,     1,     1,     1,     1,
+/

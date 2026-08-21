@@ -1,3 +1,8 @@
+# Sylvio Dos Reis, Micah Yoon, Noah Vaillant, 2026
+# Its time to prereal
+# Links all necessary files to the right location in preperation for running real.exe. 
+# Common errors includes not having an empty line at the end of your namelist.wps file, and not having run metgrid, geogrid, and ungrib.
+
 PROFILE=`cat $PCB_OUT_DIR/profile/profile`
 echo $PROFILE
 

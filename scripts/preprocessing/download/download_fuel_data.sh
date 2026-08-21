@@ -1,3 +1,5 @@
+# Sylvio Dos Reis, 2026 
+# Downloads and extracts Canadian Fire Behaviour Prediction Fuel Types for Canada, Anderson 13 types for CONUSA and Alaska, and Scott and Burgan 40 types for CONUSA and Alaska
 
 echo [LOG] Downloading Canada Fire Behavior Prediction Fuel Types
 wget "https://cwfis.cfs.nrcan.gc.ca/downloads/fuels/current/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip" -O "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip"

@@ -1,5 +1,9 @@
+# Sylvio Dos Reis, 2026
+# Plots the observed satellite fire perimeter and simulated fire perimeter by frame. Then combines each frame into a gif
+
 import os
 import json
+import sys
 import datetime
 import numpy as np
 import geopandas as gpd
@@ -9,8 +13,10 @@ from netCDF4 import Dataset
 import imageio.v2 as imageio
 from alpha_shapes.alpha_shapes import Alpha_Shaper
 
-directory = "/scratch/su386/pyrocb2/out/output/complete/jasper-2024-19"
-analysis_dir = "/scratch/su386/pyrocb2/out/analysis/jasper-2024-19"
+directory = sys.argv[1]
+print(directory)
+analysis_dir = f"{sys.argv[2]}{os.path.basename(directory)}"
+print(analysis_dir)
 gif_timestep = 1/6
 gif_fps = 3
 
@@ -115,7 +121,9 @@ bounds = ()
 with open(f"{directory}/profile/config.json", 'r') as f:
     data = json.load(f)
     bounds = tuple(data["bounds"])
-    name = data["name"]
+with open(f"{directory}/profile/profile", 'r') as p:
+    name = p.read().strip()
+print(name)
 
 wrfouts = {}
 gdfs = []
@@ -188,7 +196,7 @@ earliest_file = min(wrfouts, key=wrfouts.get)
 with Dataset(os.path.join(directory, earliest_file)) as ds0:
     ignition = read_var(ds0, 'TIGN_G')
 ignition = relax_zone_remover(ignition, SR)
-ignition_masked = np.ma.masked_where(ignition >= 1e9, ignition)
+ignition_masked = np.ma.masked_where(ignition >= 1e6, ignition)
 
 # --- Main loop: one frame per gif_timestep ------------------------------------
 current_time = start_time

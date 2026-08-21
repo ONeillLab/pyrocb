@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, 2026
+# Counts the overlap of each fuel category into a crosstabulation matrix in a radius window around the centre of the fire. Saves to out/output/crosstab
+
 import sys
 import numpy as np
 import pandas as pd
@@ -143,7 +146,9 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as file:
     if data["crosswalk_radius"] is not None and data["crosswalk_radius"] != -1:
         RADIUS_KM = data["crosswalk_radius"]
         LONG, LAT = data["center"]
-    NAME = data["name"]
+with open(f"{sys.argv[1]}/profile/profile", 'r') as p:
+    NAME = p.read().strip()
+print(NAME)
 
 print(f"{NAME} 13 Anderson Canada to Continental US Mapping")
 us_an_13_crosstab = crosswalk(canada_file, us_an_13_file, f"{NAME}USAnderson13", center_lon=LONG, center_lat=LAT, radius_km=RADIUS_KM)

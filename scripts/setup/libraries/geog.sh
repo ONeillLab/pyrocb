@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads and uncompresses the mandatory high and low resolution worldwide elevation datas.
+
 mkdir $DIR/geog
 cd $DIR/geog
 wget https://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz

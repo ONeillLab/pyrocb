@@ -1,3 +1,6 @@
+# Sylvio Dos Reis, Micah Yoon, 2026
+# Downloads and compiles the netcdf for c library.
+
 cd $DIR
 wget https://downloads.unidata.ucar.edu/netcdf-c/4.10.0/netcdf-c-4.10.0.tar.gz
 tar xzvf netcdf-c-4.10.0.tar.gz
