@@ -87,7 +87,8 @@ bash scripts/preprocessing/process_all_data.sh
 ## Running WRF
 Verify the ``run-wrf.sh`` script in the selected profile.
 
-Then, we will run ``real.exe``. Request a debug node (ex: Run ``salloc --time=1:0:0 --nodes=1 --ntasks-per-node=192 --mem=0 --account=def-oneill``), and run ``real.exe``:
+Then, we will run ``real.exe``. Request a debug node (ex: Run ``salloc --time=1:0:0 --nodes=1 --ntasks-per-node=192 --mem=0 --account=def-oneill``), run ``
+source alliance_can_shell_setup.sh``, and run ``real.exe``:
 
 ```sh
 bash scripts/run/debug-real.sh
