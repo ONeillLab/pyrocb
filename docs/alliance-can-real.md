@@ -28,6 +28,19 @@ To compile WRF-SFIRE and WPS, run the ``nibi-real.sh`` script
 bash scripts/compile/nibi-real.sh
 ```
 
+## ERA5 API Keys
+We use ERA5 data. This subsection includes things that don't need to be repeated. Create an account for [ECWF](https://www.ecmwf.int/user/login). We use data from [ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download).
+After creating an account, we can locate our API key in our profile section, we then use the following command to make a config file:
+```sh
+nano ~/.cdsapirc
+```
+and paste the following:
+```
+url: https://cds.climate.copernicus.eu/api
+key: API-Key
+```
+Where we replace API-Key with our personal key. 
+
 ## Downloading and processing data
 ### Profiles
 To easily change configurationes between runs, we use a profile system. in ``profiles/``, you can create a profile by creating a folder with the profile name and provide the following files:
