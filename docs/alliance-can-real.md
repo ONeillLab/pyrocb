@@ -25,7 +25,7 @@ source alliance_can_shell_setup.sh
 ## Compiling WRF-SFIRE and WPS
 To compile WRF-SFIRE and WPS, run the ``nibi-real.sh`` script
 ```sh
-bash script/compile/nibi-real.sh
+bash scripts/compile/nibi-real.sh
 ```
 
 ## Downloading and processing data
