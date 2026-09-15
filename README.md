@@ -8,7 +8,7 @@ Simulating pyrocumulonimbus clouds with WRF-SFIRE in the O'Neil Group at the Uni
 
 To keep things clean and avoid conflicting edits on the ``main`` branch, in order to contribute to the repository, please create branches and edit on your branch before creating a pull request to move your changes to the ``main`` branch.
 
-If you are using Mac or Windows, the easiest way to manage edits is with the [GitHub Desktop App](https://github.com/apps/desktop). I will also provide command line instructions. First, clone the repository to your local computer (``git clone https://github.com/ONeillLab/pyrocb.git``). If you are running this on HPC Cluster, make sure you are cloning the repository into a path accessible during computations (ie: the ``$SCRATCH`` folder). To refresh the repository and see new changes, you can ``pull`` the changes from ``origin`` (``git pull``). 
+If you are using Mac or Windows, the easiest way to manage edits is with the [GitHub Desktop App](https://github.com/apps/desktop). I will also provide command line instructions. First, clone the repository to your local computer (``git clone https://github.com/ONeillLab/pyrocb.git``). **If you are running this on HPC Cluster, make sure you are cloning the repository into a path accessible during computations (ie: the ``$SCRATCH`` folder).** To refresh the repository and see new changes, you can ``pull`` the changes from ``origin`` (``git pull``). 
 
 You can create a new branch (``git branch [branch-name]``), and switch to it (``git checkout [branch-name]``). To save your changes, you can commit them (``git commit -a -m [description of commit]``) and ``push`` them to ``origin`` (``git push``).
 
