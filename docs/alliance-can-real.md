@@ -100,13 +100,13 @@ bash scripts/run/job-wrf.sh
 
 After the job is complete, we save the files ``wrfout*``, ``rsl.out.*``, and ``rsl.error.*`` to ``out/output/complete/run_name``:
 ```sh
-bash scripts/run/save_files.sh
+bash scripts/postprocessing/save_files.sh
 ```
 It will prompt you to pick a name.
 
 After verifying the desired output files are properly saved, we can clean up and reset our enviornment:
 ```sh
-bash scripts/run/save_files.sh
+bash scripts/postprocessing/clean_reset.sh
 ```
 
 ## Analysis
