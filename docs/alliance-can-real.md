@@ -29,7 +29,7 @@ bash scripts/compile/nibi-real.sh
 ```
 
 ## ERA5 API Keys
-We use ERA5 data. This subsection includes things that don't need to be repeated. Create an account for [ECWF](https://www.ecmwf.int/user/login). We use data from [ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download).
+We use ERA5 data for the atmosphere. Create an account for [ECWF](https://www.ecmwf.int/user/login). We use data from [ERA5](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download).
 After creating an account, we can locate our API key in our profile section, we then use the following command to make a config file:
 ```sh
 nano ~/.cdsapirc
