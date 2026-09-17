@@ -24,7 +24,7 @@ with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
     ignition_start_time_str = data["ignition_start_time"]
     bounds = tuple(data["bounds"])
 
-with open(f"{directory}/profile/profile", 'r') as p:
+with open(f"{sys.argv[1]}/profile/profile", 'r') as p:
     name = p.read().strip()
 print(name)
 
