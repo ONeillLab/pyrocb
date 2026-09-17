@@ -99,6 +99,11 @@ Then we will apply our ignition permieter:
 ```sh
 bash scripts/run/run_ignition.sh
 ```
+or the ignition permieter script for runs using WRF-Fire:
+
+```sh
+bash scripts/run/run_ignition_LFN_HIST.sh
+```
 
 or our alternative radial ignition algorithm:
 ```sh
