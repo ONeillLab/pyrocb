@@ -20,4 +20,4 @@ ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d01.nc .
 ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d02.nc .
 ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d03.nc .
 
-ln /scratch/su386/pyrocb/out/WRF-SFIRE/test/em_fire/hill/namelist.fire_emissions.tracers $PCB_OUTPUT_DIR/$PROFILE/real_em/namelist.fire_emissions
+ln $PCB_OUT_DIR/WRF-SFIRE/test/em_fire/hill/namelist.fire_emissions.tracers $PCB_OUTPUT_DIR/$PROFILE/real_em/namelist.fire_emissions
