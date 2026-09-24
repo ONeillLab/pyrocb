@@ -81,8 +81,8 @@ output = np.full(data.shape, 14, dtype=np.int16) # Default type as no fuel, data
 for fbp, anderson in crosswalk.items():
     output[data == fbp] = anderson
 
-output[data == 91] = 14
-output[data == 93] = 14
+output[output == 91] = 14
+output[output == 93] = 14
 
 unique_out = np.unique(output)
 print(f'Unique output Anderson values: {unique_out}')
