@@ -1,6 +1,6 @@
 # pyrocb
 
-Simulating pyrocumulonimbus clouds with WRF-SFIRE in the O'Neil Group at the University of Toronto
+Simulating pyrocumulonimbus clouds with WRF-SFIRE in the O'Neill Group at the University of Toronto
 
 **Before running any scripts, run [``shell_setup.sh``](/shell_setup.sh) (``source shell_setup.sh``) from the current directory.**
 
