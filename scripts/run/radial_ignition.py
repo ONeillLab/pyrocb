@@ -1,6 +1,9 @@
 # Sylvio Dos Reis, Micah Yoon, 2026
 # Uses radii around satellite points to generate an ignition matrix that lerps from the ignition_start_time in the config to the first spotted satellite frame.
 
+import sys
+_, utils_path, out_path = sys.argv
+
 import datetime
 import numpy as np
 import pandas as pd
@@ -10,21 +13,25 @@ from scipy.ndimage import distance_transform_edt
 from netCDF4 import Dataset
 import matplotlib.path as path
 import matplotlib.pyplot as plt
-import sys
 import json
 import f90nml
 from shapely.geometry import Point
 from shapely.ops import transform, unary_union
 from pyproj import CRS, Transformer
 
-bounds = ()
+sys.path.append(utils_path)
+from geoutils import bound_expansion
 
-with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
+bounds = ()
+with open(f'{out_path}/profile/config.json', 'r') as f:
     data = json.load(f)
     run_start_time_str = data["run_start_time"]
     ignition_start_time_str = data["ignition_start_time"]
     bounds = tuple(data["bounds"])
-with open(f"{sys.argv[1]}/profile/profile", 'r') as p:
+north, east, south, west = bound_expansion(( bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
+print(f"North: {north}, East: {east}, South: {south}, West: {west}")
+
+with open(f"{out_path}/profile/profile", 'r') as p:
     name = p.read().strip()
 print(name)
 
@@ -33,8 +40,8 @@ run_start_utc = datetime.datetime.strptime(run_start_time_str, format_string).re
 ignition_start_time = datetime.datetime.strptime(ignition_start_time_str, format_string).replace(tzinfo=datetime.timezone.utc)
 wrfout_ref = "/path/to/wrfout_d03_ref"
 
-wrfin = f"{sys.argv[1]}/output/{name}/real_em/wrfinput_d03"
-namelist_file = f"{sys.argv[1]}/profile/namelist.input"
+wrfin = f"{out_path}/output/{name}/real_em/wrfinput_d03"
+namelist_file = f"{out_path}/profile/namelist.input"
 
 BUFFER_RADIUS_M = 265.165042945
 
@@ -61,7 +68,7 @@ def to_utc_dt(row):
 
 
 gdfs = []
-for profile in os.scandir(f"{sys.argv[1]}/profile/satellite_detection_shapes"):
+for profile in os.scandir(f"{out_path}/profile/satellite_detection_shapes"):
     if not profile.is_file or not profile.name.endswith(".shp"):
         continue
     data = os.path.join(profile.path)
@@ -71,7 +78,7 @@ for profile in os.scandir(f"{sys.argv[1]}/profile/satellite_detection_shapes"):
 
 gdf = gpd.GeoDataFrame(pd.concat(gdfs))
 
-ignition_output_path = f"{sys.argv[1]}/output/{name}/ignition"
+ignition_output_path = f"{out_path}/output/{name}/ignition"
 os.makedirs(ignition_output_path, exist_ok=True)
 
 fig, ax = plt.subplots(figsize=(8, 8))
@@ -86,11 +93,11 @@ if os.path.exists(f"{ignition_output_path}/all_satellite_detections.png"):
 plt.savefig(f"{ignition_output_path}/all_satellite_detections.png")
 
 
-def filter_bounds(gdf, bounds):
-    gdf2 = gdf[gdf.LONGITUDE >= bounds[0][0]]
-    gdf2 = gdf2[gdf2.LATITUDE <= bounds[0][1]]
-    gdf2 = gdf2[gdf2.LONGITUDE <= bounds[1][0]]
-    gdf2 = gdf2[gdf2.LATITUDE >= bounds[1][1]]
+def filter_bounds(gdf, north, east, south, west):
+    gdf2 = gdf[gdf.LONGITUDE >= west]
+    gdf2 = gdf2[gdf2.LATITUDE <= north]
+    gdf2 = gdf2[gdf2.LONGITUDE <= east]
+    gdf2 = gdf2[gdf2.LATITUDE >= south]
     return gdf2
 
 
@@ -101,8 +108,7 @@ def filter_time(gdf, time, window=2.0):
     gdf2 = gdf2[gdf2.ACQ_DATETIME <= end_time]
     return gdf2, start_time, end_time
 
-
-gdf = filter_bounds(gdf, bounds)
+gdf = filter_bounds(gdf, north, east, south, west)
 
 fig, ax = plt.subplots(figsize=(8, 8))
 gdf.plot(ax=ax, color='lightblue', edgecolor='blue', alpha=0.5, zorder=1)

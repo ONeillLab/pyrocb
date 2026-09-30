@@ -10,7 +10,7 @@ select profile in "$PCB_OUTPUT_DIR/complete/"*; do
     if [[ -n "$profile" ]]; then
         echo "Analysing: $profile"
         
-        python "$PCB_SCRIPTS_DIR/analysis/fire/perimetre.py" "$profile" "$PCB_OUT_DIR/analysis/"
+        python "$PCB_SCRIPTS_DIR/analysis/fire/perimetre.py" "$PCB_SCRIPTS_DIR/utils" "$profile" "$PCB_OUT_DIR/analysis/"
         
         break # Exits the menu loop after a valid selection
     else

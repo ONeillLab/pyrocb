@@ -1,6 +1,8 @@
 # Sylvio Dos Reis, Micah Yoon, 2026
 # Prompts for and applies the crosswalk generated and saved in out/output/crosswalk. It also runs the convert_geotiff.sh script from wrfxpy
 # If you have previously run the generate_fuel_categories script, the overwritten var_wisdom.py may still exist in its location and may cause issues. See header comment of generate_fuel_categories.py for more details.
+import sys
+_, utils_path, out_path = sys.argv
 
 import json
 import os
@@ -8,14 +10,17 @@ import sys
 import numpy as np
 from osgeo import gdal
 
+sys.path.append(utils_path)
+from geoutils import bound_expansion
 
-path = f"{sys.argv[1]}"
-with open(f'{path}/profile/config.json', 'r') as f:
+with open(f'{out_path}/profile/config.json', 'r') as f:
     data = json.load(f)
     bounds = tuple(data["bounds"])
+north, east, south, west = bound_expansion(( bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
+print(f"North: {north}, East: {east}, South: {south}, West: {west}")
 
 crosswalks = []
-for profile in os.scandir(f"{path}/output/crosswalk"):
+for profile in os.scandir(f"{out_path}/output/crosswalk"):
     if not profile.is_dir():
         continue
     
@@ -49,12 +54,10 @@ with open(crosswalk_path, "r") as f:
             print(f"[WARN] Canadian ID {canadian_id} ({canadian_name.strip()}) is mapped to {us_id}")
         crosswalk[canadian_id] = us_id
 
-input_file = f"{path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
-output_file = f"{path}/data/FBP_fueltypes_Canada_30m/walked_FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
-west, south, = bounds[0]
-east, north = bounds[1]
+input_file = f"{out_path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
+output_file = f"{out_path}/data/FBP_fueltypes_Canada_30m/walked_FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
 
-clipped_file = f"{path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522_clipped.tif"
+clipped_file = f"{out_path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522_clipped.tif"
 if os.path.exists(clipped_file):
     os.remove(clipped_file)
 gdal.Warp(clipped_file, input_file,
@@ -98,5 +101,5 @@ out_ds.GetRasterBand(1).SetNoDataValue(14)
 out_ds = None
 ds = None
 
-os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}/data/geog NFUEL_CAT""")
+os.system(f"""{out_path}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {out_path}/data/geog NFUEL_CAT""")
 

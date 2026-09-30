@@ -6,20 +6,26 @@
 # Common errors include not having a "non fuel" category in fbp.json or the crosswalks, or not using consecutive digits for the US data types. See "a not ewhen using S&B 40 types"
 # A note about "non fuel": make sure the "non fuel" category is the largest number in fbp.json. Commonly used is 9999
 # A note when using the S&B 40 types: S&B 40 types need to be converted to consecutive 1-40 types before running this script (by modifying the crosswalk)
+import sys
+_, utils_path, out_path = sys.argv
 
 import json
 import os
-import sys
 import shutil
 import numpy as np
 from osgeo import gdal
-path = f"{sys.argv[1]}"
+path = f"{out_path}"
 fbp_json_path = f"{path}/profile/fbp.json"
 us_params_path = f"{path}/profile/us_params.csv"
+
+sys.path.append(utils_path)
+from geoutils import bound_expansion
 
 with open(f'{path}/profile/config.json', 'r') as f:
     data = json.load(f)
     bounds = tuple(data["bounds"])
+north, east, south, west = bound_expansion((bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
+print(f"North: {north}, East: {east}, South: {south}, West: {west}")
 
 def compute_species_name(species_arr, key, region=None):
     if region == "Overall":
@@ -154,8 +160,6 @@ for i, can_id in enumerate(ids):
 print(crosswalk)
 input_file = f"{path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
 output_file = f"{path}/data/FBP_fueltypes_Canada_30m/walked_FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif"
-west, south, = bounds[0]
-east, north = bounds[1]
 
 clipped_file = f"{path}/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522_clipped.tif"
 if os.path.exists(clipped_file):
@@ -200,26 +204,26 @@ ds = None
 
 try:
     print("Saving old var_wisdom.py")
-    os.makedirs(f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/', exist_ok=True)
+    os.makedirs(f'{out_path}/temp/.libraries/wrfxpy/src/geo/', exist_ok=True)
     print("Overwritting var_wisdom.py")
-    os.replace(f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py')
-    with open(f'{sys.argv[1]}/../override/wrfxpy/src/geo/var_wisdom.py') as f:
+    os.replace(f'{out_path}/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{out_path}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py')
+    with open(f'{out_path}/../override/wrfxpy/src/geo/var_wisdom.py') as f:
         varwisdom = f.read()
         print(f"{str(len(crosswalk))} FBP types found")
         varwisdom = varwisdom.replace("![NO_DATA]", str(len(crosswalk)))
-    with open(f"{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py", "w+") as f:
+    with open(f"{out_path}/.libraries/wrfxpy/src/geo/var_wisdom.py", "w+") as f:
         f.write(varwisdom)
 
     print("Running convert_geotiff.sh")
-    os.system(f"""{sys.argv[1]}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}/data/geog NFUEL_CAT""")
+    os.system(f"""{out_path}/.libraries/wrfxpy/convert_geotiff.sh {output_file} {path}/data/geog NFUEL_CAT""")
     print("Removing overwritten var_wisdom.py")
-    os.remove(f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py')
+    os.remove(f'{out_path}/.libraries/wrfxpy/src/geo/var_wisdom.py')
 except Exception as e:
     print("Error with custom fuel types")
     print(e)
 finally:
     print("Returning original var_wisdom.py")
-    shutil.copy(f'{sys.argv[1]}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{sys.argv[1]}/.libraries/wrfxpy/src/geo/var_wisdom.py')
+    shutil.copy(f'{out_path}/temp/.libraries/wrfxpy/src/geo/var_wisdom.py', f'{out_path}/.libraries/wrfxpy/src/geo/var_wisdom.py')
 
 print("namelist.fire")
 properties = set()
