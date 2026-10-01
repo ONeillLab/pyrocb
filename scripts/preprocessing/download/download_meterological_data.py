@@ -24,10 +24,10 @@ north, east, south, west = bound_expansion(( bounds[0][1], bounds[0][0]), (bound
 print(f"North: {north}, East: {east}, South: {south}, West: {west}")
 
 actual_bounds = [
-    north, 
-    east,
-    south,
-    west, 
+    north + 5, 
+    east + 5,
+    south - 5,
+    west - 5
 ]
 
 
