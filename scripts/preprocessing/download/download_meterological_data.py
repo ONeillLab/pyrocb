@@ -7,11 +7,13 @@ _, utils_path, out_path = sys.argv
 import cdsapi
 import os
 import json
+import math
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion
 
 GRIB_DIR = os.path.expandvars(f"{out_path}/data/grib")
+DEGREE_BUFFER = 7.5
 os.makedirs(GRIB_DIR, exist_ok=True)
 
 with open(f'{out_path}/profile/config.json', 'r') as f:
@@ -21,15 +23,20 @@ with open(f'{out_path}/profile/config.json', 'r') as f:
     day = data["time"]["day"]
     bounds = data["bounds"]
 north, east, south, west = bound_expansion(( bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
-print(f"North: {north}, East: {east}, South: {south}, West: {west}")
+print(f"Loaded North: {north}, East: {east}, South: {south}, West: {west}")
 
 actual_bounds = [
-    north + 5, 
-    east + 5,
-    south - 5,
-    west - 5
+    math.ceil(north + DEGREE_BUFFER), 
+    math.floor(west - DEGREE_BUFFER),
+    math.floor(south - DEGREE_BUFFER),
+    math.ceil(east + DEGREE_BUFFER)
 ]
 
+if actual_bounds[0] >= 90 or actual_bounds[2] <= -90:
+    actual_bounds[0] = 90
+    actual_bounds[2] = -90
+
+print(f"Downloading from North: {actual_bounds[0]}, West: {actual_bounds[1]}, South: {actual_bounds[2]}, East: {actual_bounds[3]} ({DEGREE_BUFFER} degree buffer from loaded coordinates)")
 
 c = cdsapi.Client()
 # For our simulation, we want to simulate 21-24. But after running this script with days only 21 to 24, I didn't get data for all of 24, only the 0th hour.
