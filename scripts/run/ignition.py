@@ -17,6 +17,7 @@ import f90nml
 
 utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
 out_path = os.environ["PCB_OUT_DIR"]
+os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion
@@ -135,7 +136,7 @@ def to_utc_dt(row):
 
 gdfs = []
 for profile in os.scandir(f"{out_path}/profile/satellite_detection_shapes"):
-    if not profile.is_file or not profile.name.endswith(".shp"):
+    if not profile.is_file() or not profile.name.endswith(".shp"):
         continue
     data = os.path.join(profile.path)
     g = gpd.read_file(data)

@@ -13,6 +13,7 @@ from rasterio.windows import from_bounds, Window, bounds
 from scipy.stats import chi2_contingency
 
 out_path = os.environ["PCB_OUT_DIR"]
+os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
 
 def overlap_window(can, other):
     bounds = transform_bounds(other.crs, can.crs, *other.bounds)

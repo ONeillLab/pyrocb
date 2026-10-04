@@ -84,6 +84,16 @@ You can now process the rest of the data:
 bash scripts/preprocessing/process_all_data.sh
 ```
 
+### Email for SLRUM jobs
+For SLRUM jobs, it is useful to have to have your email saved as an environment variable. For this reason, the ``$PCB_EMAIL`` variable is reserved. To save your email, first create the file in the ``pyrocb`` directory called ``email`` using the following:
+```sh
+nano $PCB_REPO_DIR/email
+```
+and enter solely your email, with no trailing line. Example:
+```
+s.dosreis@mail.utoronto.ca
+```
+
 ## Running WRF
 Verify the ``run-wrf.sh`` script in the selected profile.
 

@@ -134,7 +134,7 @@ print(name)
 wrfouts = {}
 gdfs = []
 for profile in os.scandir(f"{profile}/profile/satellite_detection_shapes"):
-    if not profile.is_file or not profile.name.endswith(".shp"):
+    if not profile.is_file() or not profile.name.endswith(".shp"):
         continue
     data = os.path.join(profile.path)
     g = gpd.read_file(data)

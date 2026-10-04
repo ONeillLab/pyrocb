@@ -9,6 +9,7 @@ import math
 
 utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
 out_path = os.environ["PCB_OUT_DIR"]
+os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion
