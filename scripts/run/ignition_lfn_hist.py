@@ -2,8 +2,6 @@
 # Uses alpha shaped satellite perimeters to generate an ignition matrix that lerps from the ignition_start_time in the config to the first spotted satellite frame.
 
 import sys
-_, utils_path, out_path = sys.argv
-
 import datetime
 import numpy as np
 import pandas as pd
@@ -18,6 +16,9 @@ import sys
 import json
 import f90nml
 import xarray as xr
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion

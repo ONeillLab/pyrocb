@@ -2,13 +2,14 @@
 # Prompts for and applies the crosswalk generated and saved in out/output/crosswalk. It also runs the convert_geotiff.sh script from wrfxpy
 # If you have previously run the generate_fuel_categories script, the overwritten var_wisdom.py may still exist in its location and may cause issues. See header comment of generate_fuel_categories.py for more details.
 import sys
-_, utils_path, out_path = sys.argv
-
 import json
 import os
 import sys
 import numpy as np
 from osgeo import gdal
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion

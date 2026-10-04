@@ -12,6 +12,7 @@ from rasterio.warp import transform as warp_transform
 from rasterio.windows import from_bounds, Window, bounds
 from scipy.stats import chi2_contingency
 
+out_path = os.environ["PCB_OUT_DIR"]
 
 def overlap_window(can, other):
     bounds = transform_bounds(other.crs, can.crs, *other.bounds)
@@ -117,7 +118,7 @@ def save_crosswalk(total, label, out_dir='.'):
         print(f"[{label}] No data to save.")
         return
 
-    path = f"{sys.argv[1]}/output/crosstab/{NAME}/crosswalk_{label}_counts.csv"
+    path = f"{out_path}/output/crosstab/{NAME}/crosswalk_{label}_counts.csv"
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     total.to_csv(path)
@@ -135,18 +136,18 @@ NODATA = -9999
 US_NODATA = 32767
 TILE_SIZE = 2 ** 13
 
-canada_file = sys.argv[1] + '/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif'
-us_an_13_file = sys.argv[1] + '/data/LF2024_FBFM13_CONUS/LF2024_FBFM13_CONUS/Tif/LF2024_FBFM13_CONUS.tif'
-ak_an_13_file = sys.argv[1] + '/data/LF2024_FBFM13_AK/LF2024_FBFM13_AK/Tif/LF2024_FBFM13_AK.tif'
-us_sb_40_file = sys.argv[1] + '/data/LF2024_FBFM40_CONUS/LF2024_FBFM40_CONUS/Tif/LF2024_FBFM40_CONUS.tif'
-ak_sb_40_file = sys.argv[1] + '/data/LF2024_FBFM40_AK/LF2024_FBFM40_AK/Tif/LF2024_FBFM40_AK.tif'
+canada_file = out_path + '/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif'
+us_an_13_file = out_path + '/data/LF2024_FBFM13_CONUS/LF2024_FBFM13_CONUS/Tif/LF2024_FBFM13_CONUS.tif'
+ak_an_13_file = out_path + '/data/LF2024_FBFM13_AK/LF2024_FBFM13_AK/Tif/LF2024_FBFM13_AK.tif'
+us_sb_40_file = out_path + '/data/LF2024_FBFM40_CONUS/LF2024_FBFM40_CONUS/Tif/LF2024_FBFM40_CONUS.tif'
+ak_sb_40_file = out_path + '/data/LF2024_FBFM40_AK/LF2024_FBFM40_AK/Tif/LF2024_FBFM40_AK.tif'
 
-with open(f'{sys.argv[1]}/profile/config.json', 'r') as file:
+with open(f'{out_path}/profile/config.json', 'r') as file:
     data = json.load(file)
     if data["crosswalk_radius"] is not None and data["crosswalk_radius"] != -1:
         RADIUS_KM = data["crosswalk_radius"]
         LONG, LAT = data["center"]
-with open(f"{sys.argv[1]}/profile/profile", 'r') as p:
+with open(f"{out_path}/profile/profile", 'r') as p:
     NAME = p.read().strip()
 print(NAME)
 

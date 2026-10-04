@@ -11,6 +11,8 @@ import sys
 import os
 import numpy as np
 
+out_path = os.environ["PCB_OUT_DIR"]
+
 def save_crosswalk(crosswalk: dict, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     s = "Candian ID, Candian Name, US ID\n" 
@@ -23,7 +25,7 @@ def save_crosswalk(crosswalk: dict, path):
 
 fbp_table_text = ""
 
-with open(f'{sys.argv[1]}/data/FBP_fueltypes_Canada_30m/FBP30_ColorTable.txt', 'r') as f:
+with open(f'{out_path}/data/FBP_fueltypes_Canada_30m/FBP30_ColorTable.txt', 'r') as f:
     fbp_table_text = f.read()
 base_crosswalk = {}
 
@@ -38,7 +40,7 @@ for line in fbp_table_text.strip().split('\n'):
         base_crosswalk[fuel_id]["USIndex"] = -9999
 
 
-crosstab_dir = f"{sys.argv[1]}/output/crosstab"
+crosstab_dir = f"{out_path}/output/crosstab"
 
 profiles = os.scandir(crosstab_dir)
 for profile in profiles:
@@ -58,7 +60,7 @@ for profile in profiles:
             crosstab_text = f.read().strip()
         
         if not crosswalk or crosswalk == "\"\"":
-            save_crosswalk(crosswalk, f"{sys.argv[1]}/output/crosswalk/{label}/{name}")
+            save_crosswalk(crosswalk, f"{out_path}/output/crosswalk/{label}/{name}")
 
         crosstab = crosstab_text.split("\n")
         headers = crosstab[0].strip().split(",")[1::]
@@ -86,4 +88,4 @@ for profile in profiles:
             else: 
                 print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]['name']} ({i}) was not assigned due to uncertain results") 
 
-        save_crosswalk(crosswalk, f"{sys.argv[1]}/output/crosswalk/{label}/{name}")
+        save_crosswalk(crosswalk, f"{out_path}/output/crosswalk/{label}/{name}")

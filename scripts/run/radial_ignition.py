@@ -2,8 +2,6 @@
 # Uses radii around satellite points to generate an ignition matrix that lerps from the ignition_start_time in the config to the first spotted satellite frame.
 
 import sys
-_, utils_path, out_path = sys.argv
-
 import datetime
 import numpy as np
 import pandas as pd
@@ -18,6 +16,9 @@ import f90nml
 from shapely.geometry import Point
 from shapely.ops import transform, unary_union
 from pyproj import CRS, Transformer
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion

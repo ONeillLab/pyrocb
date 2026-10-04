@@ -7,8 +7,6 @@
 # A note about "non fuel": make sure the "non fuel" category is the largest number in fbp.json. Commonly used is 9999
 # A note when using the S&B 40 types: S&B 40 types need to be converted to consecutive 1-40 types before running this script (by modifying the crosswalk)
 import sys
-_, utils_path, out_path = sys.argv
-
 import json
 import os
 import shutil
@@ -17,6 +15,9 @@ from osgeo import gdal
 path = f"{out_path}"
 fbp_json_path = f"{path}/profile/fbp.json"
 us_params_path = f"{path}/profile/us_params.csv"
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion

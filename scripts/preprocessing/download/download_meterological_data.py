@@ -2,12 +2,13 @@
 # Downloads the meterological data from era5
 
 import sys
-_, utils_path, out_path = sys.argv
-
 import cdsapi
 import os
 import json
 import math
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion

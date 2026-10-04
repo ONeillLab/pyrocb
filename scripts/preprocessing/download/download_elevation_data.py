@@ -2,13 +2,14 @@
 # Downloads the high resolution elevation data
 
 import sys
-_, utils_path, out_path = sys.argv
-
 import json
 import os
 import requests
 from osgeo import gdal
 import numpy as np
+
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
 
 sys.path.append(utils_path)
 from geoutils import bound_expansion
