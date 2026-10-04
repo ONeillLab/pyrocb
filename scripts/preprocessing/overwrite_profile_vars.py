@@ -3,6 +3,7 @@
 # ------------ vvvv IMPORTANT vvvv ------------------
 # It is very important that this file be run before any reading of the out/profile directory, incase modifications were made to the profile.
 # ------------ ^^^^ IMPORTANT ^^^^ ------------------
+# Note: this only resolve environment variables in the top level of /profile, not in an subdirectories.
 
 import shutil
 import os
