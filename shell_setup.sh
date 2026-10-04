@@ -36,7 +36,14 @@ export LD_LIBRARY_PATH=${DIR}/netcdf/lib:$DIR/hdf5/lib:$LD_LIBRARY_PATH
 
 if [ -f "$PCB_REPO_DIR/email" ]; then
     export PCB_EMAIL=`cat $PCB_REPO_DIR/email`
+else
+    echo "Email hasn't been provided yet."
 fi
 
-source $DIR/py4wrf/bin/activate
+if [ -f "$DIR/py4wrf/bin/activate" ]; then
+    source $DIR/py4wrf/bin/activate
+else
+    echo "Python environment hasn't been setup yet (if you are still setting up for the first time, you can safely ignore)."
+fi
+
 python $PCB_OVERWRITE_PROFILE_VARS
