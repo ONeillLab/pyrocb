@@ -43,7 +43,7 @@ fi
 if [ -f "$DIR/py4wrf/bin/activate" ]; then
     source $DIR/py4wrf/bin/activate
 else
-    echo "Python environment hasn't been setup yet (if you are still setting up for the first time, you can safely ignore)."
+    echo "Python environment hasn't been setup yet (\"$DIR/py4wrf/bin/activate\" doesn't exist. If you are still setting up for the first time, you can safely ignore)."
 fi
 
 python $PCB_OVERWRITE_PROFILE_VARS
