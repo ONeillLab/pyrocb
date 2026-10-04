@@ -5,12 +5,12 @@
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
-#SBATCH --output=/scratch/su386/pyrocb/out/logs/jasper-2024/%x_%j.out
-#SBATCH --error=/scratch/su386/pyrocb/out/logs/jasper-2024/%x_%j.err
+#SBATCH --output=$PCB_OUT_DIR/logs/jasper-2024/%x_%j.out
+#SBATCH --error=$PCB_OUT_DIR/logs/jasper-2024/%x_%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=s.dosreis@mail.utoronto.ca
+#SBATCH --mail-user=$PCB_EMAIL
 
-source $SCRATCH/pyrocb/alliance_can_shell_setup.sh 
+source $PCB_REPO_DIR/alliance_can_shell_setup.sh 
 module load StdEnv/2023 gcc/12 openmpi/4.1.5
 echo $PCB_OUT_DIR
 
