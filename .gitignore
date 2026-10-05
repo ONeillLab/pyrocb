@@ -4,3 +4,4 @@
 slurm-*.out
 *.pyc
 email
+whimsy/*
