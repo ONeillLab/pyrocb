@@ -1,28 +1,44 @@
 # Sylvio Dos Reis, 2026
 # Downloads the meterological data from era5
 
+import sys
 import cdsapi
 import os
-import sys
 import json
+import math
 
-GRIB_DIR = os.path.expandvars(f"{sys.argv[1]}/data/grib")
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+out_path = os.environ["PCB_OUT_DIR"]
+os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
+
+sys.path.append(utils_path)
+from geoutils import bound_expansion
+
+GRIB_DIR = os.path.expandvars(f"{out_path}/data/grib")
+DEGREE_BUFFER = 7.5
 os.makedirs(GRIB_DIR, exist_ok=True)
 
-with open(f'{sys.argv[1]}/profile/config.json', 'r') as f:
+with open(f'{out_path}/profile/config.json', 'r') as f:
     data = json.load(f)
     year = data["time"]["year"]
     month = data["time"]["month"]
     day = data["time"]["day"]
     bounds = data["bounds"]
+north, east, south, west = bound_expansion(( bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
+print(f"Loaded North: {north}, East: {east}, South: {south}, West: {west}")
 
 actual_bounds = [
-    int(bounds[0][1] - 10), 
-    int(bounds[0][0] - 10),
-    int(bounds[1][1] + 10),
-    int(bounds[1][0] + 10), 
+    math.ceil(north + DEGREE_BUFFER), 
+    math.floor(west - DEGREE_BUFFER),
+    math.floor(south - DEGREE_BUFFER),
+    math.ceil(east + DEGREE_BUFFER)
 ]
 
+if actual_bounds[0] >= 90 or actual_bounds[2] <= -90:
+    actual_bounds[0] = 90
+    actual_bounds[2] = -90
+
+print(f"Downloading from North: {actual_bounds[0]}, West: {actual_bounds[1]}, South: {actual_bounds[2]}, East: {actual_bounds[3]} ({DEGREE_BUFFER} degree buffer from loaded coordinates)")
 
 c = cdsapi.Client()
 # For our simulation, we want to simulate 21-24. But after running this script with days only 21 to 24, I didn't get data for all of 24, only the 0th hour.
@@ -68,7 +84,7 @@ request1 = {
     ],
     "data_format": "grib",
     "download_format": "unarchived",
-    'area': actual_bounds #North, West, South, East of largest domain. Add 5 degree buffer
+    'area': actual_bounds #North, East, South, West of largest domain. Add 5 degree buffer
 }
 target1 = f"{GRIB_DIR}/era5_single_levels.grib"
 
@@ -116,7 +132,7 @@ request2 = {
     ],
     "data_format": "grib",
     "download_format": "unarchived",
-    'area': actual_bounds #North, West, South, East of largest domain. Add 5 degree buffer
+    'area': actual_bounds #North, East, South, West of largest domain. Add 5 degree buffer
 }
 
 target2 = f"{GRIB_DIR}/era5_pressure_levels.grib"

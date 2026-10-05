@@ -12,10 +12,13 @@ select profile in "$PCB_PROFILES_DIR"/*/; do
         
         # Links the selected profile to out/profile
         rm -rf $PCB_OUT_DIR/profile
-        ln -s $profile $PCB_OUT_DIR/profile
+        rm -rf $PCB_OUT_DIR/profile_ln
+        ln -s $profile $PCB_OUT_DIR/profile_ln
         
         break # Exits the menu loop after a valid selection
     else
         echo "Invalid selection. Please try again."
     fi
 done
+
+python $PCB_OVERWRITE_PROFILE_VARS

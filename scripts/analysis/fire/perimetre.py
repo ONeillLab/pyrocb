@@ -1,5 +1,7 @@
 # Sylvio Dos Reis, 2026
 # Plots the observed satellite fire perimeter and simulated fire perimeter by frame. Then combines each frame into a gif
+import sys
+_, utils_path, profile, analysis_path = sys.argv
 
 import os
 import json
@@ -13,9 +15,11 @@ from netCDF4 import Dataset
 import imageio.v2 as imageio
 from alpha_shapes.alpha_shapes import Alpha_Shaper
 
-directory = sys.argv[1]
-print(directory)
-analysis_dir = f"{sys.argv[2]}{os.path.basename(directory)}"
+sys.path.append(utils_path)
+from geoutils import bound_expansion
+
+print(profile)
+analysis_dir = f"{analysis_path}{os.path.basename(profile)}"
 print(analysis_dir)
 gif_timestep = 1/6
 gif_fps = 3
@@ -118,17 +122,19 @@ def alpha_shape_from_points(points_gdf, min_points=4):
 
 # --- Load config & satellite detections --------------------------------------
 bounds = ()
-with open(f"{directory}/profile/config.json", 'r') as f:
+with open(f"{profile}/profile/config.json", 'r') as f:
     data = json.load(f)
     bounds = tuple(data["bounds"])
-with open(f"{directory}/profile/profile", 'r') as p:
+with open(f"{profile}/profile/profile", 'r') as p:
     name = p.read().strip()
+north, east, south, west = bound_expansion((bounds[0][1], bounds[0][0]), (bounds[1][1], bounds[1][0]))
+print(f"North: {north}, East: {east}, South: {south}, West: {west}")
 print(name)
 
 wrfouts = {}
 gdfs = []
-for profile in os.scandir(f"{directory}/profile/satellite_detection_shapes"):
-    if not profile.is_file or not profile.name.endswith(".shp"):
+for profile in os.scandir(f"{profile}/profile/satellite_detection_shapes"):
+    if not profile.is_file() or not profile.name.endswith(".shp"):
         continue
     data = os.path.join(profile.path)
     g = gpd.read_file(data)
@@ -153,15 +159,15 @@ plt.savefig(f"{perimeter_output_path}/all_satellite_detections.png")
 plt.close(fig)
 
 
-def filter_bounds(gdf, bounds):
-    gdf2 = gdf[gdf.LONGITUDE >= bounds[0][0]]
-    gdf2 = gdf2[gdf2.LATITUDE <= bounds[0][1]]
-    gdf2 = gdf2[gdf2.LONGITUDE <= bounds[1][0]]
-    gdf2 = gdf2[gdf2.LATITUDE >= bounds[1][1]]
+def filter_bounds(gdf, north, east, south, west):
+    gdf2 = gdf[gdf.LONGITUDE >= west]
+    gdf2 = gdf2[gdf2.LATITUDE <= north]
+    gdf2 = gdf2[gdf2.LONGITUDE <= east]
+    gdf2 = gdf2[gdf2.LATITUDE >= south]
     return gdf2
 
 
-gdf = filter_bounds(gdf, bounds)
+gdf = filter_bounds(gdf, north, east, south, west)
 
 fig, ax = plt.subplots(figsize=(8, 8))
 gdf.plot(ax=ax, color='lightblue', edgecolor='blue', alpha=0.5, zorder=1)
@@ -177,7 +183,7 @@ plt.close(fig)
 
 # --- Index available wrfout files by time -------------------------------------
 format_string = '%Y-%m-%d_%H:%M:%S'
-for out_file in os.scandir(directory):
+for out_file in os.scandir(profile):
     if not out_file.is_file():
         continue
     if not out_file.name.startswith("wrfout_d03"):
@@ -193,7 +199,7 @@ end_time = max(wrfouts.values())
 # backdrop on the heat-flux panel (mirrors the `first_run` step in the
 # comparison script).
 earliest_file = min(wrfouts, key=wrfouts.get)
-with Dataset(os.path.join(directory, earliest_file)) as ds0:
+with Dataset(os.path.join(profile, earliest_file)) as ds0:
     ignition = read_var(ds0, 'TIGN_G')
 ignition = relax_zone_remover(ignition, SR)
 ignition_masked = np.ma.masked_where(ignition >= 1e6, ignition)
@@ -223,7 +229,7 @@ while current_time <= end_time:
 
     print(f"Frame: {current_time}, wrfout: {closest_wrfout[1]}, satellite: {most_recent_satellite_time}")
 
-    with Dataset(os.path.join(directory, closest_wrfout[0])) as ds:
+    with Dataset(os.path.join(profile, closest_wrfout[0])) as ds:
         # Atmospheric grid coords (degrees lat/lon for real data — NOT km)
         xlon = read_var(ds, 'XLONG')   # (south_north, west_east)
         xlat = read_var(ds, 'XLAT')

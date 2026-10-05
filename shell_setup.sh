@@ -9,6 +9,7 @@ export PCB_OUTPUT_DIR="$PCB_OUT_DIR/output"
 export PCB_LOGS_DIR="$PCB_OUT_DIR/logs"
 export PCB_PRE_DIR="$PCB_OUT_DIR/preprocessing"
 export PCB_DATA_DIR="$PCB_OUT_DIR/data"
+export PCB_OVERWRITE_PROFILE_VARS="$PCB_SCRIPTS_DIR/preprocessing/overwrite_profile_vars.py"
 echo ""
 mkdir -p $PCB_OUT_DIR
 mkdir -p $PCB_INPUT_DIR
@@ -32,4 +33,17 @@ export HDF5=$DIR/hdf5/lib
 export LDFLAGS="-L$DIR/grib2/lib -L${DIR}/hdf5/lib -L${DIR}/netcdf/lib"
 export CPPFLAGS="-I$DIR/grib2/include -I${DIR}/hdf5/include -I${DIR}/netcdf/include"
 export LD_LIBRARY_PATH=${DIR}/netcdf/lib:$DIR/hdf5/lib:$LD_LIBRARY_PATH
-source $DIR/py4wrf/bin/activate
+
+if [ -f "$PCB_REPO_DIR/email" ]; then
+    export PCB_EMAIL=`cat $PCB_REPO_DIR/email`
+else
+    echo "Email hasn't been provided yet."
+fi
+
+if [ -f "$DIR/py4wrf/bin/activate" ]; then
+    source $DIR/py4wrf/bin/activate
+else
+    echo "Python environment hasn't been setup yet (\"$DIR/py4wrf/bin/activate\" doesn't exist. If you are still setting up for the first time, you can safely ignore)."
+fi
+
+python $PCB_OVERWRITE_PROFILE_VARS

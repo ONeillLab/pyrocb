@@ -2,3 +2,6 @@
 **/.DS_Store
 .env
 slurm-*.out
+*.pyc
+email
+whimsy/*
