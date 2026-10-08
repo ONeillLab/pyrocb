@@ -30,6 +30,8 @@ if os.path.exists(profile_ln_path):
                     if not lines[i].startswith("#"):
                         continue
                     for match in re.findall("\\$(\\w+)", lines[i]):
+                        if match not in os.environ:
+                            continue
                         lines[i] = lines[i].replace(f"${match}", os.environ[match])
                         env_vars_replaced += 1
                 s = "".join(lines)
@@ -38,6 +40,8 @@ if os.path.exists(profile_ln_path):
                 f.seek(0)
                 s = f.read()
                 for match in re.findall("\\$(\\w+)", s):
+                    if match not in os.environ:
+                        continue
                     s = s.replace(f"${match}", os.environ[match])
                     env_vars_replaced += 1
 
