@@ -14,12 +14,12 @@ profile_path = f"{os.environ['PCB_OUT_DIR']}/profile"
 
 env_vars_replaced = 0
 if os.path.exists(profile_path):
-    shutil.rmtree(profile_path)
+    shutil.rmtree(profile_path, ignore_errors=True)
 if os.path.exists(profile_ln_path):
     for path in os.scandir(f"{os.environ['PCB_OUT_DIR']}/profile_ln"):
         new_path = os.path.join(profile_path, os.path.relpath(path.path, profile_ln_path))
         os.makedirs(os.path.dirname(new_path), exist_ok=True)
-        if not path.is_file() :
+        if not path.is_file():
             os.symlink(path.path, new_path)
             continue
         if path.path.endswith(".sh"):
