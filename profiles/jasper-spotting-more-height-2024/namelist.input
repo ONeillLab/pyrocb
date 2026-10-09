@@ -40,7 +40,7 @@
  max_dom                             = 3,
  e_we                                = 300,  301,  301,
  e_sn                                = 300,  301,  301,
- e_vert                              = 100,   100,   100,	
+ e_vert                              = 150,   150,   150,	
  p_top_requested                     = 5000,		
  num_metgrid_levels                  = 38,		
  num_metgrid_soil_levels             = 4,		
