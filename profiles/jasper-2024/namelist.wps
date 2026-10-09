@@ -34,11 +34,11 @@
 
 &ungrib
  out_format           = 'WPS'
- prefix               = '$PCB_OUT_DIR/output/jasper-2024/met_em/FILE'
+ prefix               = '$PCB_OUT_DIR/output/$PROFILE/met_em/FILE'
 /
 
 &metgrid
- fg_name              = '$PCB_OUT_DIR/output/jasper-2024/met_em/FILE'
+ fg_name              = '$PCB_OUT_DIR/output/$PROFILE/met_em/FILE'
  io_form_metgrid      = 2
  opt_metgrid_tbl_path = '$PCB_OUT_DIR/WPS/metgrid/'
 /
