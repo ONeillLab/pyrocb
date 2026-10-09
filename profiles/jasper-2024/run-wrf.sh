@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
-#SBATCH --job-name=wrf_jasper_wrf_t1
+#SBATCH --job-name=wrf_$PROFILE_wrf_t1
 #SBATCH --time=24:00:00
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
-#SBATCH --output=$PCB_OUT_DIR/logs/jasper-2024/%x_%j.out
-#SBATCH --error=$PCB_OUT_DIR/logs/jasper-2024/%x_%j.err
+#SBATCH --output=$PCB_OUT_DIR/logs/$PROFILE/%x_%j.out
+#SBATCH --error=$PCB_OUT_DIR/logs/$PROFILE/%x_%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=$PCB_EMAIL
 
