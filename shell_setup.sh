@@ -40,6 +40,13 @@ else
     echo "Email hasn't been provided yet."
 fi
 
+if [ -f "$PCB_OUT_DIR/profile/profile" ]; then
+    export PROFILE=`cat $PCB_OUT_DIR/profile/profile`
+    echo "Current profile: \"$PROFILE\""
+else
+    echo "No profile currently selected."
+fi
+
 if [ -f "$DIR/py4wrf/bin/activate" ]; then
     source $DIR/py4wrf/bin/activate
 else

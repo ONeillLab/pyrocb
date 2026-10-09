@@ -15,10 +15,18 @@ select profile in "$PCB_PROFILES_DIR"/*/; do
         rm -rf $PCB_OUT_DIR/profile_ln
         ln -s $profile $PCB_OUT_DIR/profile_ln
         
+        python $PCB_OVERWRITE_PROFILE_VARS
+
+        if [ -f "$PCB_OUT_DIR/profile/profile" ]; then
+            export PROFILE=`cat $PCB_OUT_DIR/profile/profile`
+            echo "Current profile: \"$PROFILE\""
+        else
+            echo "No profile currently selected."
+        fi
+
         break # Exits the menu loop after a valid selection
     else
         echo "Invalid selection. Please try again."
     fi
 done
 
-python $PCB_OVERWRITE_PROFILE_VARS
