@@ -133,10 +133,10 @@ print(name)
 
 wrfouts = {}
 gdfs = []
-for profile in os.scandir(f"{profile}/profile/satellite_detection_shapes"):
-    if not profile.is_file() or not profile.name.endswith(".shp"):
+for shape in os.scandir(f"{profile}/profile/satellite_detection_shapes"):
+    if not shape.is_file() or not shape.name.endswith(".shp"):
         continue
-    data = os.path.join(profile.path)
+    data = os.path.join(shape.path)
     g = gpd.read_file(data)
     g["ACQ_DATETIME"] = g.apply(to_utc_dt, axis=1)
     gdfs.append(g)
