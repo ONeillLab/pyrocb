@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
-#SBATCH --job-name=wrf_$PROFILE_wrf_t1
+#SBATCH --job-name=wrf_$PROFILE
 #SBATCH --time=24:00:00
 #SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
