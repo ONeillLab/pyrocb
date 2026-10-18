@@ -14,7 +14,7 @@
  end_hour                            = 12,   12,   12,
  interval_seconds                    = 3600,
  input_from_file                     = .true., .true., .true.,
- history_interval                    = 10,   10,   10,
+ history_interval                    = 30,   60,   60,
  ! how often wrf writes output to the wrfout files in mins
  history_outname = '$PCB_OUT_DIR/output/$PROFILE/history/wrfout_d<domain>_<date>'
  ! Set output locations
@@ -31,6 +31,12 @@
  ! format of input files
  io_form_boundary                    = 2,		
  ! format of wrfbdy files (boundary conditions)
+ auxhist2_outname = '$PCB_OUT_DIR/output/$PROFILE/output/history/wrfout_d<domain>_<date>'
+ auxhist2_interval = 10,10,10,
+ frames_per_auxhist2 = 1,1,1,
+ io_form_auxhist2 = 2
+ iofields_filename = "aux_vars_d01.txt","aux_vars_d02.txt","aux_vars_d03.txt"
+ ignore_iofields_warning = .true.,
  /
 
  &domains

@@ -18,6 +18,7 @@ ln -sf $PCB_INPUT_DIR/$PROFILE/namelist.input .
 ln -sf $PCB_OUT_DIR/profile/namelist.fire .
 ln -sf $PCB_OUT_DIR/profile/namelist.fire $PCB_OUTPUT_DIR/$PROFILE/wrfout/
 ln -sf $PCB_OUT_DIR/profile/namelist.fire $PCB_OUTPUT_DIR/$PROFILE/real_em/
+ln -sf $PCB_OUT_DIR/profile/ $PCB_OUTPUT_DIR/$PROFILE/real_em/
 ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d01.nc .
 ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d02.nc .
 ln -sf $PCB_OUTPUT_DIR/$PROFILE/geo_em/geo_em.d03.nc .
