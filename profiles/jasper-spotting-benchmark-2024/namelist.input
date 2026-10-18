@@ -20,12 +20,12 @@
  ! Set output locations
  frames_per_outfile                  = 1,    1,    1,	
  ! how many output timesteps go into each wrfout file
- ! restart                             = .false.,
- ! restart_interval                    = 510,
+  restart                             = .false.,
+  restart_interval                    = 99999,
  ! how often wrf writes a restart file in mins
  io_form_history                     = 2,		
  ! format of wrfout output files as NetCDF
-!  io_form_restart                     = 2,		
+  io_form_restart                     = 2,		
  ! format of restart files
  io_form_input                       = 2,		
  ! format of input files
