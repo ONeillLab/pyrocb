@@ -133,8 +133,8 @@
  ifire                               = 0, 0, 2,
  fire_num_ignitions                  = 0, 0, 0,
  fire_is_real_perim                  = .false., .false., .true.,
- fire_perimeter_time                 = 0.0, 0.0, 53580,
- fire_tign_in_time                   = 0.0, 0.0, 53580,
+ fire_perimeter_time                 = 0.0, 0.0, 17940,
+ fire_tign_in_time                   = 0.0, 0.0, 18000,
  
  fire_ignition_start_lon1 = 0, 0, -117.95,
  fire_ignition_start_lat1 = 0, 0, 52.7,
