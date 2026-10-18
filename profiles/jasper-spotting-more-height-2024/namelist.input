@@ -31,7 +31,7 @@
  ! format of input files
  io_form_boundary                    = 2,		
  ! format of wrfbdy files (boundary conditions)
- auxhist2_outname = '$PCB_OUT_DIR/output/$PROFILE/output/history/wrfout_d<domain>_<date>'
+ auxhist2_outname = '$PCB_OUT_DIR/output/$PROFILE/history/wrfout_d<domain>_<date>'
  auxhist2_interval = 10,10,10,
  frames_per_auxhist2 = 1,1,1,
  io_form_auxhist2 = 2
@@ -46,7 +46,7 @@
  max_dom                             = 3,
  e_we                                = 300,  301,  301,
  e_sn                                = 300,  301,  301,
- e_vert                              = 250,  250,  250,	
+ e_vert                              = 175,  175  175,	
  p_top_requested                     = 5000,		
  num_metgrid_levels                  = 38,		
  num_metgrid_soil_levels             = 4,		
