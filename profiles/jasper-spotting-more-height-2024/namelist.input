@@ -1,7 +1,7 @@
 ! reduce hours to test tign
  &time_control
  run_days                            = 1,
- run_hours                           = 13,
+ run_hours                           = 12,
  run_minutes                         = 0,
  run_seconds                         = 0,
  start_year                          = 2024, 2024, 2024,
@@ -10,7 +10,7 @@
  start_hour                          = 0,   0,   0,
  end_year                            = 2024, 2024, 2024,
  end_month                           = 07,   07,   07,
- end_day                             = 23,   23,   23,
+ end_day                             = 24,   24,   24,
  end_hour                            = 12,   12,   12,
  interval_seconds                    = 3600,
  input_from_file                     = .true., .true., .true.,
@@ -40,7 +40,7 @@
  max_dom                             = 3,
  e_we                                = 300,  301,  301,
  e_sn                                = 300,  301,  301,
- e_vert                              = 150,   150,   150,	
+ e_vert                              = 250,  250,  250,	
  p_top_requested                     = 5000,		
  num_metgrid_levels                  = 38,		
  num_metgrid_soil_levels             = 4,		
@@ -124,7 +124,7 @@
  ! 3rd order vertical scalar advection
  gwd_opt                             = 1,
  tke_adv_opt                         = 2, 2, 2,
- tracer_opt                          = 2, 2, 2,
+ tracer_opt                          = 3, 3, 3,
  epssm                               = 0.5,	0.5,	0.5,
  ! time off-centering for vertical sound waves
 /
@@ -135,6 +135,14 @@
  fire_is_real_perim                  = .false., .false., .true.,
  fire_perimeter_time                 = 0.0, 0.0, 53580,
  fire_tign_in_time                   = 0.0, 0.0, 53580,
+ 
+ fire_ignition_start_lon1 = 0, 0, -117.95,
+ fire_ignition_start_lat1 = 0, 0, 52.7,
+ fire_ignition_end_lon1   = 0, 0, -117.95,
+ fire_ignition_end_lat1   = 0, 0, 52.7,
+ fire_ignition_radius1    = 0, 0, 200,
+ fire_ignition_start_time1 = 0, 0, 53580,
+ fire_ignition_end_time1  = 0, 0, 53640,
  
  ! Fuel configurations (Set -1 to ensure fuel reads from your real WPS input data)
  fire_fuel_read                      = 0, 0, -1,
@@ -161,7 +169,9 @@
  fire_lsm_zcoupling                   = .true., .true.,
  fire_lsm_zcoupling_ref               = 60, 60,
  fire_is_real_perim                   = .true., .true.,
- 
+
+ !Firebrand Spotting
+ fs_firebrand_gen_dt = 5,
  /
 
  &bdy_control
@@ -177,8 +187,8 @@
  /
 
  &namelist_quilt
- nio_tasks_per_group                 = 0,		
+ nio_tasks_per_group                 = 2
  ! How many dedicated CPU cores handle reading/writing output files. 0 means the compute cores handle I/O
- nio_groups                          = 1,		
+ nio_groups                          = 8,		
  ! num I/O groups
  /

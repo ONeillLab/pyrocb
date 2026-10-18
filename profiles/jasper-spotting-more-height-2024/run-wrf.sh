@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
 #SBATCH --job-name=wrf_$PROFILE
-#SBATCH --time=48:00:00
-#SBATCH --nodes=4
+#SBATCH --time=30:00:00
+#SBATCH --nodes=5
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
 #SBATCH --output=$PCB_OUT_DIR/logs/$PROFILE/%x_%j.out
