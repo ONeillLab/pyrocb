@@ -20,6 +20,8 @@ echo $PROFILE
 # Remove old history files. Make sure you saved files before!
 cd $PCB_OUTPUT_DIR/$PROFILE/history
 rm -rf wrfout_d0*
+cd $PCB_OUTPUT_DIR/$PROFILE/history/full
+rm -rf wrfout_d0*
 
 cd $PCB_OUTPUT_DIR/$PROFILE/wrfout
 rm -f rsl.error.* rsl.out.*
