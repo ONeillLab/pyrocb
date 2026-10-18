@@ -19,6 +19,7 @@ mkdir -p $PCB_LOGS_DIR/$PROFILE
 # Directories for wrf.exe output
 mkdir -p $PCB_OUTPUT_DIR/$PROFILE/wrfout
 mkdir -p $PCB_OUTPUT_DIR/$PROFILE/history
+mkdir -p $PCB_OUTPUT_DIR/$PROFILE/history/full
 
 cd $PCB_INPUT_DIR/$PROFILE
 ln -sf $PCB_OUT_DIR/WPS/geogrid/geogrid.exe
