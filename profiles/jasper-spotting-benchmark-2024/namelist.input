@@ -23,7 +23,7 @@
  ! restart                             = .false.,
  ! restart_interval                    = 510,
  ! how often wrf writes a restart file in mins
-! io_form_history                     = 2,		
+ io_form_history                     = 2,		
  ! format of wrfout output files as NetCDF
 !  io_form_restart                     = 2,		
  ! format of restart files
