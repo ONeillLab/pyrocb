@@ -17,3 +17,4 @@ bash $PCB_SCRIPTS_DIR/setup/libraries/netcdf-fortran.sh 2>&1 | tee "$PCB_LOGS_DI
 bash $PCB_SCRIPTS_DIR/setup/libraries/mpich.sh 2>&1 | tee "$PCB_LOGS_DIR/libraries/mpich.log"
 bash $PCB_SCRIPTS_DIR/setup/libraries/wrfxpy.sh 2>&1 | tee "$PCB_LOGS_DIR/libraries/wrfxpy.log"
 bash $PCB_SCRIPTS_DIR/setup/libraries/geog.sh 2>&1 | tee "$PCB_LOGS_DIR/libraries/geog.log"
+bash $PCB_SCRIPTS_DIR/setup/libraries/fuel_data.sh 2>&1 | tee "$PCB_LOGS_DIR/libraries/fuel_data.log"
