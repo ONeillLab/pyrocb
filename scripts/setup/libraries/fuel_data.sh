@@ -28,4 +28,3 @@ wget "https://www.landfire.gov/data-downloads/AK_LF2024/LF2024_FBFM40_AK.zip" -O
 mkdir "$PCB_DATA_DIR/LF2024_FBFM40_AK"
 unzip -n -d "$PCB_DATA_DIR/LF2024_FBFM40_AK" "$PCB_DATA_DIR/LF2024_FBFM40_AK.zip"
 rm -rf "$PCB_DATA_DIR/LF2024_FBFM40_AK.zip"
-
