@@ -262,8 +262,8 @@ while current_time <= end_time:
             alpha_gdf.plot(ax=ax1, edgecolor='lime', facecolor='none', alpha=0.85, linewidth=1.5, zorder=2)
             ax1.plot([], [], color='lime', label=f'satellite alpha-shape footprint ({satellite_time} $\pm$ 01:00, {satellites})')
 
-        qv = wind_plot(ax1, ds, xlon, xlat, WIND_LEVEL, QUIVER_SKIP, color='white')
-        plt.quiverkey(qv, 0.82, 0.95, U=10, label='10 m/s', labelpos='E', coordinates='figure', color='k')
+        # qv = wind_plot(ax1, ds, xlon, xlat, WIND_LEVEL, QUIVER_SKIP, color='white')
+        # plt.quiverkey(qv, 0.82, 0.95, U=10, label='10 m/s', labelpos='E', coordinates='figure', color='k')
 
         fire_perimeter_plot(ax1, xf, yf, lfn, color=linecolor, label=tag, zorder= 4)
 
