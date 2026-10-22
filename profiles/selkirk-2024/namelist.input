@@ -133,7 +133,7 @@
  ifire                               = 0, 0, 1,
  fire_num_ignitions                  = 0, 0, 0,
  fire_is_real_perim                  = .false., .false., .true.,
- fire_perimeter_time                 = 0.0, 0.0, 32400, !9*3600 = 32400
+ fire_perimeter_time                 = 0.0, 0.0, 150, !9*3600 = 32400
 
  ! Fuel configurations (Set -1 to ensure fuel reads from your real WPS input data)
  fire_fuel_read                      = 0, 0, -1,
