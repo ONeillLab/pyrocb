@@ -5,16 +5,19 @@
 # ------------ ^^^^ IMPORTANT ^^^^ ------------------
 # Note: this only resolve environment variables in the top level of /profile, not in an subdirectories.
 
-import shutil
 import os
 import re
+import sys
 
+utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
+sys.path.append(utils_path)
+from fileutils import rm_recursive
 profile_ln_path = f"{os.environ['PCB_OUT_DIR']}/profile_ln"
 profile_path = f"{os.environ['PCB_OUT_DIR']}/profile"
 
 env_vars_replaced = 0
 if os.path.exists(profile_path):
-    shutil.rmtree(profile_path, ignore_errors=True)
+    rm_recursive(profile_path)
 if os.path.exists(profile_ln_path):
     for path in os.scandir(f"{os.environ['PCB_OUT_DIR']}/profile_ln"):
         new_path = os.path.join(profile_path, os.path.relpath(path.path, profile_ln_path))
