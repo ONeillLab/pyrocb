@@ -124,7 +124,7 @@
  ! 3rd order vertical scalar advection
  gwd_opt                             = 1,
  tke_adv_opt                         = 2, 2, 2,
- tracer_opt                          = 2, 2, 2,
+ tracer_opt                          = 3, 3, 3,
  epssm                               = 0.5,	0.5,	0.5,
  ! time off-centering for vertical sound waves
 /
