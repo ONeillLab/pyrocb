@@ -15,7 +15,7 @@ out_path = os.environ["PCB_OUT_DIR"]
 
 def save_crosswalk(crosswalk: dict, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    s = "Candian ID, Candian Name, US ID\n" 
+    s = "Canadian ID, Canadian Name, US ID\n" 
     for en, val in crosswalk.items():
         s += f"{en}, {val['name']}, {val['USIndex']}\n"
     
