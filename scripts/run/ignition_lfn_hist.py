@@ -270,7 +270,7 @@ t_end = (ignition_time - run_start_utc).total_seconds()
 print(f"t_start = {t_start}s ({ignition_start_time})")
 print(f"t_end   = {t_end}s ({ignition_time})")
 if t_start > t_end:
-    print("[WARNING] ")
+    print("[WARNING] Ignition start time is after end time")
 gradual_growth_tign = t_end - (t_end - t_start) * normalized_depth
 
 
