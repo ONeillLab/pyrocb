@@ -24,6 +24,8 @@ os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
 sys.path.append(utils_path)
 from geoutils import bound_expansion
 
+INFTY = 9.99e6
+
 bounds = ()
 with open(f'{out_path}/profile/config.json', 'r') as f:
     data = json.load(f)
@@ -267,13 +269,14 @@ t_end = (ignition_time - run_start_utc).total_seconds()
 
 print(f"t_start = {t_start}s ({ignition_start_time})")
 print(f"t_end   = {t_end}s ({ignition_time})")
-
+if t_start > t_end:
+    print("[WARNING] ")
 gradual_growth_tign = t_end - (t_end - t_start) * normalized_depth
 
 
 # Map values into TIGN_G layout and save
 
-tign_new = np.full(tign.shape, 9.99e6)
+tign_new = np.full(tign.shape, INFTY) 
 
 # Ignore the last srx 
 valid = tign_new[:fire_ny, :fire_nx]
@@ -281,10 +284,10 @@ valid[mask] = gradual_growth_tign[mask]
 tign_new[:fire_ny, :fire_nx] = valid
 
 
-max_ig = np.nanmax(valid[mask])
-lfn = xr.where(tign_new<10**9, ((tign_new - max_ig)/max_ig) , 1)
-lfn = xr.where(np.abs(lfn)<0.2, 0 , lfn)
-
+max_ig = np.max(tign_new, where=(tign_new < INFTY), initial=-np.inf)
+min_ig = np.min(tign_new, where=(tign_new < INFTY), initial=np.inf)
+lfn = xr.where(tign_new < INFTY, ((tign_new - max_ig)/(max_ig - min_ig)), 1)
+lfn = xr.where((np.abs(lfn) < 0.2) & (lfn != 1), 0 , lfn)
 
 fuel = read_wrffile('NFUEL_CAT', wrfin)
 fuel = xr.where(lfn<0, 14, fuel)

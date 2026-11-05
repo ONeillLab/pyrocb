@@ -7,7 +7,7 @@
     ],
     "tiles": ["083C", "083D", "083E", "083F"],
     "run_start_time": "2024-07-22_20:00:00",
-    "ignition_start_time": "2024-07-23_07:00:00",
+    "ignition_start_time": "2024-07-23_04:00:00",
     "time": {
         "year": ["2024"],
         "month": ["07"],
