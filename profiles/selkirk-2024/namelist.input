@@ -14,7 +14,7 @@
  end_hour                            = 22,   22,   22,
  interval_seconds                    = 3600,
  input_from_file                     = .true., .true., .true.,
- history_interval                    = 60,   60,   20,
+ history_interval                    = 10,   10,   10,
  ! how often wrf writes output to the wrfout files in mins
  history_outname = '$PCB_OUT_DIR/output/selkirk-2024/history/wrfout_d<domain>_<date>'
  ! Set output locations
