@@ -47,7 +47,6 @@ with open(fbp_json_path, "r") as f:
 
 # Get Unique regions
 for id_str, obj in fbp.items():
-    i = int(id_str)
     if "species" not in obj:
         continue
     for specie in obj["species"]:
@@ -119,7 +118,6 @@ cad_fuel_counts = {}
 crosstab_data = np.loadtxt(crosstab_path, skiprows=1, delimiter=",")
 for i, category in enumerate(crosstab_data[:, 0]):
     cad_fuel_counts[category] = np.sum(crosstab_data[i,1:])
-print(cad_fuel_counts)
 
 us_fuel_dict = {}
 with open(crosswalk_path, "r") as crosswalk:
@@ -128,8 +126,6 @@ with open(crosswalk_path, "r") as crosswalk:
         cad_id, _, us_id = line.strip().split(",")
         us_id = int(us_id.strip())
         cad_id = int(cad_id.strip())
-        print(us_id)
-        print(cad_id)
         
         if str(cad_id) not in fbp:
             print(cad_id, "not in fbp")
@@ -151,13 +147,12 @@ with open(crosswalk_path, "r") as crosswalk:
                     us_fuel_dict[k][us_id]["weights"] += cad_fuel_counts.get(cad_id, 0)
             else: 
                 if key not in us_fuel_dict:
-                    us_fuel_dict[k] = {}
+                    us_fuel_dict[key] = {}
                 if us_id not in us_fuel_dict[key]:
                     us_fuel_dict[key][us_id] = {}
                     us_fuel_dict[key][us_id]["weighted_vals"] = 0
                     us_fuel_dict[key][us_id]["weights"] = 0
                     
-                print(val)
                 us_fuel_dict[key][us_id]["weighted_vals"] += cad_fuel_counts.get(cad_id, 0) * val
                 us_fuel_dict[key][us_id]["weights"] += cad_fuel_counts.get(cad_id, 0)
 

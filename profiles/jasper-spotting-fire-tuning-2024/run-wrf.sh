@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=def-oneill
 #SBATCH --job-name=wrf_$PROFILE
-#SBATCH --time=30:00:00
-#SBATCH --nodes=5
+#SBATCH --time=20:00:00
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=192
 #SBATCH --mem=0
 #SBATCH --output=$PCB_OUT_DIR/logs/$PROFILE/%x_%j.out
@@ -19,6 +19,8 @@ echo $PROFILE
 
 # Remove old history files. Make sure you saved files before!
 cd $PCB_OUTPUT_DIR/$PROFILE/history
+rm -rf wrfout_d0*
+cd $PCB_OUTPUT_DIR/$PROFILE/history/full
 rm -rf wrfout_d0*
 
 cd $PCB_OUTPUT_DIR/$PROFILE/wrfout

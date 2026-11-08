@@ -1,7 +1,7 @@
 category, FBFM1, FBFM2, FBFM3, FBFM4, FBFM5, FBFM6, FBFM7, FBFM8, FBFM9, FBFM10, FBFM11, FBFM12, FBFM13, FBFM14, Description
-fgi, 0.166, 0.896, 0.674, 3.591, 0.74, 1.344, 1.091, 1.120, 0.780, 2.692, 2.582, 7.749, 13.024, 0.00, Wind reduction factor
-windrf, 0.36, 0.36, 0.44,  0.55,  0.42,  0.44,  0.44, 0.36, 0.36, 0.36,  0.36,  0.43,  0.46, 1e-7, Initial mass loading of surface fuel
-fueldepthm, 0.3050, 0.3050, 0.7620, 1.8290, 0.6100, 0.7620, 0.7620, 0.0610, 0.0610, 0.3050, 0.3050, 0.7010, 0.9140, 0.3050, Fuel depth
+fgi, 0.166, 0.897, 0.675, 2.468, 0.785, 1.345, 1.092, 1.121, 0.780, 2.694, 2.582, 7.749, 13.024, 1.e-7, Initial mass loading of surface fuel
+windrf, 0.36, 0.36, 0.44,  0.55,  0.42,  0.44,  0.44, 0.36, 0.36, 0.36,  0.36,  0.43,  0.46, 1e-7, Wind reduction factor
+fueldepthm,0.305, 0.305, 0.762, 1.829, 0.61, 0.762, 0.762, 0.061, 0.061, 0.305, 0.305, 0.701, 0.914, 0.305,Fuel depth
 savr, 3500., 2784., 1500., 1739., 1683., 1564., 1562., 1889., 2484., 1764., 1182., 1145., 1159., 3500, Fuel surface-area-to-volume-ratio
 fuelmce, 0.12, 0.15, 0.25, 0.20, 0.20, 0.25, 0.40, 0.30, 0.25, 0.25, 0.15, 0.20, 0.25, 0.12, Fuel moisture content of extinction
 fueldens, 32.,32.,32.,32.,32.,32.,32. , 32.,32.,32.,32.,32.,32.,32., Fuel particle density lb ft-3
