@@ -12,8 +12,8 @@ echo [LOG] Downloading Canada Fire Behavior Prediction Fuel Types
 # rm -rf "$PCB_DATA_DIR/FBP_fueltypes_Canada_30m_EPSG3978_20240522.zip"
 
 wget "https://www.landfire.gov/data-downloads/AK_LF2024/LF2024_CFFDRS_AK.zip" -O "$PCB_DATA_DIR/LF2024_CFFDRS_AK.zip"
-mkdir "$PCB_DATA_DIR/FBP_fueltypes_Canada_Alaska"
-unzip -n -d "$PCB_DATA_DIR/FBP_fueltypes_Canada_Alaska" "$PCB_DATA_DIR/LF2024_CFFDRS_AK.zip"
+mkdir "$PCB_DATA_DIR/LF2024_CFFDRS_AK"
+unzip -n -d "$PCB_DATA_DIR/LF2024_CFFDRS_AK" "$PCB_DATA_DIR/LF2024_CFFDRS_AK.zip"
 rm -rf "$PCB_DATA_DIR/LF2024_CFFDRS_AK.zip"
 
 # I will not use CONUS data in my crosstab, since I am focusing on Alaska
