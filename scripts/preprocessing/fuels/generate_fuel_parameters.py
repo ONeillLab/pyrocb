@@ -4,6 +4,12 @@ import os
 import shutil
 import numpy as np
 from osgeo import gdal
+from collections import Counter
+import rasterio
+from rasterio.windows import from_bounds, Window
+from rasterio.warp import transform_bounds
+from rasterio.errors import WindowError
+import pandas as pd
 
 utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
 out_path = os.environ["PCB_OUT_DIR"]
@@ -91,33 +97,37 @@ crosswalk_i = int(in_str) - 1
 crosswalk_profile, crosswalk_name, crosswalk_path = crosswalks[crosswalk_i]
 print(f"Using crosswalk: {crosswalk_profile}, {crosswalk_name}")
 
-crosstabs = []
-for profile in os.scandir(f"{path}/output/crosstab"):
-    if not profile.is_dir():
-        continue
-    
-    label = profile.name
-    csvs = os.scandir(profile.path)
-    for csv in csvs:
-        if not csv.is_file() or not csv.name.endswith('.csv'):
+canada_file = out_path + '/data/FBP_fueltypes_Canada_30m/FBP_fueltypes_Canada_30m_EPSG3978_20240522.tif'
+
+bbox_crs = "EPSG:4326"
+counts = Counter()
+with rasterio.open(canada_file) as src:
+    # Transform bounds into the raster CRS (densify_pts handles projection curvature)
+    left, bottom, right, top = transform_bounds(
+        bbox_crs, src.crs, west, south, east, north, densify_pts=21
+    )
+
+    # Pixel window for the bbox, clipped to the raster extent
+    bbox_win = from_bounds(left, bottom, right, top, transform=src.transform)
+    bbox_win = bbox_win.round_offsets().round_lengths()
+    bbox_win = bbox_win.intersection(Window(0, 0, src.width, src.height))
+
+    for _, block_win in src.block_windows(1):
+        try:
+            win = block_win.intersection(bbox_win)   # only the part inside the bbox
+        except WindowError:
+            continue                                 # block is entirely outside
+
+        block = src.read(1, window=win, masked=True).compressed()
+        if block.size == 0:
             continue
+        vals, cnts = np.unique(block, return_counts=True)
+        counts.update(dict(zip(vals.tolist(), cnts.tolist())))
 
-        crosstabs.append((label, csv.name, csv.path))
-crosstabs.sort()
+freq = (pd.Series(counts, name="count")
+          .rename_axis("value").sort_index().reset_index())
 
-for i in range(len(crosstabs)):
-    print(f"{i + 1}: {crosstabs[i][0]}, {crosstabs[i][1]}")
-in_str = input(f"Enter a crosstab selection (this only contributes to the weighting of different fuel types, so use the crosstab that is generated from your region geographically) (1 - {len(crosstabs)}):").strip()
-crosstab_i = int(in_str) - 1
-crosstab_profile, crosstab_name, crosstab_path = crosstabs[crosstab_i]
-print(f"Using crosstab: {crosstab_profile}, {crosstab_name}")
-
-
-cad_fuel_counts = {}
-
-crosstab_data = np.loadtxt(crosstab_path, skiprows=1, delimiter=",")
-for i, category in enumerate(crosstab_data[:, 0]):
-    cad_fuel_counts[category] = np.sum(crosstab_data[i,1:])
+cad_fuel_counts = dict(counts)
 
 us_fuel_dict = {}
 with open(crosswalk_path, "r") as crosswalk:
