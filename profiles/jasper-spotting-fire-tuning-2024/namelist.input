@@ -177,7 +177,7 @@
  fire_is_real_perim                   = .true., .true.,
 
  !Firebrand Spotting
- fs_firebrand_gen_dt = 5,
+ fs_firebrand_gen_dt = 10,
  /
 
  &bdy_control
