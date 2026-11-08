@@ -31,7 +31,7 @@ data_path = f"{out_path}/data/"
 paths = []
 for tile in tiles:
     tile_id = tile[0:3]
-    print(f"Downloading tile: {tile_id} (this may be slow)")
+    print(f"Downloading tile: {tile} (this may be slow)")
     url = f"https://ftp.maps.canada.ca/pub/nrcan_rncan/elevation/cdem_mnec/{tile_id}/cdem_dem_{tile}_tif.zip"
     response = requests.get(url, stream=True)
     
