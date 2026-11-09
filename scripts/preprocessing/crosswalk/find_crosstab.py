@@ -67,10 +67,13 @@ def make_tiles(window, size):
             t.append(Window(column_offset + c, row_offset + r, min(size, width - c), min(size, height - r)))
     return t
 
+# I will change "canada" to FBP_alaska UNFINISHED
 
-def crosstab_for_tile(canada, other, tile_window):
+FBP_alaska = 
 
-    canada_data = canada.read(1, window=tile_window)
+def crosstab_for_tile(FBP_alaska, other, tile_window):
+
+    canada_data = FBP_alaska.read(1, window=tile_window)
     if not np.any(canada_data != NODATA):
         return None
 
@@ -94,9 +97,9 @@ def crosstab_for_tile(canada, other, tile_window):
 def crosswalk(can_path, other_path, label, center_lon=None, center_lat=None, radius_km=None):
     with rasterio.open(can_path) as canada, rasterio.open(other_path) as other:
         if center_lon is not None and center_lat is not None and radius_km is not None:
-            window = radius_window(canada, other, center_lon, center_lat, radius_km)
+            window = radius_window(FBP_alaska, other, center_lon, center_lat, radius_km)
         else:
-            window = overlap_window(canada, other)
+            window = overlap_window(FBP_alaska, other)
 
         if window is None:
             print(f"No overlap between Canada and {label}")
@@ -109,7 +112,7 @@ def crosswalk(can_path, other_path, label, center_lon=None, center_lat=None, rad
         for i in range(len(tiles)):
             print(f"[{label}] Tile: {i}/{total_tiles} ({i/total_tiles*100:.1f}%)")
             tile_window = tiles[i]
-            result = crosstab_for_tile(canada, other, tile_window)
+            result = crosstab_for_tile(FBP_alaska, other, tile_window)
             if result is not None:
                 total = result if total is None else total.add(result, fill_value=0)
         return total.fillna(0).astype(int) if total is not None else pd.DataFrame()
