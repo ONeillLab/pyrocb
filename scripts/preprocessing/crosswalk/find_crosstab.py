@@ -157,7 +157,7 @@ print(NAME)
 # print(us_an_13_crosstab)
 
 print(f"\n{NAME} 13 Anderson Canada to Alaska Mapping")
-ak_an_13_crosstab = crosswalk(canada_file, ak_an_13_file, f"{NAME}AlaskaAnderson13", center_lon=LONG, center_lat=LAT, radius_km=RADIUS_KM)
+ak_an_13_crosstab = crosswalk(canada_file, ak_an_13_file, f"{NAME}AlaskaAnderson13")
 save_crosswalk(ak_an_13_crosstab, f"{NAME}AlaskaAnderson13")
 print(ak_an_13_crosstab)
 
@@ -173,7 +173,7 @@ print(ak_an_13_crosstab)
 # print(us_sb_40_crosstab)
 
 print(f"\n{NAME} 40 Scott and Burgan Canada to Alaska Mapping")
-ak_sb_40_crosstab = crosswalk(canada_file, ak_sb_40_file, f"{NAME}AlaskaScottAndBurgan40", center_lon=LONG, center_lat=LAT, radius_km=RADIUS_KM)
+ak_sb_40_crosstab = crosswalk(canada_file, ak_sb_40_file, f"{NAME}AlaskaScottAndBurgan40")
 save_crosswalk(ak_sb_40_crosstab, f"{NAME}AlaskaScottAndBurgan40")
 print(ak_sb_40_crosstab)
 
