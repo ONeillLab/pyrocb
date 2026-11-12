@@ -29,8 +29,8 @@ with open(f'{out_path}/data/LF2024_CFFDRS_AK/LF2024_CFFDRS_AK/CSV_Data/LF2024_CF
     fbp_table_text = f.read()
 base_crosswalk = {}
 
-for line in fbp_table_text.strip().split('\n'):
-    parts = line.split(maxsplit=5)
+for line in fbp_table_text.strip().split('\n')[1:]:
+    parts = line.split(',', maxsplit=5)
     
     if len(parts) == 11:
         fuel_id = int(parts[0])
