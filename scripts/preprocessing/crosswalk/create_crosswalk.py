@@ -25,16 +25,16 @@ def save_crosswalk(crosswalk: dict, path):
 
 fbp_table_text = ""
 
-with open(f'{out_path}/data/FBP_fueltypes_Canada_30m/FBP30_ColorTable.txt', 'r') as f:
+with open(f'{out_path}/data/LF2024_CFFDRS_AK/LF2024_CFFDRS_AK/CSV_Data/LF2024_CFFDRS.csv', 'r') as f:
     fbp_table_text = f.read()
 base_crosswalk = {}
 
 for line in fbp_table_text.strip().split('\n'):
     parts = line.split(maxsplit=5)
     
-    if len(parts) == 6:
+    if len(parts) == 11:
         fuel_id = int(parts[0])
-        description = parts[5].strip()
+        description = parts[1].strip()
         base_crosswalk[fuel_id] = {}
         base_crosswalk[fuel_id]["name"] = description
         base_crosswalk[fuel_id]["USIndex"] = -9999
