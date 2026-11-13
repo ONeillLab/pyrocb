@@ -394,6 +394,7 @@ if __name__ == "__main__":
     bui = fbp_get_val("bui")
 
     print(f"Using Fine Fuel Moisture Code: {ffmc} and Buildup Index: {bui} from fbp.json.")
+    print(f"FFMC {ffmc} is moisture content {fine_fuel_moisture_content(ffmc) / 100}")
     with open(crosswalk_path, "r") as crosswalk:
         crosswalk_data = crosswalk.readlines()[1:]
         for line in crosswalk_data:

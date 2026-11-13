@@ -1,4 +1,7 @@
 category, FBFM1, FBFM2, FBFM3, FBFM4, FBFM5, FBFM6, FBFM7, FBFM8, FBFM9, FBFM10, FBFM11, FBFM12, FBFM13, FBFM14, Description
+adjusted_fgi, 0.166,1.3963,0.3500, 2.468,3.1350, 1.345, 1.092, 1.121,4.0314,4.0672, 2.582, 7.749, 13.024, 1.e-7, Adjusted Initial mass loading of surface fuel
+ros,0,0.6307,8.5079,0,2.7824,0,0,0,0.4372,4.0340,0,0,0,0, Rate of spread to aim for fuel density
+adjusted_fueldepthm,0.305,0.1893,1.1430 , 1.829,1.2553, 0.762, 0.762, 0.061,0.1390,1.6960, 0.305, 0.701, 0.914, 0.305,Fuel depth
 fgi, 0.166, 0.897, 0.675, 2.468, 0.785, 1.345, 1.092, 1.121, 0.780, 2.694, 2.582, 7.749, 13.024, 1.e-7, Initial mass loading of surface fuel
 windrf, 0.36, 0.36, 0.44,  0.55,  0.42,  0.44,  0.44, 0.36, 0.36, 0.36,  0.36,  0.43,  0.46, 1e-7, Wind reduction factor
 fueldepthm,0.305, 0.305, 0.762, 1.829, 0.61, 0.762, 0.762, 0.061, 0.061, 0.305, 0.305, 0.701, 0.914, 0.305,Fuel depth
