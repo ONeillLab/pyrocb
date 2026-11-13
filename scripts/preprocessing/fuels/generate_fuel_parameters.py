@@ -173,4 +173,4 @@ for key, types in us_fuel_dict.items():
     for t in sorted_types:
         if types[t]["weights"] == 0:
             continue
-        print(f"{t}: {types[t]['weighted_vals'] / types[t]['weights']}")
+        print(f"{t}: {types[t]['weighted_vals'] / types[t]['weights'] :.4f}")
