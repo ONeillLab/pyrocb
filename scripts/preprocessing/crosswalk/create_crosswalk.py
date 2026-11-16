@@ -32,12 +32,11 @@ base_crosswalk = {}
 for line in fbp_table_text.strip().split('\n')[1:]:
     parts = line.split(',', maxsplit=5)
     
-    if len(parts) == 11:
-        fuel_id = int(parts[0])
-        description = parts[1].strip()
-        base_crosswalk[fuel_id] = {}
-        base_crosswalk[fuel_id]["name"] = description
-        base_crosswalk[fuel_id]["USIndex"] = -9999
+    fuel_id = int(parts[0])
+    description = parts[1].strip()
+    base_crosswalk[fuel_id] = {}
+    base_crosswalk[fuel_id]["name"] = description
+    base_crosswalk[fuel_id]["USIndex"] = -9999
 
 
 crosstab_dir = f"{out_path}/output/crosstab"
