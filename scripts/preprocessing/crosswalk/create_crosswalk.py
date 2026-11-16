@@ -82,6 +82,9 @@ for profile in profiles:
 
             if percents[max_percent_idx] > .4 and abs(percents[max_percent_idx] - percents[second_max_percent_idx]) > .10:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
+
+            print(crosswalk)
+            
             elif  abs(percents[max_percent_idx] - percents[second_max_percent_idx]) > .005 and np.sum(counts) >= 1000 and counts[max_percent_idx] >= 500:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
                 print(f"[{label}] Crosswalk: {name} Candian FBP Fuel Type {crosswalk[i]['name']} ({i}) was assigned to US fuel type {headers[max_percent_idx]} but it may also be {headers[second_max_percent_idx]} ({headers[max_percent_idx]}: {percents[max_percent_idx]*100:.1f}% and {headers[second_max_percent_idx]}: {percents[second_max_percent_idx]*100:.1f}%). ")
