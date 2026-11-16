@@ -10,7 +10,7 @@
  start_hour                          = 20,   20,   20,
  end_year                            = 2024, 2024, 2024,
  end_month                           = 06,   06,   06,
- end_day                             = 27,   27,   27,
+ end_day                             = 28,   28,   28,
  end_hour                            = 22,   22,   22,
  interval_seconds                    = 3600,
  input_from_file                     = .true., .true., .true.,
