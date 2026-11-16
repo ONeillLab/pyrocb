@@ -80,15 +80,25 @@ def preignition_heat(fuel_moisture):
     q_ig = 250 + 1116 * fuel_moisture
     return q_ig
 
-def rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture):
-    """Computes the Rothermel rate of spread equation based on Rothermel. 1972 eq. 52, as given in Andrews 2018 Table 3"""
+def wind_factor(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, wind_speed):
+    """Computes the Rothermel rate of spread equation based on Rothermel. 1972 eqs. 47, 48, 49, 50, as given in Andrews 2018 Table 3"""
+    C = 7.47 * np.exp(-0.133 * surface_area_volume_ratio ** 0.55)
+    B = 0.025260 * surface_area_volume_ratio ** 0.54
+    E = 0.715 * np.exp(-3.54e-4 * surface_area_volume_ratio) 
+    beta = mean_packing_ratio(fuel_depth, initial_fuel_loading, particle_density)
+    beta_op = optimum_packing_ratio(surface_area_volume_ratio)
+    phi_w = C * wind_speed ** B * (beta / beta_op) ** -E 
+    return phi_w
+
+def rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, wind_speed):
+    """Computes the Rothermel rate of spread equation with no slope adjustment based on Rothermel. 1972 eq. 52, as given in Andrews 2018 Table 3"""
     i_r = reaction_intensity(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture)
     xi = propagating_flux_ratio(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density)
     rho_b = oven_dry_bulk_density(fuel_depth, initial_fuel_loading)
     epsilon = effective_heating_number(surface_area_volume_ratio)
     q_ig = preignition_heat(fuel_moisture)
-
-    r_0 = (i_r * xi) / (rho_b * epsilon * q_ig)
+    phi_w = wind_factor(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, wind_speed)
+    r_0 = (i_r * xi * (1 + phi_w)) / (rho_b * epsilon * q_ig)
     return r_0
 
 if __name__ == "__main__":
@@ -107,9 +117,11 @@ if __name__ == "__main__":
             for i, category in enumerate(line[1:-1:]):
                 d[headers[i]][line[0]] = float(category)
 
-        fuel_moisture = float(input("Enter the fuel moisture fraction as a fraction (a good default is 0.1): ") )
+        fuel_moisture = float(input("Enter the fuel moisture fraction as a fraction (a good default is 0.1): "))
+        wind_speed = float(input("Enter the mean sustained wind speed in kmh (a good default is 10 kmh): "))
+        wind_speed = wind_speed * 1000 / 18.288 # foot hour per kilometre minute
         for category_name, category_data in d.items():
-            rate_of_spread = category_data["ros"] / 0.3048
+            rate_of_spread = category_data["ros"] / 0.3048 # metre per feet
 
             if rate_of_spread == 0:
                 continue
@@ -117,26 +129,33 @@ if __name__ == "__main__":
                 initial_fuel_loading = category_data["adjusted_fgi"]
             else:
                 initial_fuel_loading = category_data["fgi"]
-            initial_fuel_loading = initial_fuel_loading * 0.3048**2 * 2.205
+            initial_fuel_loading = initial_fuel_loading * 0.3048**2 * 2.205 # (metre per feet)^2 * (pounds per kilogram)
             surface_area_volume_ratio = category_data["savr"]
             particle_density = category_data["fueldens"]
             extinction_fuel_moisture = category_data["fuelmce"]
             total_mineral_content = category_data["st"]
             effective_mineral_content = category_data["se"]
+            windrf = category_data["windrf"]
             fuel_depth = category_data["fueldepthm"]
 
+            reduced_wind_speed = wind_speed * windrf
+            print(f"Using a windrf and log wind adjusted wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
             def rate_of_spread_solve(fuel_depth):
-                return rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture) - rate_of_spread
+                return rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, reduced_wind_speed) - rate_of_spread
 
-            from scipy.optimize import root_scalar, minimize_scalar
-            try:
-                sol = root_scalar(rate_of_spread_solve, bracket=[0.05, 50],            # depth in feet
-                              method="brentq", xtol=1e-9)
-                print(f"{category_name}: fueldepthm = {sol.root * 0.3048:.4f} m (converged: {sol.converged})")
-            except Exception as e:
-                def f(fuel_depth):
-                    return np.abs(rate_of_spread_solve(fuel_depth))
-                sol = minimize_scalar(f, bounds=(0.05, 50), method='bounded')
-                print(e)
-                print(f"{category_name}: Closest at fueldepthm = {sol.x  * 0.3048:.4f} m (ros = {sol.fun * 0.3048:.4f} m/s)")
+            from scipy.optimize import brentq
+
+            depths = np.geomspace(0.05, 50, 1000)                  # feet
+            resid = np.array([rate_of_spread_solve(d) for d in depths])
+
+            roots = [brentq(rate_of_spread_solve, depths[i], depths[i + 1])
+                    for i in range(len(depths) - 1)
+                    if np.isfinite(resid[i]) and np.isfinite(resid[i + 1]) and resid[i] * resid[i + 1] < 0]
+
+            if roots:
+                for r in roots:
+                    print(f"{category_name}: fueldepthm = {r * 0.3048:.4f} m")
+            else:
+                best = depths[np.nanargmin(np.abs(resid))]
+                print(f"{category_name}: no root, closest at fueldepthm = {best * 0.3048:.4f} m")
             print(f"{category_name}: fueldepthm +/=/- 50% = {fuel_depth*0.5:.4f} / {fuel_depth:.4f} / {fuel_depth*1.5:.4f} m")

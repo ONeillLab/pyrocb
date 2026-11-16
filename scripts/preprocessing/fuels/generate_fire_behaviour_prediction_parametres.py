@@ -88,10 +88,18 @@ def fine_fuel_moisture_function(fine_fuel_moisture_code):
     f_of_f = 91.9 * np.exp(-0.1386 * m) * (1 + (m ** 5.31) / 4.93e7)
     return f_of_f
 
-def initial_spread_index_no_slope(fine_fuel_moisture_code):
+def wind_function(wind_speed):
+    """Computes the wind function in the initial spread index based on Forestry Canada. 1992 eq. 53, 53a"""
+    if wind_speed > 40:
+        f_of_w = 12 * (1 - np.exp(-0.0818 * (wind_speed - 28)))
+    else: 
+        f_of_w = np.exp(0.05039 * wind_speed)
+    return f_of_w
+
+def initial_spread_index_no_slope(fine_fuel_moisture_code, wind_speed):
     """Computes the final initial spread index with no wind or slope adjustment based on Forestry Canada. 1992 eq. 52"""
     f_of_f = fine_fuel_moisture_function(fine_fuel_moisture_code)
-    f_of_w = 1 # No adjustment due to wind, Forestry Canada eq. 53
+    f_of_w = wind_function(wind_speed)
     isi = 0.208 * f_of_w * f_of_f
     return isi
 
@@ -257,25 +265,37 @@ def c_coefficient(fuel_category_id):
 
     return c
 
-def rate_of_spread_initial(fuel_category_id, fine_fuel_moisture_code):
+def curing_factor(curing_degree):
+    """Computes the curing factor based on Wotton. 2009 eqs. 35a, 35b"""
+    if curing_degree < 58.8:
+        cf = 0.005 * (np.exp(0.061 * curing_degree) - 1)
+    else:
+        cf = 0.176 + 0.02 * (curing_degree - 58.8)
+    return cf
+
+def rate_of_spread_initial(fuel_category_id, fine_fuel_moisture_code, wind_speed, curing_degree):
     """Computes the initial spread rate without build up index effect based on Forestry Canada. 1992 eqs. 26, 27, 28"""
     rsi = 0
     if fuel_category_id in (1, 2, 3, 4, 5, 6, 7, 11, 13, 21, 22, 23, 31, 32):
         # C-1, C-2, C-3, C-4, C-5, C-6, C-7, D-1, D-1/2, S-1, S-2, S-3, O-1a, O-1b, Forestry Canada. 1992 eq. 26
-        rsi = a_coefficient(fuel_category_id) * (1 - np.exp(-b_coefficient(fuel_category_id) * initial_spread_index_no_slope(fine_fuel_moisture_code))) ** c_coefficient(fuel_category_id)
+        rsi = a_coefficient(fuel_category_id) * (1 - np.exp(-b_coefficient(fuel_category_id) * initial_spread_index_no_slope(fine_fuel_moisture_code, wind_speed))) ** c_coefficient(fuel_category_id)
+    if fuel_category_id in (31, 32):
+        # O-1a, O-1b, Forestry Canada. 1992 eq. 36
+        cf = curing_factor(curing_degree)
+        rsi = a_coefficient(fuel_category_id) * (1 - np.exp(-b_coefficient(fuel_category_id) * initial_spread_index_no_slope(fine_fuel_moisture_code, wind_speed))) ** c_coefficient(fuel_category_id) * cf
     elif (400 < fuel_category_id and fuel_category_id < 500):
         # M-1, M-1/2 Forestry Canada. 1992 eq. 27
         percent_conifer = fuel_category_id % 100
         percent_hardwood = 100 - percent_conifer
-        rsi = (percent_conifer / 100 * rate_of_spread_initial(2, fine_fuel_moisture_code) + percent_hardwood / 100 * rate_of_spread_initial(11, fine_fuel_moisture_code))
+        rsi = (percent_conifer / 100 * rate_of_spread_initial(2, fine_fuel_moisture_code, wind_speed, curing_degree) + percent_hardwood / 100 * rate_of_spread_initial(11, fine_fuel_moisture_code, wind_speed, curing_degree))
     elif 500 < fuel_category_id and fuel_category_id < 700:
         # M-2 Forestry Canada. 1992 eq. 28
         percent_conifer = fuel_category_id % 100
         percent_hardwood = 100 - percent_conifer
-        rsi = (percent_conifer / 100 * rate_of_spread_initial(2, fine_fuel_moisture_code) + 0.2 * percent_hardwood / 100 * rate_of_spread_initial(11, fine_fuel_moisture_code))
+        rsi = (percent_conifer / 100 * rate_of_spread_initial(2, fine_fuel_moisture_code, wind_speed, curing_degree) + 0.2 * percent_hardwood / 100 * rate_of_spread_initial(11, fine_fuel_moisture_code, wind_speed, curing_degree))
     elif 700 < fuel_category_id and fuel_category_id < 1000:
         # M-3, M-4, eq. 26
-        rsi = a_coefficient(fuel_category_id) * (1 - np.exp(-b_coefficient(fuel_category_id) * initial_spread_index_no_slope(fine_fuel_moisture_code))) ** c_coefficient(fuel_category_id)
+        rsi = a_coefficient(fuel_category_id) * (1 - np.exp(-b_coefficient(fuel_category_id) * initial_spread_index_no_slope(fine_fuel_moisture_code, wind_speed))) ** c_coefficient(fuel_category_id)
     return rsi
 
 def rate_of_spread_proportion(fuel_category_id):
@@ -363,9 +383,9 @@ def buildup_effect(fuel_category_id, buildup_index):
     be = np.exp(50 * np.log(rate_of_spread_proportion(fuel_category_id)) * (1 / buildup_index - 1 / buildup_index_0(fuel_category_id)))
     return be
 
-def rate_of_spread_no_wind(fuel_category_id, fine_fuel_moisture_code, buildup_index):
+def rate_of_spread_no_slope(fuel_category_id, fine_fuel_moisture_code, buildup_index, wind_speed, curing_degree):
     """Computes the surface rate of spread based on Forestry Canada. 1992 eq. 55"""
-    ros = rate_of_spread_initial(fuel_category_id, fine_fuel_moisture_code) * buildup_effect(fuel_category_id, buildup_index)
+    ros = rate_of_spread_initial(fuel_category_id, fine_fuel_moisture_code, wind_speed, curing_degree) * buildup_effect(fuel_category_id, buildup_index)
     return ros
 if __name__ == "__main__":
 
@@ -392,9 +412,11 @@ if __name__ == "__main__":
 
     ffmc = fbp_get_val("ffmc")
     bui = fbp_get_val("bui")
+    pc = fbp_get_val("curing_degree")
+    ws = fbp_get_val("wind_speed")
 
-    print(f"Using Fine Fuel Moisture Code: {ffmc} and Buildup Index: {bui} from fbp.json.")
-    print(f"FFMC {ffmc} is moisture content {fine_fuel_moisture_content(ffmc) / 100}")
+    print(f"Using Fine Fuel Moisture Code: {ffmc}, Buildup Index: {bui}, Curing Degree: {pc}, and wind speed {ws} kmh from fbp.json.")
+    print(f"FFMC {ffmc} is moisture content {fine_fuel_moisture_content(ffmc) / 100:.6}")
     with open(crosswalk_path, "r") as crosswalk:
         crosswalk_data = crosswalk.readlines()[1:]
         for line in crosswalk_data:
@@ -404,12 +426,11 @@ if __name__ == "__main__":
             print(f"{cad_id}:")
             try:
                 sfc = surface_fuel_consumption(cad_id, ffmc, bui)
-                print(f"    sfc: {sfc}")
+                print(f"    sfc: {sfc:.5}")
             except Exception as e:
                 print(e)
             try:
-                ros = rate_of_spread_no_wind(cad_id, ffmc, bui)
-                print(f"    ros: {ros}")
+                ros = rate_of_spread_no_slope(cad_id, ffmc, bui, ws, pc)
+                print(f"    ros: {ros:.5}")
             except Exception as e:
                 print(e)
-                

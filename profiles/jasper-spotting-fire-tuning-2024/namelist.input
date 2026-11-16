@@ -23,13 +23,13 @@
   restart                             = .false.,
   restart_interval                    = 99999,
  ! how often wrf writes a restart file in mins
- io_form_history                     = 2,		
+ io_form_history                     = 2,
  ! format of wrfout output files as NetCDF
-  io_form_restart                     = 2,		
+  io_form_restart                     = 2,
  ! format of restart files
- io_form_input                       = 2,		
+ io_form_input                       = 2,
  ! format of input files
- io_form_boundary                    = 2,		
+ io_form_boundary                    = 2,
  ! format of wrfbdy files (boundary conditions)
  auxhist2_outname = '$PCB_OUT_DIR/output/$PROFILE/history/wrfout_d<domain>_<date>'
  auxhist2_interval = 10,10,10,
@@ -155,7 +155,7 @@
  fire_fuel_cat                       = 0, 0, 1,
  
  ! Diagnostic and Execution selections
- fire_print_msg                      = 0, 0, 1,       ! Enables localized tracking print alerts in rsl logs
+ fire_print_msg                      = 0, 0, 2,       ! Enables localized tracking print alerts in rsl logs
  fire_viscosity                      = 0.4,           ! Numerical smoothing variable for level-set boundaries
  fire_atm_feedback                   = 1.0,           ! Enables critical 2-way energy dynamic coupling loop
  fire_grows_only                     = 1,             ! Enforces that your burned pixels cannot un-burn
@@ -168,7 +168,8 @@
  fmoist_dt                           = 0, 0, 600,
  fmoist_freq                         = 0, 0, 0,
  sfc_full_init                       = .true., .true., .true.,
- 
+ fire_wind_log_interp = 4, 4, 4,
+
  !Random Turney Shit
  fire_lsm_reinit                      = .true., .true.,
  fire_upwinding_reinit                = 4, 4,
@@ -177,7 +178,8 @@
  fire_is_real_perim                   = .true., .true.,
 
  !Firebrand Spotting
- fs_firebrand_gen_dt = 10,
+fs_firebrand_gen_lim = 500,
+fs_firebrand_gen_dt  = 30,
  /
 
  &bdy_control
