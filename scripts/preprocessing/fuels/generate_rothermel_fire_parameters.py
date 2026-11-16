@@ -139,7 +139,7 @@ if __name__ == "__main__":
             fuel_depth = category_data["fueldepthm"]
 
             reduced_wind_speed = wind_speed * windrf
-            print(f"Using a windrf and log wind adjusted wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
+            print(f"Using a windrf wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
             def rate_of_spread_solve(fuel_depth):
                 return rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, reduced_wind_speed) - rate_of_spread
 
