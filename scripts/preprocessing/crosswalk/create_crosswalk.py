@@ -79,11 +79,9 @@ for profile in profiles:
             # The highest is the last item, the second highest is the second to last
             max_percent_idx = sorted_indices[-1]
             second_max_percent_idx = sorted_indices[-2]
-
+            print(crosswalk)
             if percents[max_percent_idx] > .4 and abs(percents[max_percent_idx] - percents[second_max_percent_idx]) > .10:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
-
-            print(crosswalk)
             
             elif  abs(percents[max_percent_idx] - percents[second_max_percent_idx]) > .005 and np.sum(counts) >= 1000 and counts[max_percent_idx] >= 500:
                 crosswalk[i]["USIndex"] = headers[max_percent_idx]
