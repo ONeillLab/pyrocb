@@ -46,7 +46,7 @@
  max_dom                             = 3,
  e_we                                = 300,  301,  301,
  e_sn                                = 300,  301,  301,
- e_vert                              = 175,  175  175,	
+ e_vert                              = 175,  175,  175,	
  p_top_requested                     = 5000,		
  num_metgrid_levels                  = 38,		
  num_metgrid_soil_levels             = 4,		
@@ -141,7 +141,7 @@
  fire_is_real_perim                  = .false., .false., .true.,
  fire_perimeter_time                 = 0.0, 0.0, 17940,
  fire_tign_in_time                   = 0.0, 0.0, 18000,
- 
+
  fire_ignition_start_lon1 = 0, 0, -117.95,
  fire_ignition_start_lat1 = 0, 0, 52.7,
  fire_ignition_end_lon1   = 0, 0, -117.95,
@@ -155,7 +155,7 @@
  fire_fuel_cat                       = 0, 0, 1,
  
  ! Diagnostic and Execution selections
- fire_print_msg                      = 0, 0, 2,       ! Enables localized tracking print alerts in rsl logs
+ fire_print_msg                      = 0, 0, 1,       ! Enables localized tracking print alerts in rsl logs
  fire_viscosity                      = 0.4,           ! Numerical smoothing variable for level-set boundaries
  fire_atm_feedback                   = 1.0,           ! Enables critical 2-way energy dynamic coupling loop
  fire_grows_only                     = 1,             ! Enforces that your burned pixels cannot un-burn
@@ -168,7 +168,6 @@
  fmoist_dt                           = 0, 0, 600,
  fmoist_freq                         = 0, 0, 0,
  sfc_full_init                       = .true., .true., .true.,
- fire_wind_log_interp = 4, 4, 4,
 
  !Random Turney Shit
  fire_lsm_reinit                      = .true., .true.,
@@ -178,8 +177,8 @@
  fire_is_real_perim                   = .true., .true.,
 
  !Firebrand Spotting
-fs_firebrand_gen_lim = 500,
-fs_firebrand_gen_dt  = 30,
+ fs_firebrand_gen_lim = 500,
+ fs_firebrand_gen_dt  = 30,
  /
 
  &bdy_control
@@ -195,8 +194,8 @@ fs_firebrand_gen_dt  = 30,
  /
 
  &namelist_quilt
- nio_tasks_per_group                 = 2
+ nio_tasks_per_group                 = 0
  ! How many dedicated CPU cores handle reading/writing output files. 0 means the compute cores handle I/O
- nio_groups                          = 8,		
+ nio_groups                          = 0,
  ! num I/O groups
  /
