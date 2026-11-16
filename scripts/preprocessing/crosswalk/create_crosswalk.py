@@ -27,16 +27,7 @@ fbp_table_text = ""
 
 with open(f'{out_path}/data/LF2024_CFFDRS_AK/LF2024_CFFDRS_AK/CSV_Data/LF2024_CFFDRS.csv', 'r') as f:
     fbp_table_text = f.read()
-base_crosswalk = {}
 
-for line in fbp_table_text.strip().split('\n')[1:]:
-    parts = line.split(',', maxsplit=5)
-    
-    fuel_id = int(parts[0])
-    description = parts[1].strip()
-    base_crosswalk[fuel_id] = {}
-    base_crosswalk[fuel_id]["name"] = description
-    base_crosswalk[fuel_id]["USIndex"] = -9999
 
 
 crosstab_dir = f"{out_path}/output/crosstab"
@@ -45,7 +36,16 @@ profiles = os.scandir(crosstab_dir)
 for profile in profiles:
     if not profile.is_dir():
         continue
-    
+    base_crosswalk = {}
+
+    for line in fbp_table_text.strip().split('\n')[1:]:
+        parts = line.split(',', maxsplit=5)
+        
+        fuel_id = int(parts[0])
+        description = parts[1].strip()
+        base_crosswalk[fuel_id] = {}
+        base_crosswalk[fuel_id]["name"] = description
+        base_crosswalk[fuel_id]["USIndex"] = -9999
     label = profile.name
     csvs = os.scandir(profile.path)
     for csv in csvs:
