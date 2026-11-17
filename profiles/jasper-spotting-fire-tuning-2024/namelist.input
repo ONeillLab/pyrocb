@@ -178,7 +178,7 @@
  fire_wind_log_interp = 4, 4, 4,
 
  !Firebrand Spotting
- ! fs_firebrand_gen_lim = 500,
+ fs_firebrand_gen_lim = 500,
  fs_firebrand_gen_dt  = 30,
  /
 
@@ -197,6 +197,6 @@
  &namelist_quilt
  ! How many dedicated CPU cores handle reading/writing output files. 0 means the compute cores handle I/O
  ! num I/O groups
- nio_groups                          = 2,
+ nio_groups                          = 0,
  nio_tasks_per_group                 = 8
  /
