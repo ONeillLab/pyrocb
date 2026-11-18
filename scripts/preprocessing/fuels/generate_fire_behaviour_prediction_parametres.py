@@ -2,6 +2,7 @@
 import numpy as np
 import sys
 import os 
+import matplotlib.pyplot as plt
 
 utils_path = f"{os.environ['PCB_SCRIPTS_DIR']}/utils"
 out_path = os.environ["PCB_OUT_DIR"]
@@ -421,8 +422,9 @@ if __name__ == "__main__":
     with open(crosswalk_path, "r") as crosswalk:
         crosswalk_data = crosswalk.readlines()[1:]
         for line in crosswalk_data:
-            cad_id, _, _ = line.strip().split(",")
+            cad_id, _, us_id = line.strip().split(",")
             cad_id = int(cad_id.strip())
+            us_id = int(us_id.strip())
 
             print(f"{cad_id}:")
             try:
@@ -432,6 +434,22 @@ if __name__ == "__main__":
                 print(e)
             try:
                 ros = rate_of_spread_no_slope(cad_id, ffmc, bui, ws, pc)
+                if us_id == 9:
+                    wind = np.linspace(5, 20, 100)
+                    rate_of_spread_array = [rate_of_spread_no_slope(cad_id, ffmc, bui, w, pc) for w in wind]
+                    plt.plot(wind, rate_of_spread_array, label = f"FBP{cad_id}")
+                    # plt.axhline(ros, ls = "--", label = f"Target FBP{cad_id}")
+                    plt.axvline(ws, ls = "--")
+                    plt.axvline(ws*.667, ls = "--")
+                    plt.axvline(ws*1.33, ls = "--")
+                    plt.xlabel("Wind (kmh)")
+                    plt.ylabel(f"Rate of Spread (m)")
+                    plt.ylim(0, 17.5)
+                    plt.legend()
+                    plt.savefig(f"{out_path}/output/fuels/rate_of_spread_curve_fbp_fbfm{us_id}.png")
+
                 print(f"    ros: {ros:.5}")
             except Exception as e:
                 print(e)
+
+            

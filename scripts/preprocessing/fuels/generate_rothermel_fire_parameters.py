@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 out_path = os.environ["PCB_OUT_DIR"]
 os.system(f"python {os.environ['PCB_OVERWRITE_PROFILE_VARS']}")
 
@@ -159,3 +160,16 @@ if __name__ == "__main__":
                 best = depths[np.nanargmin(np.abs(resid))]
                 print(f"{category_name}: no root, closest at fueldepthm = {best * 0.3048:.4f} m")
             print(f"{category_name}: fueldepthm +/=/- 50% = {fuel_depth*0.5:.4f} / {fuel_depth:.4f} / {fuel_depth*1.5:.4f} m")
+
+            wind = np.linspace(5, 20, 100)
+            plt.figure()
+            rate_of_spread_array = [rate_of_spread_no_slope(surface_area_volume_ratio, r, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, w * (1000 / 18.288) * windrf) * 0.3048 for w in wind]
+            plt.plot(wind, rate_of_spread_array)
+            plt.axhline(rate_of_spread *  0.3048)
+            plt.axvline(wind_speed/(1000 / 18.288))
+            plt.axvline(wind_speed/(1000 / 18.288)*.667, ls = "--")
+            plt.axvline(wind_speed/(1000 / 18.288)*1.33, ls = "--")
+            plt.ylim(0, 17.5)
+            plt.xlabel("Wind (kmh)")
+            plt.ylabel(f"Rate of Spread (m)")
+            plt.savefig(f"{out_path}/output/fuels/rate_of_spread_curve_fbfm{category_name}.png")
