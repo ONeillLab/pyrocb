@@ -389,6 +389,11 @@ def rate_of_spread_no_slope(fuel_category_id, fine_fuel_moisture_code, buildup_i
     """Computes the surface rate of spread based on Forestry Canada. 1992 eq. 55"""
     ros = rate_of_spread_initial(fuel_category_id, fine_fuel_moisture_code, wind_speed, curing_degree) * buildup_effect(fuel_category_id, buildup_index)
     return ros
+
+def head_fire_intensity(fuel_consumption, rate_of_spread):
+    """Computes the surface rate of spread based on Forestry Canada. 1992 eq. 69"""
+    fi = 300 * fuel_consumption * rate_of_spread
+    return fi
 if __name__ == "__main__":
 
     crosswalks = []
@@ -429,12 +434,12 @@ if __name__ == "__main__":
             print(f"{cad_id}:")
             try:
                 sfc = surface_fuel_consumption(cad_id, ffmc, bui)
-                print(f"    sfc: {sfc:.5}")
+                print(f"    sfc: {sfc:.5} kg/m^2")
             except Exception as e:
                 print(e)
             try:
                 ros = rate_of_spread_no_slope(cad_id, ffmc, bui, ws, pc)
-                if us_id == 9:
+                if us_id == 5:
                     wind = np.linspace(5, 20, 100)
                     rate_of_spread_array = [rate_of_spread_no_slope(cad_id, ffmc, bui, w, pc) for w in wind]
                     plt.plot(wind, rate_of_spread_array, label = f"FBP{cad_id}")
@@ -448,7 +453,12 @@ if __name__ == "__main__":
                     plt.legend()
                     plt.savefig(f"{out_path}/output/fuels/rate_of_spread_curve_fbp_fbfm{us_id}.png")
 
-                print(f"    ros: {ros:.5}")
+                print(f"    ros: {ros:.5} m/min")
+                try:
+                    fi = head_fire_intensity(sfc, ros)
+                    print(f"    hfi: {fi:.5} kW/m")
+                except Exception as e:
+                    print(e)
             except Exception as e:
                 print(e)
 

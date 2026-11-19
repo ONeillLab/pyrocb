@@ -10,7 +10,7 @@ fbp_json_path = f"{path}/profile/fbp.json"
 
 # Rothermel. 1972 Table 2
 HEAT_CONSTANT = 8000 # btu / lb
-
+FIRE_DRIVEN_WIND_AMPLIFICATION = 1.3
 def maximum_reaction_velocity(surface_area_volume_ratio):
     """Computes maximum reaction velocity based on Rothermel. 1972 eq. 36, as given in Andrews 2018 Table 3"""
     gamma_prime_max = (surface_area_volume_ratio ** 1.5) * (495 + 0.05940 * surface_area_volume_ratio ** 1.5) ** -1
@@ -141,6 +141,8 @@ if __name__ == "__main__":
 
             reduced_wind_speed = wind_speed * windrf
             print(f"Using a windrf wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
+            reduced_wind_speed *= FIRE_DRIVEN_WIND_AMPLIFICATION
+            print(f"Using a fire driven wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
             def rate_of_spread_solve(fuel_depth):
                 return rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, reduced_wind_speed) - rate_of_spread
 

@@ -175,8 +175,8 @@
  fire_lsm_zcoupling                   = .true., .true.,
  fire_lsm_zcoupling_ref               = 60, 60,
  fire_is_real_perim                   = .true., .true.,
- fire_wind_log_interp = 4, 4, 4,
-
+ fire_wind_log_interp = 3, 3, 3,
+ fire_use_windrf = 1, 1, 1
  !Firebrand Spotting
  ! fs_firebrand_gen_lim = 500,
  fs_firebrand_gen_dt  = 30,
