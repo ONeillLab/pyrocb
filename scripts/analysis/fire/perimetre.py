@@ -202,6 +202,7 @@ earliest_file = min(wrfouts, key=wrfouts.get)
 with Dataset(os.path.join(profile, earliest_file)) as ds0:
     ignition = read_var(ds0, 'TIGN_G')
 ignition = relax_zone_remover(ignition, SR)
+mean_ignition = np.mean(ignition)
 ignition_masked = np.ma.masked_where(ignition >= 1e6, ignition)
 
 # --- Main loop: one frame per gif_timestep ------------------------------------
@@ -277,9 +278,10 @@ while current_time <= end_time:
         xf_c = relax_zone_remover(xf, SR)
         yf_c = relax_zone_remover(yf, SR)
 
-        ignition_cs = ax2.contourf(xf_c, yf_c, ignition_masked, cmap='Purples', levels=8)
-        ignition_cbar = plt.colorbar(ignition_cs, ax=ax2, pad=0.02)
-        ignition_cbar.set_label('Ignition time (s)')
+        if mean_ignition > 1e-3:
+            ignition_cs = ax2.contourf(xf_c, yf_c, ignition_masked, cmap='Purples', levels=8)
+            ignition_cbar = plt.colorbar(ignition_cs, ax=ax2, pad=0.02)
+            ignition_cbar.set_label('Ignition time (s)')
 
         if NBAC:
             nbac.to_crs('EPSG:4326').plot(color='purple', alpha=0.5, ax=ax2, label='NBAC perimeter')
