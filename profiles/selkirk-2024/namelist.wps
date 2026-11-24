@@ -18,8 +18,8 @@
  e_we                 = 300, 301, 301
  e_sn                 = 300, 301, 301
  geog_data_res        = 'default', 'default', 'd03+default'
- dx                   = 1800
- dy                   = 1800
+ dx                   = 1575
+ dy                   = 1575
  map_proj             = 'polar'
  ref_lat              = 62.800
  ref_lon              = -137.700
