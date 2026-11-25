@@ -1,7 +1,10 @@
 category, FBFM1, FBFM2, FBFM3, FBFM4, FBFM5, FBFM6, FBFM7, FBFM8, FBFM9, FBFM10, FBFM11, FBFM12, FBFM13, FBFM14, Description
-adjusted_fgi, 0.166,1.4036,0.35, 2.468,3.1712, 1.345, 1.092, 1.121,4.0894,4.1091, 2.582, 7.749, 13.024, 1.e-7, Adjusted Initial mass loading of surface fuel
-ros,0,1.669,3.9147,0,6.8738,0,0,0,2.4571,9.9485,0,0,0,0, Rate of spread to aim for fuel density
-adjusted_fueldepthm8,0.305,0.0939,0.1593, 1.829,0.3572, 0.762, 0.762, 0.061,0.1694,0.5595, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 8
+sfc,0,1.4121,0.35,0,3.2137,0,0,0,4.1573,4.1589,0,0,0,0, Adjusted Initial mass loading of surface fuel (kg/m^2)
+ros,0,1.6709,3.9147,0,6.8903,0,0,0,2.4647,9.9867,0,0,0,0, Rate of spread to aim for fuel density (m/min)
+hfi,0,707.83,411.05,0,7507.4,0,0,0,3075.9,12460,0,0,0,0,head_fire_intensity to aim for (kW/m^2)
+adjusted_fgi9, 0.166,1.6159,0.4005,3.2137,4.1561, 1.345, 1.092, 1.121,4.7604,4.7592, 2.582, 7.749, 13.024, 1.e-7, Adjusted Initial mass loading of surface fuel 9 (kg/m^2)
+adjusted_fueldepthm9,0.305,0.0975,0.1608, 1.829,0.3835, 0.762, 0.762, 0.061,0.1804,0.5781, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 9
+adjusted_fueldepthm8,0.305,0.0939,0.1593, 1.829,0.3572, 0.762, 0.762, 0.061,0.1694,0.5595, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 8 (ros slight overshoot very comparable to (2))
 adjusted_fueldepthm7,0.305,0.1035,0.1777, 1.829,0.4013 , 0.762, 0.762, 0.061,0.2084,0.6314, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 7 (ros overshoot more than (4))
 adjusted_fueldepthm6,0.305, 0.1242 ,0.2142, 1.829,0.4544, 0.762, 0.762, 0.061,0.2084,0.7206, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 6 (ros overshoot more than (4))
 adjusted_fueldepthm4,0.305,0.1680,0.1486, 1.829,0.5977, 0.762, 0.762, 0.061,0.3236,0.9595, 0.305, 0.701, 0.914, 0.305,Fuel depth for Jasper Fire Tuning 4 (ros overshoot more than (3))

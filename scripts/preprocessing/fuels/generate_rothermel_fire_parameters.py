@@ -10,6 +10,7 @@ fbp_json_path = f"{path}/profile/fbp.json"
 
 # Rothermel. 1972 Table 2
 HEAT_CONSTANT = 8000 # btu / lb
+CMBCNST = 17.433e6 # J/kg
 FIRE_DRIVEN_WIND_AMPLIFICATION = 1.3
 def maximum_reaction_velocity(surface_area_volume_ratio):
     """Computes maximum reaction velocity based on Rothermel. 1972 eq. 36, as given in Andrews 2018 Table 3"""
@@ -126,11 +127,17 @@ if __name__ == "__main__":
 
             if rate_of_spread == 0:
                 continue
-            if "adjusted_fgi" in category_data:
-                initial_fuel_loading = category_data["adjusted_fgi"]
+            hfi_target_kw = category_data["hfi"]
+            fgi_in = category_data["sfc"] if "sfc" in category_data else category_data["fgi"]
+
+            # Model HFI [kW/m] = cmbcnst * (1 - bmst) * fgi * ROS[m/min] / 60 / 1000,  bmst = M/(1+M)
+            bmst = fuel_moisture / (1 + fuel_moisture)
+            if hfi_target_kw > 0:
+                fgi_kg_m2 = hfi_target_kw * 60 * 1000 / (CMBCNST * (1 - bmst) * rate_of_spread * 0.3048 )
             else:
-                initial_fuel_loading = category_data["fgi"]
-            initial_fuel_loading = initial_fuel_loading * 0.3048**2 * 2.205 # (metre per feet)^2 * (pounds per kilogram)
+                fgi_kg_m2 = fgi_in
+            print(f"- {category_name}: fgi for HFI = {fgi_kg_m2:.4f} kg/m2 (FBP SFC {fgi_in:.4f}, ratio {fgi_kg_m2/fgi_in:.3f})")
+            initial_fuel_loading = fgi_kg_m2 * 0.3048**2 * 2.205 # lb/ft^2
             surface_area_volume_ratio = category_data["savr"]
             particle_density = category_data["fueldens"]
             extinction_fuel_moisture = category_data["fuelmce"]
@@ -140,9 +147,9 @@ if __name__ == "__main__":
             fuel_depth = category_data["fueldepthm"]
 
             reduced_wind_speed = wind_speed * windrf
-            print(f"Using a windrf wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
+            print(f"- Using a windrf wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
             reduced_wind_speed *= FIRE_DRIVEN_WIND_AMPLIFICATION
-            print(f"Using a fire driven wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
+            print(f"- Using a fire driven wind speed of {reduced_wind_speed/(1000 / 18.288):.4} kmh")
             def rate_of_spread_solve(fuel_depth):
                 return rate_of_spread_no_slope(surface_area_volume_ratio, fuel_depth, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, reduced_wind_speed) - rate_of_spread
 
@@ -157,11 +164,12 @@ if __name__ == "__main__":
 
             if roots:
                 for r in roots:
-                    print(f"{category_name}: fueldepthm = {r * 0.3048:.4f} m")
+                    ros_check = rate_of_spread_no_slope(surface_area_volume_ratio, r, initial_fuel_loading, particle_density, effective_mineral_content, total_mineral_content, fuel_moisture, extinction_fuel_moisture, reduced_wind_speed) * 0.3048
+                    print(f"{category_name}: fgi = {fgi_kg_m2:.4f}  fueldepthm = {r * 0.3048:.4f} m \n  ROS {ros_check:.2f} (target {rate_of_spread:.2f}) \n  HFI {CMBCNST*(1-bmst)*fgi_kg_m2*ros_check/60000:.0f} kW/m (target {hfi_target_kw:.0f})")
             else:
                 best = depths[np.nanargmin(np.abs(resid))]
                 print(f"{category_name}: no root, closest at fueldepthm = {best * 0.3048:.4f} m")
-            print(f"{category_name}: fueldepthm +/=/- 50% = {fuel_depth*0.5:.4f} / {fuel_depth:.4f} / {fuel_depth*1.5:.4f} m")
+            # print(f"{category_name}: fueldepthm +/=/- 50% = {fuel_depth*0.5:.4f} / {fuel_depth:.4f} / {fuel_depth*1.5:.4f} m")
 
             wind = np.linspace(5, 20, 100)
             plt.figure()

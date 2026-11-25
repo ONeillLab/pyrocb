@@ -1,57 +1,57 @@
 {
     "Overall": {
         "ffmc": 90,
-        "bui": 150,
+        "bui": 155,
         "curing_degree": 60,
-        "wind_speed": 5
+        "wind_speed": 9.972
     },
     "1": {
         "name": "C-1 Spruce-Lichen Woodland",
         "sfc": 1.3988,
-        "ros": 1.0484,
-        "hfi": 439.94
+        "ros": 1.0495,
+        "hfi": 440.44
     },
     "2": {
         "name": "C-2 Boreal Spruce",
-        "sfc": 4.1091,
-        "ros": 9.9485,
-        "hfi": 12264
+        "sfc": 4.1589,
+        "ros": 9.9867,
+        "hfi": 12460
     },
     "3": {
         "name": "C-3 Mature Jack or Lodepole Pine",
-        "sfc": 4.0935,
-        "ros": 2.4790,
-        "hfi": 3044.4
+        "sfc": 4.1612,
+        "ros": 2.4867,
+        "hfi": 3104.3
     },
     "4": {
         "name": "C-4 Immature Jack or Lodgepole Pine",
-        "sfc": 4.0935,
-        "ros": 9.8166,
-        "hfi": 12055
+        "sfc": 4.1612,
+        "ros": 9.8402,
+        "hfi": 12284
     },
     "5": {
         "name": "C-5 Red and White Pine",
-        "sfc": 3.7765,
-        "ros": 0.78438,
-        "hfi": 888.67
+        "sfc": 3.8576,
+        "ros": 0.78627,
+        "hfi": 909.93
     },
     "7": {
         "name": "C-7 Ponderosa Pine / Douglas Fir",
-        "sfc": 3.1766,
-        "ros": 1.7387,
-        "hfi": 1656.9
+        "sfc": 3.1836,
+        "ros": 1.7417,
+        "hfi": 1663.5
     },
     "11": {
         "name": "D-1 Leafless Aspen",
-        "sfc": 1.4036,
-        "ros": 1.6690,
-        "hfi": 702.81
+        "sfc": 1.4121,
+        "ros": 1.6709,
+        "hfi": 707.83
     },
     "13": {
         "name": "D-1/D-2 Aspen",
-        "sfc": 1.4036,
-        "ros": 1.6690,
-        "hfi": 702.81
+        "sfc": 1.4121,
+        "ros": 1.6709,
+        "hfi": 707.83
     },
     "31": {
         "name": "O-1a Matted Grass",
@@ -61,27 +61,27 @@
     },
     "415": {
         "name": "M-1 Boreal Mixwood - Leafless (15% Conifer)",
-        "sfc": 1.8095,
-        "ros": 2.9222,
-        "hfi": 1586.3
+        "sfc": 1.8241,
+        "ros": 2.9292,
+        "hfi": 1602.9
     },
     "625": {
         "name": "M-1/M-2 Boreal Mixwood (25% Conifer)",
-        "sfc": 2.0800,
-        "ros": 2.7151,
-        "hfi": 1694.2
+        "sfc": 2.0988,
+        "ros": 2.7217,
+        "hfi": 1713.6
     },
     "650": {
         "name": "M-1/M-2 Boreal Mixwood (50% Conifer)",
-        "sfc": 2.7564,
-        "ros": 5.0900,
-        "hfi": 4209.0
+        "sfc": 2.7855,
+        "ros": 5.1022,
+        "hfi": 4263.6
     },
     "675": {
         "name": "M-1/M-2 Boreal Mixwood (75% Conifer)",
-        "sfc": 3.4328,
-        "ros": 7.4648,
-        "hfi": 7687.5
+        "sfc": 3.4722,
+        "ros": 7.4827,
+        "hfi": 7794.5
     },
     "9999": {
         "name": "Non-fuel"

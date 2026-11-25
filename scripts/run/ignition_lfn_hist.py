@@ -287,7 +287,7 @@ tign_new[:fire_ny, :fire_nx] = valid
 max_ig = np.max(tign_new, where=(tign_new < INFTY), initial=-np.inf)
 min_ig = np.min(tign_new, where=(tign_new < INFTY), initial=np.inf)
 lfn = xr.where(tign_new < INFTY, ((tign_new - max_ig)/(max_ig - min_ig)), 1)
-lfn = xr.where((np.abs(lfn) < 0.2) & (lfn != 1), 0 , lfn)
+lfn = xr.where((np.abs(lfn) < 0.25) & (lfn != 1), 0 , lfn)
 
 fuel = read_wrffile('NFUEL_CAT', wrfin)
 fuel = xr.where(lfn<0, 14, fuel)
