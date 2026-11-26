@@ -194,6 +194,6 @@
  &namelist_quilt
  nio_tasks_per_group                 = 8,		
  ! How many dedicated CPU cores handle reading/writing output files. 0 means the compute cores handle I/O
- nio_groups                          = 2
+ nio_groups                          = 0
  ! num I/O groups
  /
