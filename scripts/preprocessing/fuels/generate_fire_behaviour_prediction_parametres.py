@@ -451,6 +451,7 @@ if __name__ == "__main__":
                     plt.ylabel(f"Rate of Spread (m)")
                     plt.ylim(0, 17.5)
                     plt.legend()
+                    os.makedirs(f"{out_path}/output/fuels/", exist_ok=True)
                     plt.savefig(f"{out_path}/output/fuels/rate_of_spread_curve_fbp_fbfm{us_id}.png")
 
                 print(f"    ros: {ros:.5} m/min")

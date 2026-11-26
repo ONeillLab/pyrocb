@@ -182,4 +182,5 @@ if __name__ == "__main__":
             plt.ylim(0, 17.5)
             plt.xlabel("Wind (kmh)")
             plt.ylabel(f"Rate of Spread (m)")
+            os.makedirs(f"{out_path}/output/fuels/", exist_ok=True)
             plt.savefig(f"{out_path}/output/fuels/rate_of_spread_curve_fbfm{category_name}.png")

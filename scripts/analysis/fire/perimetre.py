@@ -224,7 +224,7 @@ while current_time <= end_time:
     g2 = gdf[gdf.ACQ_DATETIME <= current_time]
     if len(g2) > 0:
         most_recent_satellite_time = g2.ACQ_DATETIME.max()
-        g2, window_start, window_end = filter_time(g2, most_recent_satellite_time, window=4)
+        g2, window_start, window_end = filter_time(g2, most_recent_satellite_time, window=1)
 
     alpha_gdf = alpha_shape_from_points(g2)
 
@@ -254,9 +254,9 @@ while current_time <= end_time:
 
 
         if len(g2) > 0:
-            satellite_time = (most_recent_satellite_time - datetime.timedelta(hours = 1)).strftime("%d-%m %H:%M")
+            satellite_time = (most_recent_satellite_time - datetime.timedelta(hours = 0)).strftime("%d-%m %H:%M")
             satellites = ", ".join(list(set(g2.INSTRUMENT)))
-            g2.plot(ax=ax1, color='green', markersize=5, alpha=0.5, zorder=3, label=f'satellite detections ({satellite_time} $\pm$ 01:00, {satellites})')
+            g2.plot(ax=ax1, color='green', markersize=5, alpha=0.5, zorder=3, label=f'satellite detections ({most_recent_satellite_time} $\pm$ 00:30, {satellites})')
 
         if alpha_gdf is not None:
             alpha_gdf.plot(ax=ax1, facecolor='green', edgecolor='none', alpha=0.25, linewidth=1.5, zorder=2)

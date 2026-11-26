@@ -10,8 +10,8 @@
  start_hour                          =  2,    2,    2,
  end_year                            = 2024, 2024, 2024,
  end_month                           = 07,   07,   07,
- end_day                             = 25,   25,   25,
- end_hour                            =  0,    0,    0,
+ end_day                             = 24,   24,   24,
+ end_hour                            = 23,   23,   23,
  interval_seconds                    = 3600,
  input_from_file                     = .true., .true., .true.,
  history_interval                    = 60,   60,   60,
@@ -168,7 +168,7 @@
  fmoist_dt                           = 0, 0, 600,
  fmoist_freq                         = 0, 0, 0,
  sfc_full_init                       = .true., .true., .true.,
- fire_wind_log_interp = 4, 4, 4,
+ fire_wind_log_interp = 1, 1, 1,
  ! fire_use_windrf =    1, 1, 1
  fire_wind_height =     1, 1, 1
  !Random Turney Shit
@@ -179,7 +179,7 @@
  fire_is_real_perim                   = .true., .true.,
 
  !Firebrand Spotting
- fs_firebrand_gen_lim = 500,
+ fs_firebrand_gen_lim = 1000,
  fs_firebrand_gen_dt  = 30,
  /
 
