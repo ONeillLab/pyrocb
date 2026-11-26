@@ -21,12 +21,12 @@
  dx                   = 1575
  dy                   = 1575
  map_proj             = 'polar'
- ref_lat              = 62.800
- ref_lon              = -137.700
- truelat1             = 62.800
+ ref_lat              = 63.070
+ ref_lon              = -137.300
+ truelat1             = 63.070
  pole_lat             = 90
  pole_lon             = 0
- stand_lon            = -137.700
+ stand_lon            = -137.300
  geog_data_path       = '$PCB_OUT_DIR/data/geog'
  opt_geogrid_tbl_path = '$PCB_OUT_DIR/WPS/geogrid/'
 /
